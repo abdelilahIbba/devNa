@@ -23,28 +23,26 @@
           <!-- Badge -->
           <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 text-sm text-white animate-fade-in-up">
             <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse-glow"></span>
-            <span>Development New Application</span>
+            <span>{{ t.home.badge }}</span>
           </div>
 
           <!-- Main Headline -->
           <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight animate-fade-in-up delay-100">
-            Smart Web Apps For
+            {{ t.home.title }}
             <span class="block text-gradient bg-gradient-to-r from-devna-accent to-blue-400 bg-clip-text text-transparent">
-              Business Growth
+              {{ t.home.titleHighlight }}
             </span>
           </h1>
 
           <!-- Description -->
           <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed animate-fade-in-up delay-200">
-            <strong>DevNA</strong> (Development New Application) specializes in building brand new software applications 
-            using the latest technologies and IT development methodologies. We deliver production-ready web solutions 
-            that help businesses scale faster with modern, secure, and fully customizable applications.
+            {{ t.home.description }}
           </p>
 
           <!-- CTA Buttons -->
           <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 animate-fade-in-up delay-300">
             <button class="px-8 py-4 bg-devna-primary hover:bg-devna-primary/90 text-white rounded-full font-semibold shadow-2xl shadow-devna-primary/50 hover:shadow-devna-primary/70 transform hover:scale-105 transition-all duration-300 flex items-center space-x-2 hover-lift">
-              <span>Explore Projects</span>
+              <span>{{ t.home.exploreProjects }}</span>
               <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
               </svg>
@@ -54,7 +52,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
               </svg>
-              <span>Watch Demo</span>
+              <span>{{ t.home.watchDemo }}</span>
             </button>
           </div>
 
@@ -62,15 +60,15 @@
           <div class="grid grid-cols-3 gap-8 max-w-2xl mx-auto pt-16">
             <div class="text-center animate-scale-in delay-400">
               <div class="text-4xl font-bold text-white mb-2">15+</div>
-              <div class="text-sm text-gray-400">Projects Built</div>
+              <div class="text-sm text-gray-400">{{ t.home.stats.projects }}</div>
             </div>
             <div class="text-center animate-scale-in delay-500">
               <div class="text-4xl font-bold text-white mb-2">50+</div>
-              <div class="text-sm text-gray-400">Happy Clients</div>
+              <div class="text-sm text-gray-400">{{ t.home.stats.clients }}</div>
             </div>
             <div class="text-center animate-scale-in delay-600">
-              <div class="text-4xl font-bold text-white mb-2">99%</div>
-              <div class="text-sm text-gray-400">Satisfaction</div>
+              <div class="text-4xl font-bold text-white mb-2">5+</div>
+              <div class="text-sm text-gray-400">{{ t.home.stats.years }}</div>
             </div>
           </div>
         </div>
@@ -243,6 +241,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import ProjectCard from '@/components/ProjectCard.vue'
+import { useI18n } from '@/i18n'
+
+const { t } = useI18n()
 
 const featuredProjects = ref([
   {

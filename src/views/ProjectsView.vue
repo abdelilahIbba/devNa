@@ -4,10 +4,10 @@
       <!-- Page Header -->
       <div class="text-center mb-12">
         <h1 class="text-5xl sm:text-6xl font-bold text-devna-dark mb-4">
-          Our <span class="text-gradient">Projects</span>
+          <span v-html="t.projects.title"></span>
         </h1>
         <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-          Browse our collection of production-ready web applications
+          {{ t.projects.subtitle }}
         </p>
       </div>
 
@@ -52,9 +52,18 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import ProjectCard from '@/components/ProjectCard.vue'
+import { useI18n } from '@/i18n'
 
-const categories = ['All', 'Web Apps', 'Dashboards', 'Business Tools', 'E-Commerce']
-const selectedCategory = ref('All')
+const { t } = useI18n()
+
+const categories = computed(() => [
+  t.value.projects.filter.all,
+  'Web Apps',
+  'Dashboards',
+  'Business Tools',
+  'E-Commerce'
+])
+const selectedCategory = ref(t.value.projects.filter.all)
 
 const projects = ref([
   {

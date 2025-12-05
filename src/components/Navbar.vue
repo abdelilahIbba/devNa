@@ -33,8 +33,37 @@
             {{ link.name }}
             <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-devna-primary group-hover:w-full transition-all duration-300"></span>
           </router-link>
+          <!-- Language Switcher -->
+          <div class="relative" @mouseenter="openLang = true" @mouseleave="openLang = false">
+            <button
+              class="flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-gray-200 hover:border-devna-primary/50 hover:bg-gray-50 transition-colors"
+              aria-label="Change language"
+            >
+              <svg class="w-5 h-5 text-gray-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3a9 9 0 100 18 9 9 0 000-18zm0 0s3 3 3 9-3 9-3 9m0-18s-3 3-3 9 3 9 3 9M3 12h18" />
+              </svg>
+              <span class="text-sm font-medium text-gray-700">{{ locale.toUpperCase() }}</span>
+            </button>
+            <div
+              v-if="openLang"
+              class="absolute right-0 mt-2 w-36 bg-white border border-gray-200 rounded-xl shadow-xl overflow-hidden z-50"
+            >
+              <button @click="changeLocale('en')" class="flex items-center justify-between w-full px-4 py-2.5 text-sm hover:bg-gray-50 transition-colors">
+                <span class="font-medium">English</span>
+                <span v-if="locale==='en'" class="text-devna-primary text-lg">✓</span>
+              </button>
+              <button @click="changeLocale('fr')" class="flex items-center justify-between w-full px-4 py-2.5 text-sm hover:bg-gray-50 transition-colors">
+                <span class="font-medium">Français</span>
+                <span v-if="locale==='fr'" class="text-devna-primary text-lg">✓</span>
+              </button>
+              <button @click="changeLocale('ar')" class="flex items-center justify-between w-full px-4 py-2.5 text-sm hover:bg-gray-50 transition-colors">
+                <span class="font-medium">العربية</span>
+                <span v-if="locale==='ar'" class="text-devna-primary text-lg">✓</span>
+              </button>
+            </div>
+          </div>
           <button class="px-5 py-2 bg-devna-primary text-white rounded-full hover:bg-devna-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-devna-primary/50">
-            Get Started
+            {{ t.nav.getStarted }}
           </button>
         </div>
 
@@ -71,8 +100,16 @@
           >
             {{ link.name }}
           </router-link>
+          <div class="px-4 py-2 space-y-2">
+            <p class="text-xs text-gray-500 mb-2">{{ locale === 'ar' ? 'اللغة' : locale === 'fr' ? 'Langue' : 'Language' }}</p>
+            <div class="flex gap-2">
+              <button @click="changeLocale('en')" :class="locale==='en'?'bg-devna-primary text-white':'bg-gray-100 text-gray-700'" class="flex-1 px-3 py-1.5 rounded-lg text-sm font-medium">EN</button>
+              <button @click="changeLocale('fr')" :class="locale==='fr'?'bg-devna-primary text-white':'bg-gray-100 text-gray-700'" class="flex-1 px-3 py-1.5 rounded-lg text-sm font-medium">FR</button>
+              <button @click="changeLocale('ar')" :class="locale==='ar'?'bg-devna-primary text-white':'bg-gray-100 text-gray-700'" class="flex-1 px-3 py-1.5 rounded-lg text-sm font-medium">AR</button>
+            </div>
+          </div>
           <button class="w-full px-5 py-2 bg-devna-primary text-white rounded-lg hover:bg-devna-primary/90 transition-colors">
-            Get Started
+            {{ t.nav.getStarted }}
           </button>
         </div>
       </div>
@@ -81,14 +118,27 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed, onMounted } from 'vue'
+import { useI18n } from '../i18n'
+
+const { locale, t, setLocale: changeLocaleFn, initLocale } = useI18n()
 
 const mobileMenuOpen = ref(false)
+const openLang = ref(false)
 
-const navLinks = [
-  { name: 'Home', path: '/' },
-  { name: 'Projects', path: '/projects' },
-  { name: 'About', path: '/about' },
-  { name: 'Contact', path: '/contact' }
-]
+const navLinks = computed(() => [
+  { name: t.value.nav.home, path: '/' },
+  { name: t.value.nav.projects, path: '/projects' },
+  { name: t.value.nav.about, path: '/about' },
+  { name: t.value.nav.contact, path: '/contact' }
+])
+
+function changeLocale(code: 'en' | 'fr' | 'ar') {
+  changeLocaleFn(code)
+  openLang.value = false
+}
+
+onMounted(() => {
+  initLocale()
+})
 </script>

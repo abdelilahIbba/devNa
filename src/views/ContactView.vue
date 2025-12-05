@@ -4,10 +4,10 @@
       <!-- Page Header -->
       <div class="text-center mb-12">
         <h1 class="text-5xl sm:text-6xl font-bold text-devna-dark mb-4">
-          Get In <span class="text-gradient">Touch</span>
+          <span v-html="t.contact.title"></span>
         </h1>
         <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-          Have a question or want to work together? We'd love to hear from you.
+          {{ t.contact.subtitle }}
         </p>
       </div>
 
@@ -15,12 +15,12 @@
         <!-- Contact Form -->
         <div class="lg:col-span-2">
           <div class="bg-white rounded-2xl shadow-lg p-8">
-            <h2 class="text-2xl font-bold text-devna-dark mb-6">Send us a message</h2>
+            <h2 class="text-2xl font-bold text-devna-dark mb-6">{{ t.contact.form.name }}</h2>
             <form @submit.prevent="handleSubmit" class="space-y-6">
               <!-- Name -->
               <div>
                 <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
-                  Full Name *
+                  {{ t.contact.form.name }} *
                 </label>
                 <input 
                   type="text"
@@ -35,7 +35,7 @@
               <!-- Email -->
               <div>
                 <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
-                  Email Address *
+                  {{ t.contact.form.email }} *
                 </label>
                 <input 
                   type="email"
@@ -50,7 +50,7 @@
               <!-- Subject -->
               <div>
                 <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">
-                  Subject
+                  {{ t.contact.form.subject }}
                 </label>
                 <input 
                   type="text"
@@ -64,7 +64,7 @@
               <!-- Message -->
               <div>
                 <label for="message" class="block text-sm font-medium text-gray-700 mb-2">
-                  Message *
+                  {{ t.contact.form.message }} *
                 </label>
                 <textarea 
                   id="message"
@@ -81,7 +81,7 @@
                 type="submit"
                 class="w-full px-8 py-4 bg-devna-primary hover:bg-devna-primary/90 text-white rounded-full font-semibold shadow-lg shadow-devna-primary/30 hover:shadow-devna-primary/50 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
               >
-                <span>Send Message</span>
+                <span>{{ t.contact.form.send }}</span>
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                 </svg>
@@ -205,6 +205,9 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useI18n } from '@/i18n'
+
+const { t } = useI18n()
 
 const form = ref({
   name: '',

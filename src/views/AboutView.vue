@@ -9,14 +9,13 @@
       </div>
       <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 class="text-5xl sm:text-6xl font-bold text-white mb-6 animate-fade-in-up">
-          About <span class="text-gradient bg-gradient-to-r from-devna-accent to-blue-400 bg-clip-text text-transparent">DevNA</span>
+          {{ t.about.title }} <span class="text-gradient bg-gradient-to-r from-devna-accent to-blue-400 bg-clip-text text-transparent">DevNA</span>
         </h1>
         <p class="text-xl text-gray-300 mb-4 animate-fade-in-up delay-100">
-          Development New Application
+          {{ t.about.subtitle }}
         </p>
         <p class="text-lg text-gray-400 max-w-3xl mx-auto animate-fade-in-up delay-200">
-          DevNA represents our mission to develop brand new software applications, leveraging the latest technologies 
-          and methodologies in IT development to deliver innovative solutions for modern businesses.
+          {{ t.about.description }}
         </p>
       </div>
     </section>
@@ -68,14 +67,9 @@
 
           <!-- Company Info -->
           <div class="md:col-span-2">
-            <h2 class="text-3xl font-bold text-devna-dark mb-2">DevNA</h2>
-            <p class="text-lg text-devna-primary font-semibold mb-4">Development New Application</p>
-            <p class="text-gray-600 leading-relaxed mb-6">
-              <strong>DevNA</strong> stands for "Development New Application" — reflecting our core mission to build 
-              brand new software applications from the ground up. We leverage cutting-edge technologies and the latest 
-              IT development methodologies to create elegant, scalable web solutions that solve real business problems. 
-              Our production-ready applications are designed for immediate deployment, delivering high-quality results 
-              from concept to launch.
+            <h2 class="text-3xl font-bold text-devna-dark mb-2">{{ t.about.company }}</h2>
+            <p class="text-lg text-devna-primary font-semibold mb-4">{{ t.about.tagline }}</p>
+            <p class="text-gray-600 leading-relaxed mb-6" v-html="t.about.intro">
             </p>
             <div class="flex flex-wrap gap-3">
               <a href="https://github.com/abdelilahIbba" target="_blank" class="px-4 py-2 bg-devna-dark text-white rounded-lg hover:bg-devna-dark/90 transition-colors flex items-center space-x-2">
@@ -368,6 +362,9 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useI18n } from '@/i18n'
+
+const { t } = useI18n()
 
 const timeline = ref([
   {
