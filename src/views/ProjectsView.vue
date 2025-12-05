@@ -150,7 +150,7 @@ const projects = ref([
 ])
 
 const filteredProjects = computed(() => {
-  if (selectedCategory.value === 'All') {
+  if (selectedCategory.value === t.value.projects.filter.all || selectedCategory.value === 'All' || selectedCategory.value === 'Tous les Projets' || selectedCategory.value === 'جميع المشاريع') {
     return projects.value
   }
   return projects.value.filter(p => p.category === selectedCategory.value)
