@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-devna-dark: #0f172a;
+  --color-devna-primary: #2563eb;
+  --color-devna-accent: #38bdf8;
+  --color-devna-light: #f8fafc;
+  
+  --font-family-sans: 'Inter', system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-devna-light);
+    color: #111827;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .gradient-primary {
+    background-image: linear-gradient(to right, var(--color-devna-primary), var(--color-devna-accent));
+  }
+  
+  .text-gradient {
+    background-image: linear-gradient(to right, var(--color-devna-primary), var(--color-devna-accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
