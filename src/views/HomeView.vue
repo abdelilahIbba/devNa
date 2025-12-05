@@ -13,7 +13,7 @@
           <!-- Badge -->
           <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 text-sm text-white">
             <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-            <span>Ready-to-use web applications</span>
+            <span>Development New Application</span>
           </div>
 
           <!-- Main Headline -->
@@ -26,8 +26,9 @@
 
           <!-- Description -->
           <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            We build and sell production-ready web applications that help businesses scale faster. 
-            Modern, secure, and fully customizable solutions ready to deploy.
+            <strong>DevNA</strong> (Development New Application) specializes in building brand new software applications 
+            using the latest technologies and IT development methodologies. We deliver production-ready web solutions 
+            that help businesses scale faster with modern, secure, and fully customizable applications.
           </p>
 
           <!-- CTA Buttons -->
