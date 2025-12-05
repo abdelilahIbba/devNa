@@ -3,16 +3,18 @@
     <!-- Hero Section -->
     <section class="py-16 bg-gradient-to-br from-devna-dark to-slate-900 relative overflow-hidden">
       <div class="absolute inset-0 opacity-10">
-        <div class="absolute top-0 right-0 w-96 h-96 bg-devna-accent rounded-full blur-3xl"></div>
+        <div class="absolute top-0 right-0 w-96 h-96 bg-devna-accent rounded-full blur-3xl animate-blob-1"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-devna-primary rounded-full blur-3xl animate-blob-2"></div>
+        <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-purple-500 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
       </div>
       <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 class="text-5xl sm:text-6xl font-bold text-white mb-6">
+        <h1 class="text-5xl sm:text-6xl font-bold text-white mb-6 animate-fade-in-up">
           About <span class="text-gradient bg-gradient-to-r from-devna-accent to-blue-400 bg-clip-text text-transparent">DevNA</span>
         </h1>
-        <p class="text-xl text-gray-300 mb-4">
+        <p class="text-xl text-gray-300 mb-4 animate-fade-in-up delay-100">
           Development New Application
         </p>
-        <p class="text-lg text-gray-400 max-w-3xl mx-auto">
+        <p class="text-lg text-gray-400 max-w-3xl mx-auto animate-fade-in-up delay-200">
           DevNA represents our mission to develop brand new software applications, leveraging the latest technologies 
           and methodologies in IT development to deliver innovative solutions for modern businesses.
         </p>
@@ -23,20 +25,43 @@
       <!-- Profile Card -->
       <div class="bg-white rounded-2xl shadow-2xl p-8 md:p-12 mb-16">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-          <!-- Profile Image -->
+          <!-- Company Logo -->
           <div class="flex justify-center">
-            <div class="relative">
-              <div class="w-48 h-48 rounded-2xl overflow-hidden border-4 border-devna-primary/20 shadow-xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" 
-                  alt="Developer"
-                  class="w-full h-full object-cover"
-                />
-              </div>
-              <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-br from-devna-primary to-devna-accent rounded-xl flex items-center justify-center shadow-lg">
-                <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+            <div class="relative group">
+              <div class="w-48 h-48 rounded-3xl overflow-hidden border-4 border-devna-primary/20 shadow-xl bg-white flex items-center justify-center p-6 transition-all duration-300 group-hover:shadow-2xl group-hover:border-devna-primary/40">
+                <!-- Modern Geometric Logo -->
+                <svg viewBox="0 0 200 200" class="w-full h-full">
+                  <defs>
+                    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#2563eb;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#38bdf8;stop-opacity:1" />
+                    </linearGradient>
+                    <linearGradient id="darkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  
+                  <!-- Background Circle -->
+                  <circle cx="100" cy="100" r="80" fill="url(#logoGradient)" opacity="0.1"/>
+                  
+                  <!-- Main Letter D Shape -->
+                  <path d="M 60 50 L 60 150 L 100 150 C 130 150 150 130 150 100 C 150 70 130 50 100 50 Z" 
+                        fill="url(#darkGradient)" class="transition-all duration-300"/>
+                  
+                  <!-- Inner Accent -->
+                  <circle cx="110" cy="100" r="25" fill="url(#logoGradient)" opacity="0.8"/>
+                  
+                  <!-- Modern Lines -->
+                  <rect x="75" y="75" width="40" height="3" fill="#38bdf8" rx="1.5"/>
+                  <rect x="75" y="95" width="30" height="3" fill="#2563eb" rx="1.5"/>
+                  <rect x="75" y="115" width="35" height="3" fill="#38bdf8" rx="1.5"/>
                 </svg>
+              </div>
+              
+              <!-- Floating Badge -->
+              <div class="absolute -bottom-3 -right-3 px-4 py-2 bg-gradient-to-r from-devna-primary to-devna-accent rounded-full shadow-lg">
+                <span class="text-xs font-bold text-white tracking-wider">DevNA</span>
               </div>
             </div>
           </div>

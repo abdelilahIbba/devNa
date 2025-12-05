@@ -3,13 +3,23 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
         <!-- Logo -->
-        <router-link to="/" class="flex items-center space-x-2 group">
-          <div class="w-8 h-8 bg-gradient-to-br from-devna-primary to-devna-accent rounded-lg flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
-            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
-            </svg>
+        <router-link to="/" class="flex items-center space-x-3 group">
+          <div class="relative w-10 h-10">
+            <!-- Hexagon Background -->
+            <div class="absolute inset-0 bg-gradient-to-br from-devna-primary to-devna-accent rounded-lg transform group-hover:rotate-180 transition-transform duration-500"></div>
+            <!-- Inner Content -->
+            <div class="absolute inset-0 flex items-center justify-center">
+              <svg class="w-6 h-6 text-white transform group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+              </svg>
+            </div>
           </div>
-          <span class="text-xl font-bold text-devna-dark">DevNA</span>
+          <div class="flex flex-col">
+            <span class="text-xl font-bold leading-none">
+              <span class="text-devna-accent">Dev</span><span class="text-devna-primary">NA</span>
+            </span>
+            <span class="text-[8px] text-gray-500 tracking-wider uppercase leading-none mt-0.5">Development</span>
+          </div>
         </router-link>
 
         <!-- Desktop Navigation -->

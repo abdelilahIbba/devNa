@@ -4,20 +4,30 @@
     <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-devna-dark via-slate-900 to-devna-dark">
       <!-- Animated Background -->
       <div class="absolute inset-0 overflow-hidden">
-        <div class="absolute -top-1/2 -left-1/2 w-full h-full bg-devna-primary/10 rounded-full blur-3xl animate-pulse"></div>
-        <div class="absolute -bottom-1/2 -right-1/2 w-full h-full bg-devna-accent/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+        <div class="absolute -top-1/2 -left-1/2 w-full h-full bg-devna-primary/10 rounded-full blur-3xl animate-blob-1"></div>
+        <div class="absolute -bottom-1/2 -right-1/2 w-full h-full bg-devna-accent/10 rounded-full blur-3xl animate-blob-2"></div>
+        <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl animate-float" style="animation-delay: 2s;"></div>
+        <!-- Animated particles -->
+        <div class="absolute inset-0 pointer-events-none">
+          <div class="absolute w-2 h-2 bg-devna-accent/30 rounded-full" style="top: 20%; left: 10%; animation: particle-float 15s infinite;"></div>
+          <div class="absolute w-3 h-3 bg-devna-primary/30 rounded-full" style="top: 60%; left: 80%; animation: particle-float 20s infinite 2s;"></div>
+          <div class="absolute w-2 h-2 bg-purple-400/30 rounded-full" style="top: 40%; left: 30%; animation: particle-float 18s infinite 4s;"></div>
+          <div class="absolute w-3 h-3 bg-devna-accent/30 rounded-full" style="top: 70%; left: 60%; animation: particle-float 22s infinite 1s;"></div>
+          <div class="absolute w-2 h-2 bg-blue-400/30 rounded-full" style="top: 30%; left: 70%; animation: particle-float 17s infinite 3s;"></div>
+        </div>
       </div>
 
       <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
-        <div class="space-y-8 animate-fade-in">
+        <div class="space-y-8">
           <!-- Badge -->
-          <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 text-sm text-white">
-            <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+          <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 text-sm text-white animate-fade-in-up">
+            <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse-glow"></span>
             <span>Development New Application</span>
           </div>
 
           <!-- Main Headline -->
-          <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight">
+          <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight animate-fade-in-up delay-100">
             Smart Web Apps For
             <span class="block text-gradient bg-gradient-to-r from-devna-accent to-blue-400 bg-clip-text text-transparent">
               Business Growth
@@ -25,21 +35,21 @@
           </h1>
 
           <!-- Description -->
-          <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed animate-fade-in-up delay-200">
             <strong>DevNA</strong> (Development New Application) specializes in building brand new software applications 
             using the latest technologies and IT development methodologies. We deliver production-ready web solutions 
             that help businesses scale faster with modern, secure, and fully customizable applications.
           </p>
 
           <!-- CTA Buttons -->
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-            <button class="px-8 py-4 bg-devna-primary hover:bg-devna-primary/90 text-white rounded-full font-semibold shadow-2xl shadow-devna-primary/50 hover:shadow-devna-primary/70 transform hover:scale-105 transition-all duration-300 flex items-center space-x-2">
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 animate-fade-in-up delay-300">
+            <button class="px-8 py-4 bg-devna-primary hover:bg-devna-primary/90 text-white rounded-full font-semibold shadow-2xl shadow-devna-primary/50 hover:shadow-devna-primary/70 transform hover:scale-105 transition-all duration-300 flex items-center space-x-2 hover-lift">
               <span>Explore Projects</span>
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
               </svg>
             </button>
-            <button class="px-8 py-4 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white rounded-full font-semibold border border-white/20 transition-all duration-300 flex items-center space-x-2">
+            <button class="px-8 py-4 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white rounded-full font-semibold border border-white/20 transition-all duration-300 flex items-center space-x-2 hover-scale">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -50,15 +60,15 @@
 
           <!-- Stats -->
           <div class="grid grid-cols-3 gap-8 max-w-2xl mx-auto pt-16">
-            <div class="text-center">
+            <div class="text-center animate-scale-in delay-400">
               <div class="text-4xl font-bold text-white mb-2">15+</div>
               <div class="text-sm text-gray-400">Projects Built</div>
             </div>
-            <div class="text-center">
+            <div class="text-center animate-scale-in delay-500">
               <div class="text-4xl font-bold text-white mb-2">50+</div>
               <div class="text-sm text-gray-400">Happy Clients</div>
             </div>
-            <div class="text-center">
+            <div class="text-center animate-scale-in delay-600">
               <div class="text-4xl font-bold text-white mb-2">99%</div>
               <div class="text-sm text-gray-400">Satisfaction</div>
             </div>
