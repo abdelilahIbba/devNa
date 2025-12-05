@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://devnapp.com/sitemap.xml
