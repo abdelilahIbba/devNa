@@ -288,7 +288,7 @@ const handleSubmit = () => {
 </button>
 
 <!-- Gradient section -->
-<section class="bg-gradient-to-br from-devna-dark to-slate-900 relative overflow-hidden">
+<section class="bg-linear-to-br from-devna-dark to-slate-900 relative overflow-hidden">
   ...
 </section>
 ```
