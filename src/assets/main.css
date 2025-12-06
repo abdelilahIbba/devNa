@@ -1,13 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
 @import "tailwindcss";
+@import "./futuristic-tokens.css";
 
 @theme {
   --color-devna-dark: #0f172a;
+  --color-devna-darker: #0a0e1a;
   --color-devna-primary: #2563eb;
+  --color-devna-primary-light: #3b82f6;
   --color-devna-accent: #38bdf8;
+  --color-devna-accent-light: #7dd3fc;
+  --color-devna-secondary: #a855f7;
+  --color-devna-secondary-light: #d946ef;
   --color-devna-light: #f8fafc;
   
   --font-family-sans: 'Inter', system-ui, sans-serif;
+  --font-family-display: 'Space Mono', monospace;
 }
 
 @layer base {

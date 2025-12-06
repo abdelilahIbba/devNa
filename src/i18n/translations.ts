@@ -18,6 +18,11 @@ export const translations = {
         projects: 'Projects Built',
         clients: 'Happy Clients',
         years: 'Years Experience'
+      },
+      hero: {
+        badge: 'Building The Future',
+        title: 'Next-Generation Web Solutions',
+        subtitle: 'Experience immersive interactions and futuristic design that sets your business apart'
       }
     },
     projects: {
@@ -86,6 +91,11 @@ export const translations = {
         projects: 'Projets Réalisés',
         clients: 'Clients Satisfaits',
         years: 'Années d\'Expérience'
+      },
+      hero: {
+        badge: 'Construire l\'Avenir',
+        title: 'Solutions Web de Prochaine Génération',
+        subtitle: 'Découvrez des interactions immersives et un design futuriste qui distingue votre entreprise'
       }
     },
     projects: {
@@ -154,6 +164,11 @@ export const translations = {
         projects: 'مشروع منجز',
         clients: 'عميل راضٍ',
         years: 'سنوات خبرة'
+      },
+      hero: {
+        badge: 'بناء المستقبل',
+        title: 'حلول الويب من الجيل القادم',
+        subtitle: 'اختبر التفاعلات الغامرة والتصميم المستقبلي الذي يميز عملك'
       }
     },
     projects: {
