@@ -1,20 +1,19 @@
 <template>
-  <div class="min-h-screen bg-devna-light pt-24 pb-16">
+  <div class="min-h-screen bg-slate-950 pt-24 pb-16">
     <!-- Hero Section -->
-    <section class="py-16 bg-gradient-to-br from-devna-dark to-slate-900 relative overflow-hidden">
-      <div class="absolute inset-0 opacity-10">
-        <div class="absolute top-0 right-0 w-96 h-96 bg-devna-accent rounded-full blur-3xl animate-blob-1"></div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-devna-primary rounded-full blur-3xl animate-blob-2"></div>
-        <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-purple-500 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+    <section class="py-16 bg-gradient-to-br from-slate-900 to-slate-950 relative overflow-hidden">
+      <div class="absolute inset-0 opacity-20">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600 rounded-full blur-[100px] animate-blob-1"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-purple-600 rounded-full blur-[100px] animate-blob-2"></div>
       </div>
       <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 class="text-5xl sm:text-6xl font-bold text-white mb-6 animate-fade-in-up">
-          {{ t.about.title }} <span class="text-gradient bg-gradient-to-r from-devna-accent to-blue-400 bg-clip-text text-transparent">DevNA</span>
+          {{ t.about.title }} <span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">DevNA</span>
         </h1>
-        <p class="text-xl text-gray-300 mb-4 animate-fade-in-up delay-100">
+        <p class="text-xl text-slate-300 mb-4 animate-fade-in-up delay-100">
           {{ t.about.subtitle }}
         </p>
-        <p class="text-lg text-gray-400 max-w-3xl mx-auto animate-fade-in-up delay-200">
+        <p class="text-lg text-slate-400 max-w-3xl mx-auto animate-fade-in-up delay-200">
           {{ t.about.description }}
         </p>
       </div>
@@ -22,12 +21,12 @@
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12">
       <!-- Profile Card -->
-      <div class="bg-white rounded-2xl shadow-2xl p-8 md:p-12 mb-16">
+      <div class="bg-slate-900/50 backdrop-blur-md border border-slate-800 rounded-2xl shadow-2xl p-8 md:p-12 mb-16 relative z-20">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
           <!-- Company Logo -->
           <div class="flex justify-center">
             <div class="relative group">
-              <div class="w-48 h-48 rounded-3xl overflow-hidden border-4 border-devna-primary/20 shadow-xl bg-white flex items-center justify-center p-6 transition-all duration-300 group-hover:shadow-2xl group-hover:border-devna-primary/40">
+              <div class="w-48 h-48 rounded-3xl overflow-hidden border border-slate-700 shadow-xl bg-slate-900 flex items-center justify-center p-6 transition-all duration-300 group-hover:shadow-2xl group-hover:border-blue-500/30">
                 <!-- Modern Geometric Logo -->
                 <svg viewBox="0 0 200 200" class="w-full h-full">
                   <defs>
@@ -36,8 +35,8 @@
                       <stop offset="100%" style="stop-color:#38bdf8;stop-opacity:1" />
                     </linearGradient>
                     <linearGradient id="darkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
-                      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+                      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#e2e8f0;stop-opacity:1" />
                     </linearGradient>
                   </defs>
                   
@@ -59,7 +58,7 @@
               </div>
               
               <!-- Floating Badge -->
-              <div class="absolute -bottom-3 -right-3 px-4 py-2 bg-gradient-to-r from-devna-primary to-devna-accent rounded-full shadow-lg">
+              <div class="absolute -bottom-3 -right-3 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full shadow-lg border border-white/10">
                 <span class="text-xs font-bold text-white tracking-wider">DevNA</span>
               </div>
             </div>
@@ -67,9 +66,9 @@
 
           <!-- Company Info -->
           <div class="md:col-span-2">
-            <h2 class="text-3xl font-bold text-devna-dark mb-2">{{ t.about.company }}</h2>
-            <p class="text-lg text-devna-primary font-semibold mb-4">{{ t.about.tagline }}</p>
-            <p class="text-gray-600 leading-relaxed mb-6" v-html="t.about.intro">
+            <h2 class="text-3xl font-bold text-white mb-2">{{ t.about.company }}</h2>
+            <p class="text-lg text-blue-400 font-semibold mb-4">{{ t.about.tagline }}</p>
+            <p class="text-slate-400 leading-relaxed mb-6" v-html="t.about.intro">
             </p>
           </div>
         </div>
@@ -77,35 +76,35 @@
 
       <!-- Services Section -->
       <div class="mb-16">
-        <h2 class="text-3xl font-bold text-devna-dark mb-8 text-center">Our Services</h2>
+        <h2 class="text-3xl font-bold text-white mb-8 text-center">Our Services</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
           <!-- Custom Web Development -->
-          <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-t-4 border-devna-primary">
-            <div class="w-14 h-14 bg-gradient-to-br from-devna-primary to-devna-accent rounded-xl flex items-center justify-center mb-4">
-              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-8 hover:border-blue-500/30 transition-colors border-t-4 border-t-blue-500">
+            <div class="w-14 h-14 bg-blue-500/10 rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
               </svg>
             </div>
-            <h3 class="text-2xl font-bold text-devna-dark mb-3">Custom Web Development</h3>
-            <p class="text-gray-600 leading-relaxed mb-4">
+            <h3 class="text-2xl font-bold text-white mb-3">Custom Web Development</h3>
+            <p class="text-slate-400 leading-relaxed mb-4">
               Tailored web applications built from scratch to meet your specific business needs. We develop scalable, 
               high-performance solutions using modern frameworks and best practices.
             </p>
-            <ul class="space-y-2 text-gray-600">
+            <ul class="space-y-2 text-slate-400">
               <li class="flex items-start">
-                <svg class="w-5 h-5 text-devna-primary mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <svg class="w-5 h-5 text-blue-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                 </svg>
                 <span>Full-stack development with modern tech stacks</span>
               </li>
               <li class="flex items-start">
-                <svg class="w-5 h-5 text-devna-primary mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <svg class="w-5 h-5 text-blue-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                 </svg>
                 <span>Responsive design for all devices</span>
               </li>
               <li class="flex items-start">
-                <svg class="w-5 h-5 text-devna-primary mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <svg class="w-5 h-5 text-blue-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                 </svg>
                 <span>Performance optimization & SEO</span>
@@ -114,32 +113,32 @@
           </div>
 
           <!-- Ready-Made Solutions -->
-          <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-t-4 border-devna-accent">
-            <div class="w-14 h-14 bg-gradient-to-br from-devna-accent to-blue-400 rounded-xl flex items-center justify-center mb-4">
-              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-8 hover:border-purple-500/30 transition-colors border-t-4 border-t-purple-500">
+            <div class="w-14 h-14 bg-purple-500/10 rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-8 h-8 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
               </svg>
             </div>
-            <h3 class="text-2xl font-bold text-devna-dark mb-3">Ready-Made Applications</h3>
-            <p class="text-gray-600 leading-relaxed mb-4">
+            <h3 class="text-2xl font-bold text-white mb-3">Ready-Made Applications</h3>
+            <p class="text-slate-400 leading-relaxed mb-4">
               Production-ready web applications that can be deployed immediately. Browse our collection of 
               pre-built solutions designed for common business needs.
             </p>
-            <ul class="space-y-2 text-gray-600">
+            <ul class="space-y-2 text-slate-400">
               <li class="flex items-start">
-                <svg class="w-5 h-5 text-devna-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <svg class="w-5 h-5 text-purple-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                 </svg>
                 <span>Instant deployment with documentation</span>
               </li>
               <li class="flex items-start">
-                <svg class="w-5 h-5 text-devna-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <svg class="w-5 h-5 text-purple-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                 </svg>
                 <span>Customization options available</span>
               </li>
               <li class="flex items-start">
-                <svg class="w-5 h-5 text-devna-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <svg class="w-5 h-5 text-purple-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                 </svg>
                 <span>Ongoing support and updates</span>
@@ -148,18 +147,18 @@
           </div>
 
           <!-- API Development -->
-          <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-t-4 border-green-500">
-            <div class="w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-4">
-              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-8 hover:border-green-500/30 transition-colors border-t-4 border-t-green-500">
+            <div class="w-14 h-14 bg-green-500/10 rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
               </svg>
             </div>
-            <h3 class="text-2xl font-bold text-devna-dark mb-3">API Development & Integration</h3>
-            <p class="text-gray-600 leading-relaxed mb-4">
+            <h3 class="text-2xl font-bold text-white mb-3">API Development & Integration</h3>
+            <p class="text-slate-400 leading-relaxed mb-4">
               Robust RESTful APIs and third-party integrations to connect your systems and enable seamless 
               data flow across platforms.
             </p>
-            <ul class="space-y-2 text-gray-600">
+            <ul class="space-y-2 text-slate-400">
               <li class="flex items-start">
                 <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
@@ -182,200 +181,47 @@
           </div>
 
           <!-- Maintenance & Support -->
-          <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-t-4 border-purple-500">
-            <div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-4">
-              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-8 hover:border-cyan-500/30 transition-colors border-t-4 border-t-cyan-500">
+            <div class="w-14 h-14 bg-cyan-500/10 rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-8 h-8 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
               </svg>
             </div>
-            <h3 class="text-2xl font-bold text-devna-dark mb-3">Maintenance & Support</h3>
-            <p class="text-gray-600 leading-relaxed mb-4">
+            <h3 class="text-2xl font-bold text-white mb-3">Maintenance & Support</h3>
+            <p class="text-slate-400 leading-relaxed mb-4">
               Comprehensive ongoing support to keep your applications running smoothly with regular updates, 
               security patches, and performance improvements.
             </p>
-            <ul class="space-y-2 text-gray-600">
+            <ul class="space-y-2 text-slate-400">
               <li class="flex items-start">
-                <svg class="w-5 h-5 text-purple-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <svg class="w-5 h-5 text-cyan-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                 </svg>
-                <span>Regular security updates</span>
+                <span>Performance monitoring & optimization</span>
               </li>
               <li class="flex items-start">
-                <svg class="w-5 h-5 text-purple-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <svg class="w-5 h-5 text-cyan-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                 </svg>
-                <span>Bug fixes and troubleshooting</span>
+                <span>Security audits & patches</span>
               </li>
               <li class="flex items-start">
-                <svg class="w-5 h-5 text-purple-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <svg class="w-5 h-5 text-cyan-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                 </svg>
-                <span>24/7 technical support available</span>
+                <span>Feature enhancements</span>
               </li>
             </ul>
           </div>
         </div>
-
-        <h2 class="text-3xl font-bold text-devna-dark mb-8 text-center mt-16">Technical Expertise</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <!-- Frontend -->
-          <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-devna-dark mb-3">Frontend Development</h3>
-            <div class="flex flex-wrap gap-2">
-              <span class="text-xs px-3 py-1 bg-gray-100 text-gray-700 rounded-full">Vue.js</span>
-              <span class="text-xs px-3 py-1 bg-gray-100 text-gray-700 rounded-full">React</span>
-              <span class="text-xs px-3 py-1 bg-gray-100 text-gray-700 rounded-full">Tailwind CSS</span>
-              <span class="text-xs px-3 py-1 bg-gray-100 text-gray-700 rounded-full">TypeScript</span>
-              <span class="text-xs px-3 py-1 bg-gray-100 text-gray-700 rounded-full">JavaScript</span>
-            </div>
-          </div>
-
-          <!-- Backend -->
-          <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-            <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/>
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-devna-dark mb-3">Backend Development</h3>
-            <div class="flex flex-wrap gap-2">
-              <span class="text-xs px-3 py-1 bg-gray-100 text-gray-700 rounded-full">Laravel</span>
-              <span class="text-xs px-3 py-1 bg-gray-100 text-gray-700 rounded-full">Node.js</span>
-              <span class="text-xs px-3 py-1 bg-gray-100 text-gray-700 rounded-full">PHP</span>
-              <span class="text-xs px-3 py-1 bg-gray-100 text-gray-700 rounded-full">Python</span>
-              <span class="text-xs px-3 py-1 bg-gray-100 text-gray-700 rounded-full">REST APIs</span>
-            </div>
-          </div>
-
-          <!-- Database -->
-          <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-            <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-devna-dark mb-3">Database & DevOps</h3>
-            <div class="flex flex-wrap gap-2">
-              <span class="text-xs px-3 py-1 bg-gray-100 text-gray-700 rounded-full">MySQL</span>
-              <span class="text-xs px-3 py-1 bg-gray-100 text-gray-700 rounded-full">PostgreSQL</span>
-              <span class="text-xs px-3 py-1 bg-gray-100 text-gray-700 rounded-full">MongoDB</span>
-              <span class="text-xs px-3 py-1 bg-gray-100 text-gray-700 rounded-full">Redis</span>
-              <span class="text-xs px-3 py-1 bg-gray-100 text-gray-700 rounded-full">Docker</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Experience Timeline -->
-      <div class="mb-16">
-        <h2 class="text-3xl font-bold text-devna-dark mb-8 text-center">Project Timeline</h2>
-        <div class="bg-white rounded-2xl p-8 shadow-lg">
-          <div class="space-y-8">
-            <!-- Timeline Item -->
-            <div v-for="(item, index) in timeline" :key="index" class="flex gap-6">
-              <div class="flex flex-col items-center">
-                <div class="w-12 h-12 bg-gradient-to-br from-devna-primary to-devna-accent rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">
-                  {{ index + 1 }}
-                </div>
-                <div v-if="index < timeline.length - 1" class="w-0.5 h-full bg-gradient-to-b from-devna-primary to-devna-accent mt-2"></div>
-              </div>
-              <div class="flex-1 pb-8">
-                <div class="flex items-center justify-between mb-2">
-                  <h3 class="text-xl font-bold text-devna-dark">{{ item.title }}</h3>
-                  <span class="text-sm text-gray-500">{{ item.date }}</span>
-                </div>
-                <p class="text-gray-600 mb-3">{{ item.description }}</p>
-                <div class="flex flex-wrap gap-2">
-                  <span 
-                    v-for="tech in item.technologies" 
-                    :key="tech"
-                    class="text-xs px-3 py-1 bg-devna-primary/10 text-devna-primary rounded-full"
-                  >
-                    {{ tech }}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Stats -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-        <div class="bg-white rounded-2xl p-6 shadow-lg text-center">
-          <div class="text-4xl font-bold text-devna-primary mb-2">5+</div>
-          <div class="text-sm text-gray-600">Years Experience</div>
-        </div>
-        <div class="bg-white rounded-2xl p-6 shadow-lg text-center">
-          <div class="text-4xl font-bold text-devna-primary mb-2">30+</div>
-          <div class="text-sm text-gray-600">Projects Completed</div>
-        </div>
-        <div class="bg-white rounded-2xl p-6 shadow-lg text-center">
-          <div class="text-4xl font-bold text-devna-primary mb-2">50+</div>
-          <div class="text-sm text-gray-600">Happy Clients</div>
-        </div>
-        <div class="bg-white rounded-2xl p-6 shadow-lg text-center">
-          <div class="text-4xl font-bold text-devna-primary mb-2">15+</div>
-          <div class="text-sm text-gray-600">Active Products</div>
-        </div>
-      </div>
-
-      <!-- CTA -->
-      <div class="bg-gradient-to-br from-devna-dark to-slate-900 rounded-2xl p-12 text-center shadow-2xl">
-        <h2 class="text-3xl font-bold text-white mb-4">Let's Work Together</h2>
-        <p class="text-gray-300 mb-8 max-w-2xl mx-auto">
-          Have a project in mind? Let's create something amazing together.
-        </p>
-        <router-link 
-          to="/contact"
-          class="inline-flex items-center px-8 py-4 bg-white text-devna-dark rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-xl"
-        >
-          Get In Touch
-          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-          </svg>
-        </router-link>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
 import { useI18n } from '@/i18n'
 
 const { t } = useI18n()
-
-const timeline = ref([
-  {
-    title: 'E-Commerce Platform Launch',
-    date: '2024',
-    description: 'Developed and launched a complete e-commerce solution with advanced inventory management and analytics.',
-    technologies: ['Vue.js', 'Laravel', 'MySQL', 'Stripe']
-  },
-  {
-    title: 'SaaS Dashboard Framework',
-    date: '2023',
-    description: 'Created a reusable SaaS dashboard framework used by multiple businesses for data visualization.',
-    technologies: ['Vue.js', 'Chart.js', 'Tailwind CSS']
-  },
-  {
-    title: 'CRM System Development',
-    date: '2022',
-    description: 'Built a comprehensive CRM system with lead tracking, pipeline management, and email automation.',
-    technologies: ['Laravel', 'Vue.js', 'PostgreSQL', 'Redis']
-  },
-  {
-    title: 'Project Management Tool',
-    date: '2021',
-    description: 'Designed and developed a team collaboration platform with real-time updates and task management.',
-    technologies: ['Vue.js', 'Node.js', 'MongoDB', 'Socket.io']
-  }
-])
 </script>

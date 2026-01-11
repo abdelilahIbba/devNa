@@ -1,68 +1,63 @@
 <template>
   <div 
-    class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 group cursor-pointer hover-lift hover-glow"
+    class="group relative bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500/30 hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 cursor-pointer h-full flex flex-col"
     @click="handleClick"
+    @mouseenter="playHoverAnim"
+    @mouseleave="resetHoverAnim"
   >
-    <!-- Image -->
-    <div class="relative overflow-hidden h-56">
+    <!-- Image Section with Overlay -->
+    <div class="relative h-64 overflow-hidden">
+      <!-- Image -->
       <img 
         :src="project.image" 
         :alt="project.title"
-        class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+        class="w-full h-full object-cover transform origin-center transition-transform duration-700 will-change-transform"
+        ref="imageRef"
       />
-      <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       
-      <!-- Shimmer effect on hover -->
-      <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-        <div class="absolute inset-0 animate-shimmer"></div>
-      </div>
+      <!-- Gradient Overlay (Permanent) to ensure text readability if we put text over it, but here we don't. -->
+      <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent opacity-60"></div>
       
-      <!-- Tags -->
-      <div class="absolute top-4 left-4 flex flex-wrap gap-2">
-        <span 
-          v-for="tag in project.tags" 
-          :key="tag"
-          class="px-3 py-1 bg-white/90 backdrop-blur-sm text-xs font-semibold text-devna-primary rounded-full transform group-hover:scale-105 transition-transform duration-300"
-        >
-          {{ tag }}
+      <!-- Category Badge (Top Left) -->
+      <div class="absolute top-4 left-4">
+        <span class="px-3 py-1 text-xs font-semibold tracking-wide uppercase text-white bg-blue-600/90 backdrop-blur-md rounded-md shadow-lg">
+          {{ project.category }}
         </span>
       </div>
     </div>
 
-    <!-- Content -->
-    <div class="p-6">
-      <h3 class="text-xl font-bold text-devna-dark mb-2 group-hover:text-devna-primary transition-colors duration-300">
+    <!-- Content Section -->
+    <div class="p-8 flex flex-col flex-grow relative">
+      <!-- Title -->
+      <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300">
         {{ project.title }}
       </h3>
-      <p class="text-gray-600 text-sm mb-4 line-clamp-2">
-        {{ project.description }}
-      </p>
-
-      <!-- Tech Stack -->
-      <div class="flex flex-wrap gap-2 mb-4">
-        <span 
-          v-for="tech in project.technologies?.slice(0, 3)" 
-          :key="tech"
-          class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded hover:bg-devna-primary/10 hover:text-devna-primary transition-colors duration-200"
-        >
-          {{ tech }}
-        </span>
-        <span 
-          v-if="project.technologies && project.technologies.length > 3"
-          class="text-xs text-gray-500"
-        >
-          +{{ project.technologies.length - 3 }}
-        </span>
+      
+      <!-- Problem/Solution (Description) -->
+      <div class="relative overflow-hidden mb-6 flex-grow">
+        <p class="text-slate-400 leading-relaxed text-sm">
+           {{ project.description }}
+        </p>
       </div>
 
-      <!-- Actions -->
-      <div class="flex items-center justify-between pt-4 border-t border-gray-100">
-        <span class="text-sm text-gray-500">{{ project.category }}</span>
-        <div class="flex items-center text-devna-primary font-semibold text-sm group-hover:translate-x-2 transition-transform duration-300">
-          View Details
-          <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-          </svg>
+      <!-- Business Impact / Features -->
+      <div class="pt-6 border-t border-slate-800/50 mt-auto">
+        <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">Key Impact</p>
+        <div class="flex flex-wrap gap-2">
+          <span 
+            v-for="benefit in project.technologies?.slice(0, 3)" 
+            :key="benefit"
+            class="px-2.5 py-1.5 text-xs font-medium text-blue-300 bg-blue-900/20 border border-blue-900/30 rounded-md group-hover:bg-blue-900/30 transition-colors"
+          >
+            {{ benefit }}
+          </span>
+        </div>
+      </div>
+      
+      <!-- Action Arrow (Bottom Right) -->
+      <div class="absolute bottom-6 right-6 opacity-0 transform translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+        <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center shadow-lg text-white">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
         </div>
       </div>
     </div>
@@ -70,7 +65,8 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
+import { defineProps, ref } from 'vue'
+import { animate } from 'animejs'
 
 interface Project {
   id: number
@@ -79,14 +75,37 @@ interface Project {
   image: string
   category: string
   tags: string[]
-  technologies?: string[]
+  technologies?: string[] // Repurposed as Benefits/Impact
 }
 
 const props = defineProps<{
   project: Project
 }>()
 
+const imageRef = ref<HTMLElement | null>(null)
+
 const handleClick = () => {
-  window.location.href = `/projects/${props.project.id}`
+  // Navigation would go here
+  // window.location.href = `/projects/${props.project.id}`
+}
+
+const playHoverAnim = () => {
+  if (imageRef.value) {
+    animate(imageRef.value, {
+      scale: 1.05,
+      duration: 800,
+      easing: 'easeOutQuad'
+    })
+  }
+}
+
+const resetHoverAnim = () => {
+  if (imageRef.value) {
+    animate(imageRef.value, {
+      scale: 1.0,
+      duration: 600,
+      easing: 'easeOutQuad'
+    })
+  }
 }
 </script>
