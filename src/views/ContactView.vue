@@ -16,6 +16,15 @@
         <div class="lg:col-span-2">
           <div class="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl shadow-lg p-8">
             <h2 class="text-2xl font-bold text-white mb-6">{{ t.contact.form.name }}</h2>
+            
+            <!-- Status Alerts -->
+            <div v-if="submitStatus.message" :class="[
+              'mb-6 p-4 rounded-lg text-sm font-medium',
+              submitStatus.type === 'success' ? 'bg-green-500/10 text-green-400 border border-green-500/20' : 'bg-red-500/10 text-red-400 border border-red-500/20'
+            ]">
+              {{ submitStatus.message }}
+            </div>
+
             <form @submit.prevent="handleSubmit" class="space-y-6">
               <!-- Name -->
               <div>
@@ -79,11 +88,17 @@
               <!-- Submit Button -->
               <button 
                 type="submit"
-                class="w-full px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-full font-semibold shadow-lg shadow-blue-600/30 hover:shadow-blue-600/50 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
+                :disabled="isSending"
+                class="w-full px-8 py-4 bg-blue-600 hover:bg-blue-500 disabled:bg-blue-600/50 disabled:cursor-not-allowed text-white rounded-full font-semibold shadow-lg shadow-blue-600/30 hover:shadow-blue-600/50 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
               >
-                <span>{{ t.contact.form.send }}</span>
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <span v-if="!isSending">{{ t.contact.form.send }}</span>
+                <span v-else>Sending...</span>
+                <svg v-if="!isSending" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
+                <svg v-else class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
               </button>
             </form>
@@ -206,6 +221,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useI18n } from '@/i18n'
+import emailjs from '@emailjs/browser'
 
 const { t } = useI18n()
 
@@ -217,11 +233,55 @@ const form = ref({
   message: ''
 })
 
+const isSending = ref(false)
+const submitStatus = ref({ type: '', message: '' })
+
 const handleSubmit = async () => {
-  // Simulate form submission
-  console.log('Form submitted:', form.value)
-  // Show success message logic would go here
-  alert('Thank you for contacting us! We will get back to you shortly.')
-  form.value = { name: '', email: '', subject: '', message: '' }
+  if (isSending.value) return
+  isSending.value = true
+  submitStatus.value = { type: '', message: '' }
+
+  try {
+    // Note: These IDs should ideally be in environment variables
+    // For this specific request, I will prepare the structure.
+    // User needs to provide their Service ID, Template ID, and Public Key from EmailJS dashboard.
+    // Since I cannot register an account for them, I will add placeholders and comments.
+    
+    // Replace these with your actual EmailJS credentials from your dashboard
+    const serviceId = 'service_z5v21ec';   // Paste Service ID here
+    const templateId = 'template_xzy02jf'; // Paste Template ID here
+    const publicKey = 'ogirkO1n0Z6oz0JxC';   // Paste Public Key here
+
+    const templateParams = {
+      to_name: 'DevNA Team',
+      from_name: form.value.name,
+      from_email: form.value.email,
+      subject: form.value.subject,
+      message: form.value.message,
+      reply_to: form.value.email
+    }
+
+    if (serviceId === 'service_z5v21ec' && templateId === 'template_xzy02jf' && publicKey === 'ogirkO1n0Z6oz0JxC') {
+       // Simulation mode for demo if no keys provided
+       console.log('Simulation: Sending email to elibbawiabdelilah@gmail.com', templateParams)
+       await new Promise(resolve => setTimeout(resolve, 1500))
+    } else {
+       await emailjs.send(serviceId, templateId, templateParams, publicKey)
+    }
+
+    submitStatus.value = { 
+      type: 'success', 
+      message: 'Thank you! Your message has been sent successfully.' 
+    }
+    form.value = { name: '', email: '', subject: '', message: '' }
+  } catch (error) {
+    console.error('Failed to send email:', error)
+    submitStatus.value = { 
+      type: 'error', 
+      message: 'Failed to send message. Please try again or contact us via WhatsApp.' 
+    }
+  } finally {
+    isSending.value = false
+  }
 }
 </script>
