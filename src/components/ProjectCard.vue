@@ -6,10 +6,10 @@
     @mouseleave="resetHoverAnim"
   >
     <!-- Image Section with Overlay -->
-    <div class="relative h-64 overflow-hidden">
+    <div class="relative h-64 overflow-hidden" @click.stop="openModal">
       <!-- Image -->
       <img 
-        :src="project.image" 
+        :src="displayImage" 
         :alt="project.title"
         class="w-full h-full object-cover transform origin-center transition-transform duration-700 will-change-transform"
         ref="imageRef"
@@ -24,7 +24,44 @@
           {{ project.category }}
         </span>
       </div>
+
+      <!-- Image Navigation Dots -->
+      <div 
+        v-if="project.images && project.images.length > 1"
+        class="absolute bottom-3 left-0 right-0 flex justify-center gap-2 z-10"
+        @click.stop
+      >
+        <button 
+          v-for="(_, index) in project.images" 
+          :key="index"
+          @click.prevent="setImage(index)"
+          class="h-1.5 rounded-full transition-all duration-300 shadow-sm backdrop-blur-sm"
+          :class="activeImageIndex === index ? 'bg-blue-500 w-6' : 'bg-white/50 hover:bg-white w-1.5'"
+        ></button>
+      </div>
+
+      <!-- Expand Icon (Top Right) -->
+      <div class="absolute top-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <button 
+          class="p-2 bg-black/50 hover:bg-blue-600/80 backdrop-blur-md rounded-full text-white transition-colors"
+          title="View Fullscreen"
+        >
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+          </svg>
+        </button>
+      </div>
     </div>
+
+    <!-- Image Modal -->
+    <Teleport to="body">
+      <ImageModal 
+        v-if="showModal"
+        :images="project.images || [project.image]"
+        :initial-index="activeImageIndex"
+        @close="showModal = false"
+      />
+    </Teleport>
 
     <!-- Content Section -->
     <div class="p-8 flex flex-col flex-grow relative">
@@ -65,14 +102,16 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, ref } from 'vue'
+import { defineProps, ref, computed } from 'vue'
 import { animate } from 'animejs'
+import ImageModal from './ImageModal.vue'
 
 interface Project {
   id: number
   title: string
   description: string
   image: string
+  images?: string[]
   category: string
   tags: string[]
   technologies?: string[] // Repurposed as Benefits/Impact
@@ -83,6 +122,23 @@ const props = defineProps<{
 }>()
 
 const imageRef = ref<HTMLElement | null>(null)
+const activeImageIndex = ref(0)
+const showModal = ref(false)
+
+const displayImage = computed(() => {
+  if (props.project.images && props.project.images.length > 0) {
+    return props.project.images[activeImageIndex.value]
+  }
+  return props.project.image
+})
+
+const setImage = (index: number) => {
+  activeImageIndex.value = index
+}
+
+const openModal = () => {
+  showModal.value = true
+}
 
 const handleClick = () => {
   // Navigation would go here

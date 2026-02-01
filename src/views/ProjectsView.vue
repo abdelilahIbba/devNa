@@ -56,6 +56,11 @@ import ProjectCard from '@/components/ProjectCard.vue'
 import { useI18n } from '@/i18n'
 import { animate, stagger } from 'animejs'
 
+import tm1 from '@/assets/tickMizane/TeckMizanne1.png'
+import tm2 from '@/assets/tickMizane/TeckMizanne2.png'
+import tm3 from '@/assets/tickMizane/TeckMizanne3.png'
+import tm4 from '@/assets/tickMizane/TeckMizanne4.png'
+
 const { t } = useI18n()
 
 // Simplified categories for business focus
@@ -74,7 +79,8 @@ const projects = ref([
     id: 1,
     title: 'TeckMizanne POS',
     description: 'A complete retail management ecosystem for a multi-outlet franchise. Enabled centralized stock control and real-time sales tracking.',
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?w=800&q=80',
+    image: tm1,
+    images: [tm1, tm2, tm3, tm4],
     category: 'Retail',
     tags: ['High Volume'],
     technologies: ['Stock Sync', 'Reporting']

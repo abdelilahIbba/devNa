@@ -158,6 +158,11 @@ import { useI18n } from '@/i18n'
 import HeroImmersive from '@/components/HeroImmersive.vue'
 import ProjectCard from '@/components/ProjectCard.vue'
 
+import tm1 from '@/assets/tickMizane/TeckMizanne1.png'
+import tm2 from '@/assets/tickMizane/TeckMizanne2.png'
+import tm3 from '@/assets/tickMizane/TeckMizanne3.png'
+import tm4 from '@/assets/tickMizane/TeckMizanne4.png'
+
 const { t } = useI18n()
 
 // --- Data ---
@@ -166,7 +171,8 @@ const featuredProjects = ref([
     id: 1,
     title: 'TeckMizanne POS',
     description: 'A comprehensive Point of Sale system for retail chains. Includes real-time stock sync across branches and advanced sales reporting.',
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?w=800&q=80',
+    image: tm1,
+    images: [tm1, tm2, tm3, tm4],
     category: 'Retail',
     tags: ['Best Seller', 'High Volume'],
     // Using technologies array for benefits display in card
