@@ -59,6 +59,15 @@
         v-if="showModal"
         :images="project.images || [project.image]"
         :initial-index="activeImageIndex"
+        :project-url="project.previewUrl"
+        :project-title="project.title"
+        :project-description="project.description"
+        :project-category="project.category"
+        :project-technologies="project.technologies"
+        :project-preview-brand="project.previewBrand"
+        :project-preview-headline="project.previewHeadline"
+        :project-preview-summary="project.previewSummary"
+        :project-preview-stats="project.previewStats"
         @close="showModal = false"
       />
     </Teleport>
@@ -102,7 +111,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, ref, computed } from 'vue'
+import { ref, computed } from 'vue'
 import { animate } from 'animejs'
 import ImageModal from './ImageModal.vue'
 
@@ -115,6 +124,11 @@ interface Project {
   category: string
   tags: string[]
   technologies?: string[] // Repurposed as Benefits/Impact
+  previewUrl?: string
+  previewBrand?: string
+  previewHeadline?: string
+  previewSummary?: string
+  previewStats?: Array<{ label: string; value: string }>
 }
 
 const props = defineProps<{

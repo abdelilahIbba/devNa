@@ -92,7 +92,16 @@ const projects = ref([
     image: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800&q=80',
     category: 'Transport',
     tags: ['Automation'],
-    technologies: ['Booking', 'Fleet', 'Cloud']
+    technologies: ['Booking', 'Fleet', 'Cloud'],
+    previewUrl: 'https://atellasfleetdeploy.vercel.app/',
+    previewBrand: 'AtellasFleet',
+    previewHeadline: 'Premium Car Rental Platform',
+    previewSummary: 'Professional web experience for reservation flow, real-time fleet visibility, and operations dashboard in one unified system.',
+    previewStats: [
+      { label: 'Fleet Availability', value: '94%' },
+      { label: 'Booking Flow', value: '< 2 min' },
+      { label: 'Cities Covered', value: '5' }
+    ]
   },
   {
     id: 3,
