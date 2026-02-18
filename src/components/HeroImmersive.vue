@@ -125,7 +125,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { animate, stagger, Timeline } from 'animejs'
+import { animate, stagger } from 'animejs'
 
 const titleRef = ref<HTMLElement | null>(null)
 const descRef = ref<HTMLElement | null>(null)
@@ -138,48 +138,57 @@ const badgeRef = ref<HTMLElement | null>(null)
 
 // Animation Sequence
 onMounted(() => {
-  // 1. Entrance Animation
-  const timeline = new Timeline({
-    easing: 'easeOutExpo'
-  })
+  if (gridRef.value) {
+    animate(gridRef.value, {
+      opacity: [0, 0.1],
+      duration: 2000,
+      easing: 'easeOutExpo'
+    })
+  }
 
-  // Grid fade in
-  timeline.add(gridRef.value, {
-    opacity: [0, 0.1],
-    duration: 2000
-  })
+  if (badgeRef.value) {
+    animate(badgeRef.value, {
+      opacity: [0, 1],
+      translateY: [20, 0],
+      duration: 800,
+      delay: 500,
+      easing: 'easeOutExpo'
+    })
+  }
 
-  // Badge reveal
-  .add(badgeRef.value, {
-    opacity: [0, 1],
-    translateY: [20, 0],
-    duration: 800,
-  }, '-=1500')
+  const titleLines = titleRef.value?.querySelectorAll('span.block.relative')
+  if (titleLines && titleLines.length > 0) {
+    animate(titleLines, {
+      translateY: ['110%', '0%'],
+      opacity: [0, 1],
+      duration: 1000,
+      delay: stagger(100, { start: 900 }),
+      easing: 'easeOutExpo'
+    })
+  }
 
-  // Title reveal word by word (if split) or block
-  .add(titleRef.value?.querySelectorAll('span.block.relative'), {
-    translateY: ['110%', '0%'],
-    opacity: [0, 1],
-    duration: 1000,
-    delay: stagger(100),
-  }, '-=600')
+  const introElements = [descRef.value, ctaRef.value].filter(Boolean)
+  if (introElements.length > 0) {
+    animate(introElements, {
+      opacity: [0, 1],
+      translateY: [20, 0],
+      duration: 800,
+      delay: stagger(100, { start: 1400 }),
+      easing: 'easeOutExpo'
+    })
+  }
 
-  // Description & CTA
-  .add([descRef.value, ctaRef.value], {
-    opacity: [0, 1],
-    translateY: [20, 0],
-    duration: 800,
-    delay: stagger(100)
-  }, '-=800')
-
-  // Visual card float in
-  .add(visualRef.value, {
-    opacity: [0, 1],
-    translateX: [50, 0],
-    rotateY: [-15, -5],
-    rotateX: [10, 5],
-    duration: 1200,
-  }, '-=1000')
+  if (visualRef.value) {
+    animate(visualRef.value, {
+      opacity: [0, 1],
+      translateX: [50, 0],
+      rotateY: [-15, -5],
+      rotateX: [10, 5],
+      duration: 1200,
+      delay: 1200,
+      easing: 'easeOutExpo'
+    })
+  }
 
   // Start log simulator
   simulateActivityLog()

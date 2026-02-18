@@ -111,6 +111,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useI18n } from '@/i18n'
+import type { Locale } from '@/i18n/translations'
 
 const { t, locale, setLocale } = useI18n()
 const mobileMenuOpen = ref(false)
@@ -118,13 +119,13 @@ const openLang = ref(false)
 const scrolled = ref(false)
 
 const navLinks = computed(() => [
-  { name: t.nav?.home || 'Home', path: '/' },
-  { name: t.nav?.projects || 'Projects', path: '/projects' },
-  { name: t.nav?.about || 'About', path: '/about' },
-  { name: t.nav?.contact || 'Contact', path: '/contact' }
+  { name: t.value.nav?.home || 'Home', path: '/' },
+  { name: t.value.nav?.projects || 'Projects', path: '/projects' },
+  { name: t.value.nav?.about || 'About', path: '/about' },
+  { name: t.value.nav?.contact || 'Contact', path: '/contact' }
 ])
 
-const changeLocale = (newLocale: string) => {
+const changeLocale = (newLocale: Locale) => {
   setLocale(newLocale)
   openLang.value = false
 }
