@@ -15,7 +15,7 @@
         <div class="lg:col-span-2 space-y-8">
           <!-- Project Image -->
           <div class="relative rounded-2xl overflow-hidden shadow-2xl group border border-slate-800">
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent z-10"></div>
+            <div class="absolute inset-0 bg-linear-to-t from-slate-900/80 to-transparent z-10"></div>
             <img 
               :src="project.image" 
               :alt="project.title"
@@ -52,7 +52,7 @@
                 :key="feature"
                 class="flex items-start space-x-3"
               >
-                <svg class="w-5 h-5 text-purple-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <svg class="w-5 h-5 text-purple-500 mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                 </svg>
                 <span class="text-slate-300">{{ feature }}</span>
@@ -138,7 +138,7 @@
             </div>
 
             <div class="space-y-3">
-              <button class="w-full px-6 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-full font-semibold shadow-lg shadow-blue-900/40 transition-all duration-300 transform hover:scale-105">
+              <button class="w-full px-6 py-4 bg-linear-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-full font-semibold shadow-lg shadow-blue-900/40 transition-all duration-300 transform hover:scale-105">
                 Purchase Now
               </button>
               <button class="w-full px-6 py-4 bg-slate-800 hover:bg-slate-700 text-blue-400 border border-blue-500/30 rounded-full font-semibold transition-all duration-300">
