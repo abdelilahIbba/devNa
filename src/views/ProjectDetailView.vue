@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-slate-950 pt-24 pb-16">
+  <div class="min-h-screen bg-slate-950 pt-24 pb-16 page-view">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Breadcrumb -->
       <nav class="flex items-center space-x-2 text-sm mb-8">

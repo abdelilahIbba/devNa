@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen">
+  <div class="min-h-screen app-shell transition-colors duration-300">
     <Navbar />
     <RouterView />
     <StickyCTA />

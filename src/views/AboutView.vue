@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-slate-950 pt-24 pb-16">
+  <div class="min-h-screen bg-slate-950 pt-24 pb-16 page-view">
     <!-- Hero Section -->
     <section class="py-16 bg-gradient-to-br from-slate-900 to-slate-950 relative overflow-hidden">
       <div class="absolute inset-0 opacity-20">

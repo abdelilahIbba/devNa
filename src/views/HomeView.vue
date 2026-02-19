@@ -1,14 +1,35 @@
 <template>
-  <div class="min-h-screen bg-slate-950 text-slate-200 selection:bg-blue-500 selection:text-white">
+  <div class="min-h-screen bg-slate-950 text-slate-200 selection:bg-blue-500 selection:text-white home-view page-view">
     <!-- Hero Immersive Section -->
     <HeroImmersive />
 
     <!-- Proof Metrics Strip -->
-    <div class="border-y border-slate-800 bg-black/20 backdrop-blur-sm py-7">
+    <div class="border-y border-slate-800 bg-black/20 backdrop-blur-sm py-8 proof-strip">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div v-for="metric in proofMetrics" :key="metric.label" class="rounded-xl border border-slate-800 bg-slate-900/60 p-4">
-          <p class="text-white text-2xl md:text-3xl font-bold">{{ metric.value }}</p>
-          <p class="text-slate-400 text-xs uppercase tracking-wider mt-1">{{ metric.label }}</p>
+        <div
+          v-for="metric in proofMetrics"
+          :key="metric.label"
+          class="rounded-2xl border border-slate-800 bg-slate-900/60 px-5 py-5 md:px-6 md:py-6 proof-card"
+        >
+          <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 border border-blue-500/20 flex items-center justify-center mb-4">
+            <svg v-if="metric.key === 'systems'" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <rect x="3" y="4" width="18" height="6" rx="2" stroke-width="2" />
+              <rect x="3" y="14" width="18" height="6" rx="2" stroke-width="2" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h6M7 17h6M17 7h.01M17 17h.01" />
+            </svg>
+            <svg v-else-if="metric.key === 'uptime'" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3l7 3v6c0 4.5-2.9 7.8-7 9-4.1-1.2-7-4.5-7-9V6l7-3zm-3 9 2 2 4-4" />
+            </svg>
+            <svg v-else-if="metric.key === 'mvp'" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <rect x="3" y="4" width="18" height="17" rx="2" stroke-width="2" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 2v4M16 2v4M3 9h18M12 12v4l2.5 1.5" />
+            </svg>
+            <svg v-else class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <p class="text-white text-2xl md:text-3xl font-semibold tracking-tight proof-value">{{ metric.value }}</p>
+          <p class="text-slate-400 text-[11px] md:text-xs uppercase tracking-[0.14em] mt-2 proof-label">{{ metric.label }}</p>
         </div>
       </div>
     </div>
@@ -250,10 +271,10 @@ const featuredProjects = ref([
 ])
 
 const proofMetrics = [
-  { value: '14+', label: 'Production Systems Delivered' },
-  { value: '98.9%', label: 'Average Uptime on Client Platforms' },
-  { value: '< 6 Weeks', label: 'MVP Delivery Time' },
-  { value: '4.9/5', label: 'Client Satisfaction Score' }
+  { key: 'systems', value: '14+', label: 'Production Systems Delivered' },
+  { key: 'uptime', value: '98.9%', label: 'Average Uptime on Client Platforms' },
+  { key: 'mvp', value: '< 6 Weeks', label: 'MVP Delivery Time' },
+  { key: 'satisfaction', value: '4.9/5', label: 'Client Satisfaction Score' }
 ]
 
 const partnerBrands = ['AtellasFleet', 'TeckMizanne', 'ProStock', 'MediCare CRM']
@@ -366,6 +387,16 @@ onMounted(() => {
 <style scoped>
 .animate-marquee {
   animation: marquee 30s linear infinite;
+}
+
+.proof-card {
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.proof-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 14px 30px rgba(2, 6, 23, 0.22);
 }
 
 @media (prefers-reduced-motion: reduce) {
