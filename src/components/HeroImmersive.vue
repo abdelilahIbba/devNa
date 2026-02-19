@@ -37,17 +37,17 @@
             <span class="block relative">Reliable Digital</span>
           </span>
           <span class="block overflow-hidden relative">
-            <span class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-300 relative">Solutions for Growth</span>
+            <span class="block text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-indigo-300 relative">Solutions for Growth</span>
           </span>
         </h1>
 
         <p ref="descRef" class="text-lg sm:text-xl text-slate-300 mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light opacity-0 translate-y-4">
-          DevNA helps businesses scale and operate better with custom management systems. We bridge the gap between your operational challenges and streamlined digital efficiency.
+          DevNApp helps businesses scale and operate better with custom management systems. We bridge the gap between your operational challenges and streamlined digital efficiency.
         </p>
 
         <div ref="ctaRef" class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start opacity-0 translate-y-4">
           <router-link to="/contact" class="group relative px-8 py-4 bg-blue-600 text-white font-semibold rounded-lg overflow-hidden transition-transform hover:scale-105 active:scale-95 shadow-lg shadow-blue-900/40 inline-flex items-center justify-center">
-            <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-100 group-hover:opacity-90 transition-opacity"></div>
+            <div class="absolute inset-0 bg-linear-to-r from-blue-600 to-indigo-600 opacity-100 group-hover:opacity-90 transition-opacity"></div>
             <span class="relative flex items-center gap-2">
               Discuss Your Project
               <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
@@ -113,11 +113,11 @@
           </div>
 
           <!-- Glass overlay -->
-          <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none"></div>
+          <div class="absolute inset-0 bg-linear-to-br from-white/5 to-transparent pointer-events-none"></div>
         </div>
 
         <!-- Decorative Elements behind -->
-        <div class="absolute -z-10 top-[-20px] right-[-20px] w-full max-w-md mx-auto h-full border border-slate-700/30 rounded-xl bg-slate-800/20 backdrop-blur-sm"></div>
+        <div class="absolute -z-10 -top-5 -right-5 w-full max-w-md mx-auto h-full border border-slate-700/30 rounded-xl bg-slate-800/20 backdrop-blur-sm"></div>
       </div>
     </div>
   </section>

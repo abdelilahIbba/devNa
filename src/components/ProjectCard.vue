@@ -16,7 +16,7 @@
       />
       
       <!-- Gradient Overlay (Permanent) to ensure text readability if we put text over it, but here we don't. -->
-      <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent opacity-60"></div>
+      <div class="absolute inset-0 bg-linear-to-t from-slate-900 via-slate-900/20 to-transparent opacity-60"></div>
       
       <!-- Category Badge (Top Left) -->
       <div class="absolute top-4 left-4">
@@ -73,14 +73,14 @@
     </Teleport>
 
     <!-- Content Section -->
-    <div class="p-8 flex flex-col flex-grow relative">
+    <div class="p-8 flex flex-col grow relative">
       <!-- Title -->
       <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300">
         {{ project.title }}
       </h3>
       
       <!-- Problem/Solution (Description) -->
-      <div class="relative overflow-hidden mb-6 flex-grow">
+      <div class="relative overflow-hidden mb-6 grow">
         <p class="text-slate-400 leading-relaxed text-sm">
            {{ project.description }}
         </p>

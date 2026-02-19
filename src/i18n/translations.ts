@@ -11,7 +11,7 @@ export const translations = {
       badge: 'Development New Application',
       title: 'Smart Web Apps For',
       titleHighlight: 'Business Growth',
-      description: 'DevNA (Development New Application) specializes in building brand new software applications using the latest technologies and IT development methodologies. We deliver production-ready web solutions that help businesses scale faster with modern, secure, and fully customizable applications.',
+      description: 'DevNApp (Development New Application) specializes in building brand new software applications using the latest technologies and IT development methodologies. We deliver production-ready web solutions that help businesses scale faster with modern, secure, and fully customizable applications.',
       exploreProjects: 'Explore Projects',
       watchDemo: 'Watch Demo',
       stats: {
@@ -41,10 +41,10 @@ export const translations = {
     about: {
       title: 'About',
       subtitle: 'Development New Application',
-      description: 'DevNA represents our mission to develop brand new software applications, leveraging the latest technologies and methodologies in IT development to deliver innovative solutions for modern businesses.',
-      company: 'DevNA',
+      description: 'DevNApp represents our mission to develop brand new software applications, leveraging the latest technologies and methodologies in IT development to deliver innovative solutions for modern businesses.',
+      company: 'DevNApp',
       tagline: 'Development New Application',
-      intro: 'DevNA stands for "Development New Application" — reflecting our core mission to build brand new software applications from the ground up. We leverage cutting-edge technologies and the latest IT development methodologies to create elegant, scalable web solutions that solve real business problems. Our production-ready applications are designed for immediate deployment, delivering high-quality results from concept to launch.',
+      intro: 'DevNApp stands for "Development New Application" — reflecting our core mission to build brand new software applications from the ground up. We leverage cutting-edge technologies and the latest IT development methodologies to create elegant, scalable web solutions that solve real business problems. Our production-ready applications are designed for immediate deployment, delivering high-quality results from concept to launch.',
       services: 'Our Services',
       expertise: 'Technical Expertise'
     },
@@ -84,7 +84,7 @@ export const translations = {
       badge: 'Développement Nouvelle Application',
       title: 'Applications Web Intelligentes Pour',
       titleHighlight: 'Croissance Entreprise',
-      description: 'DevNA (Development New Application) se spécialise dans la création de nouvelles applications logicielles en utilisant les dernières technologies et méthodologies de développement IT. Nous livrons des solutions web prêtes pour la production qui aident les entreprises à se développer plus rapidement avec des applications modernes, sécurisées et entièrement personnalisables.',
+      description: 'DevNApp (Development New Application) se spécialise dans la création de nouvelles applications logicielles en utilisant les dernières technologies et méthodologies de développement IT. Nous livrons des solutions web prêtes pour la production qui aident les entreprises à se développer plus rapidement avec des applications modernes, sécurisées et entièrement personnalisables.',
       exploreProjects: 'Découvrir Projets',
       watchDemo: 'Voir Démo',
       stats: {
@@ -114,10 +114,10 @@ export const translations = {
     about: {
       title: 'À Propos',
       subtitle: 'Développement Nouvelle Application',
-      description: 'DevNA représente notre mission de développer de nouvelles applications logicielles, en tirant parti des dernières technologies et méthodologies de développement IT pour fournir des solutions innovantes aux entreprises modernes.',
-      company: 'DevNA',
+      description: 'DevNApp représente notre mission de développer de nouvelles applications logicielles, en tirant parti des dernières technologies et méthodologies de développement IT pour fournir des solutions innovantes aux entreprises modernes.',
+      company: 'DevNApp',
       tagline: 'Développement Nouvelle Application',
-      intro: 'DevNA signifie "Development New Application" — reflétant notre mission principale de créer de nouvelles applications logicielles à partir de zéro. Nous exploitons des technologies de pointe et les dernières méthodologies de développement IT pour créer des solutions web élégantes et évolutives qui résolvent de vrais problèmes commerciaux. Nos applications prêtes pour la production sont conçues pour un déploiement immédiat, offrant des résultats de haute qualité du concept au lancement.',
+      intro: 'DevNApp signifie "Development New Application" — reflétant notre mission principale de créer de nouvelles applications logicielles à partir de zéro. Nous exploitons des technologies de pointe et les dernières méthodologies de développement IT pour créer des solutions web élégantes et évolutives qui résolvent de vrais problèmes commerciaux. Nos applications prêtes pour la production sont conçues pour un déploiement immédiat, offrant des résultats de haute qualité du concept au lancement.',
       services: 'Nos Services',
       expertise: 'Expertise Technique'
     },
@@ -157,7 +157,7 @@ export const translations = {
       badge: 'تطوير تطبيقات جديدة',
       title: 'تطبيقات ويب ذكية لـ',
       titleHighlight: 'نمو الأعمال',
-      description: 'DevNA (تطوير تطبيقات جديدة) متخصصة في بناء تطبيقات برمجية جديدة باستخدام أحدث التقنيات ومنهجيات تطوير تكنولوجيا المعلومات. نقدم حلول ويب جاهزة للإنتاج تساعد الشركات على النمو بشكل أسرع مع تطبيقات حديثة وآمنة وقابلة للتخصيص بالكامل.',
+      description: 'DevNApp (تطوير تطبيقات جديدة) متخصصة في بناء تطبيقات برمجية جديدة باستخدام أحدث التقنيات ومنهجيات تطوير تكنولوجيا المعلومات. نقدم حلول ويب جاهزة للإنتاج تساعد الشركات على النمو بشكل أسرع مع تطبيقات حديثة وآمنة وقابلة للتخصيص بالكامل.',
       exploreProjects: 'استكشف المشاريع',
       watchDemo: 'شاهد العرض',
       stats: {
@@ -187,10 +187,10 @@ export const translations = {
     about: {
       title: 'من نحن',
       subtitle: 'تطوير تطبيقات جديدة',
-      description: 'DevNA تمثل مهمتنا لتطوير تطبيقات برمجية جديدة، والاستفادة من أحدث التقنيات والمنهجيات في تطوير تكنولوجيا المعلومات لتقديم حلول مبتكرة للشركات الحديثة.',
-      company: 'DevNA',
+      description: 'DevNApp تمثل مهمتنا لتطوير تطبيقات برمجية جديدة، والاستفادة من أحدث التقنيات والمنهجيات في تطوير تكنولوجيا المعلومات لتقديم حلول مبتكرة للشركات الحديثة.',
+      company: 'DevNApp',
       tagline: 'تطوير تطبيقات جديدة',
-      intro: 'DevNA تعني "تطوير تطبيقات جديدة" — تعكس مهمتنا الأساسية لبناء تطبيقات برمجية جديدة من الصفر. نستفيد من التقنيات المتطورة وأحدث منهجيات تطوير تكنولوجيا المعلومات لإنشاء حلول ويب أنيقة وقابلة للتطوير تحل مشاكل الأعمال الحقيقية. تطبيقاتنا الجاهزة للإنتاج مصممة للنشر الفوري، وتقدم نتائج عالية الجودة من المفهوم إلى الإطلاق.',
+      intro: 'DevNApp تعني "تطوير تطبيقات جديدة" — تعكس مهمتنا الأساسية لبناء تطبيقات برمجية جديدة من الصفر. نستفيد من التقنيات المتطورة وأحدث منهجيات تطوير تكنولوجيا المعلومات لإنشاء حلول ويب أنيقة وقابلة للتطوير تحل مشاكل الأعمال الحقيقية. تطبيقاتنا الجاهزة للإنتاج مصممة للنشر الفوري، وتقدم نتائج عالية الجودة من المفهوم إلى الإطلاق.',
       services: 'خدماتنا',
       expertise: 'الخبرة التقنية'
     },

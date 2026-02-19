@@ -8,7 +8,7 @@
       </div>
       <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 class="text-5xl sm:text-6xl font-bold text-white mb-6 animate-fade-in-up">
-          {{ t.about.title }} <span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">DevNA</span>
+          {{ t.about.title }} <span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">DevNApp</span>
         </h1>
         <p class="text-xl text-slate-300 mb-4 animate-fade-in-up delay-100">
           {{ t.about.subtitle }}
@@ -59,7 +59,7 @@
               
               <!-- Floating Badge -->
               <div class="absolute -bottom-3 -right-3 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full shadow-lg border border-white/10">
-                <span class="text-xs font-bold text-white tracking-wider">DevNA</span>
+                <span class="text-xs font-bold text-white tracking-wider">DevNApp</span>
               </div>
             </div>
           </div>

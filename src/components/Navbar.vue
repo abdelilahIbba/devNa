@@ -4,14 +4,15 @@
       <div class="flex justify-between items-center h-20">
         <!-- Logo -->
         <router-link to="/" class="flex items-center gap-3 group">
-          <div class="relative w-10 h-10 flex items-center justify-center bg-gradient-to-br from-blue-600 to-cyan-500 rounded-xl shadow-lg shadow-blue-500/20 group-hover:shadow-blue-500/40 transition-all duration-300">
-             <svg class="w-6 h-6 text-white transform group-hover:rotate-12 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          <div class="relative w-10 h-10 flex items-center justify-center bg-linear-to-br from-blue-600 to-cyan-500 rounded-xl shadow-lg shadow-blue-500/20 group-hover:shadow-blue-500/40 transition-all duration-300">
+             <svg class="w-6 h-6 text-white transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 19V5H12.4C15.1 5 17.2 7.1 17.2 9.8C17.2 12.5 15.1 14.6 12.4 14.6H8.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12.8 14.6L18.7 19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
              </svg>
           </div>
           <div class="flex flex-col">
             <span class="text-xl font-bold leading-none text-white tracking-tight">
-              Dev<span class="text-cyan-400">NA</span>
+              Dev<span class="text-cyan-400">NApp</span>
             </span>
           </div>
         </router-link>

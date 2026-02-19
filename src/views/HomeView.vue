@@ -20,7 +20,7 @@
 
     <!-- Featured Projects Section (Dark Theme) -->
     <section class="py-32 relative overflow-hidden" ref="projectsSection">
-      <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-blue-900/5 to-transparent pointer-events-none"></div>
+      <div class="absolute top-0 right-0 w-1/3 h-full bg-linear-to-l from-blue-900/5 to-transparent pointer-events-none"></div>
       
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <!-- Section Header -->
@@ -58,7 +58,7 @@
     <section class="py-32 bg-slate-900 relative" ref="featuresSection">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-20 max-w-3xl mx-auto reveal-text">
-          <h2 class="text-sm font-mono text-blue-500 mb-2 tracking-wider uppercase">Why DevNA</h2>
+          <h2 class="text-sm font-mono text-blue-500 mb-2 tracking-wider uppercase">Why DevNApp</h2>
           <h3 class="text-4xl md:text-5xl font-bold text-white mb-6">Partners, Not Just Coders</h3>
           <p class="text-slate-400 text-lg">We focus on your business goals. Our technology is just the tool we use to get you there.</p>
         </div>
@@ -68,7 +68,7 @@
           
           <!-- Large Item -->
           <div class="md:col-span-2 row-span-1 bg-slate-800/50 rounded-2xl p-8 border border-white/5 hover:border-blue-500/30 transition-colors group relative overflow-hidden bento-item opacity-0">
-            <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="absolute inset-0 bg-linear-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div class="relative z-10 h-full flex flex-col justify-between">
               <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center text-blue-400 mb-4">
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
@@ -82,7 +82,7 @@
 
           <!-- Tall Item -->
           <div class="md:col-span-1 md:row-span-2 bg-slate-800/50 rounded-2xl p-8 border border-white/5 hover:border-purple-500/30 transition-colors group relative overflow-hidden bento-item opacity-0">
-             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/40"></div>
+             <div class="absolute inset-0 bg-linear-to-b from-transparent to-black/40"></div>
              <div class="relative z-10 h-full flex flex-col justify-end">
                 <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center text-purple-400 mb-6">
                   <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
