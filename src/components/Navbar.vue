@@ -23,21 +23,25 @@
             v-for="link in navLinks" 
             :key="link.path"
             :to="link.path"
-            class="text-sm font-medium text-slate-300 hover:text-white transition-colors relative group py-2"
+            class="text-sm font-medium transition-colors relative group py-2"
+            :class="isActive(link.path) ? 'text-white' : 'text-slate-300 hover:text-white'"
           >
             {{ link.name }}
-            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300 opacity-0 group-hover:opacity-100"></span>
+            <span
+              class="absolute bottom-0 left-0 h-0.5 bg-cyan-400 transition-all duration-300"
+              :class="isActive(link.path) ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'"
+            ></span>
           </router-link>
           
           <!-- Language Switcher -->
-          <div class="relative group">
-            <button class="flex items-center gap-2 text-slate-300 hover:text-white transition-colors text-sm font-medium">
+          <div class="relative" ref="langDropdownRef">
+            <button @click="openLang = !openLang" class="flex items-center gap-2 text-slate-300 hover:text-white transition-colors text-sm font-medium">
               <span>{{ locale.toUpperCase() }}</span>
               <svg class="w-3 h-3 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
             </button>
             
             <!-- Dropdown -->
-            <div class="absolute right-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
+            <div class="absolute right-0 top-full pt-2 transition-all duration-200 transform" :class="openLang ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-2'">
                <div class="bg-slate-900 border border-slate-700/50 rounded-xl shadow-xl overflow-hidden min-w-[140px] p-1">
                   <button @click="changeLocale('en')" class="w-full text-left px-4 py-2 text-sm text-slate-300 hover:bg-slate-800 hover:text-white rounded-lg transition-colors flex justify-between">
                     <span>English</span>
@@ -55,9 +59,9 @@
             </div>
           </div>
 
-          <button class="px-6 py-2.5 bg-white text-slate-900 rounded-lg font-semibold text-sm hover:bg-cyan-50 transition-colors shadow-lg shadow-white/5">
-            {{ t.nav.getStarted }}
-          </button>
+          <router-link to="/contact" class="px-6 py-2.5 bg-white text-slate-900 rounded-lg font-semibold text-sm hover:bg-cyan-50 transition-colors shadow-lg shadow-white/5">
+            Book Discovery Call
+          </router-link>
         </div>
 
         <!-- Mobile Menu Button -->
@@ -99,9 +103,9 @@
                  <button @click="changeLocale('fr')" class="px-3 py-1 rounded bg-slate-800 text-slate-300 text-sm" :class="{'ring-1 ring-cyan-400': locale === 'fr'}">FR</button>
                   <button @click="changeLocale('ar')" class="px-3 py-1 rounded bg-slate-800 text-slate-300 text-sm" :class="{'ring-1 ring-cyan-400': locale === 'ar'}">AR</button>
               </div>
-              <button class="w-full py-3 bg-cyan-500 text-white rounded-lg font-semibold">
-                {{ t.nav.getStarted }}
-              </button>
+              <router-link to="/contact" @click="mobileMenuOpen = false" class="w-full py-3 bg-cyan-500 text-white rounded-lg font-semibold text-center">
+                Book Discovery Call
+              </router-link>
           </div>
         </div>
       </div>
@@ -113,11 +117,14 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useI18n } from '@/i18n'
 import type { Locale } from '@/i18n/translations'
+import { useRoute } from 'vue-router'
 
 const { t, locale, setLocale } = useI18n()
 const mobileMenuOpen = ref(false)
 const openLang = ref(false)
 const scrolled = ref(false)
+const route = useRoute()
+const langDropdownRef = ref<HTMLElement | null>(null)
 
 const navLinks = computed(() => [
   { name: t.value.nav?.home || 'Home', path: '/' },
@@ -131,15 +138,29 @@ const changeLocale = (newLocale: Locale) => {
   openLang.value = false
 }
 
+const isActive = (path: string) => {
+  return route.path === path
+}
+
 const handleScroll = () => {
    scrolled.value = window.scrollY > 20
 }
 
+const handleOutsideClick = (event: MouseEvent) => {
+  if (!openLang.value) return
+  const target = event.target as Node
+  if (langDropdownRef.value && !langDropdownRef.value.contains(target)) {
+   openLang.value = false
+  }
+}
+
 onMounted(() => {
    window.addEventListener('scroll', handleScroll)
+  document.addEventListener('click', handleOutsideClick)
 })
 
 onUnmounted(() => {
    window.removeEventListener('scroll', handleScroll)
+  document.removeEventListener('click', handleOutsideClick)
 })
 </script>

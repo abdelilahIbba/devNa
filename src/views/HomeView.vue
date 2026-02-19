@@ -3,18 +3,13 @@
     <!-- Hero Immersive Section -->
     <HeroImmersive />
 
-    <!-- Trust Strip -->
-    <div class="border-y border-slate-800 bg-black/20 backdrop-blur-sm py-8 overflow-hidden">
-      <div class="flex items-center justify-center gap-12 sm:gap-20 opacity-50 grayscale hover:grayscale-0 transition-all duration-500 animate-marquee whitespace-nowrap">
-        <span class="text-xl font-bold font-display text-slate-400">RETAIL SOLUTIONS</span>
-        <span class="text-xl font-bold font-display text-slate-400">FLEET MANAGEMENT</span>
-        <span class="text-xl font-bold font-display text-slate-400">POS SYSTEMS</span>
-        <span class="text-xl font-bold font-display text-slate-400">INVENTORY CONTROL</span>
-        <span class="text-xl font-bold font-display text-slate-400">CORPORATE CRM</span>
-        <span class="text-xl font-bold font-display text-slate-400">AUTOMATION</span>
-        <span class="text-xl font-bold font-display text-slate-400">RETAIL SOLUTIONS</span> <!-- Loop -->
-        <span class="text-xl font-bold font-display text-slate-400">FLEET MANAGEMENT</span>
-        <span class="text-xl font-bold font-display text-slate-400">POS SYSTEMS</span>
+    <!-- Proof Metrics Strip -->
+    <div class="border-y border-slate-800 bg-black/20 backdrop-blur-sm py-7">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div v-for="metric in proofMetrics" :key="metric.label" class="rounded-xl border border-slate-800 bg-slate-900/60 p-4">
+          <p class="text-white text-2xl md:text-3xl font-bold">{{ metric.value }}</p>
+          <p class="text-slate-400 text-xs uppercase tracking-wider mt-1">{{ metric.label }}</p>
+        </div>
       </div>
     </div>
 
@@ -50,6 +45,30 @@
             :project="project"
             class="project-card-entrance opacity-0"
           />
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust + Process -->
+    <section class="py-24 border-y border-slate-800/70 bg-slate-950/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <p class="text-sm font-mono text-cyan-400 uppercase tracking-wider mb-3">Trusted by operators</p>
+          <h3 class="text-3xl md:text-4xl font-bold text-white">Teams choose DevNApp for reliable delivery</h3>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+          <div v-for="brand in partnerBrands" :key="brand" class="h-14 rounded-xl border border-slate-800 bg-slate-900/60 flex items-center justify-center text-slate-400 text-sm font-semibold tracking-wide">
+            {{ brand }}
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div v-for="step in deliverySteps" :key="step.title" class="rounded-2xl border border-slate-800 bg-slate-900/50 p-6">
+            <p class="text-xs text-blue-400 font-mono uppercase tracking-wider mb-3">{{ step.phase }}</p>
+            <h4 class="text-white text-xl font-bold mb-3">{{ step.title }}</h4>
+            <p class="text-slate-400 text-sm">{{ step.description }}</p>
+          </div>
         </div>
       </div>
     </section>
@@ -124,6 +143,26 @@
       </div>
     </section>
 
+    <!-- Testimonials -->
+    <section class="py-24 bg-slate-950">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <p class="text-sm font-mono text-purple-400 uppercase tracking-wider mb-2">Client Voices</p>
+          <h3 class="text-3xl md:text-4xl font-bold text-white">What partners say after launch</h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div v-for="quote in testimonials" :key="quote.author" class="rounded-2xl border border-slate-800 bg-slate-900/60 p-7">
+            <p class="text-slate-300 leading-relaxed mb-6">“{{ quote.text }}”</p>
+            <div>
+              <p class="text-white font-semibold">{{ quote.author }}</p>
+              <p class="text-slate-500 text-sm">{{ quote.role }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Refined CTA Section -->
     <section class="py-32 relative overflow-hidden" ref="ctaRef">
        <!-- Background mesh -->
@@ -176,7 +215,8 @@ const featuredProjects = ref([
     category: 'Retail',
     tags: ['Best Seller', 'High Volume'],
     // Using technologies array for benefits display in card
-    technologies: ['Stock Sync', 'Analytics', 'Multi-Store']
+    technologies: ['Stock Sync', 'Analytics', 'Multi-Store'],
+    result: 'Reduced checkout waiting time by 37% across 4 stores'
   },
   {
     id: 2,
@@ -194,7 +234,8 @@ const featuredProjects = ref([
       { label: 'Fleet Availability', value: '94%' },
       { label: 'Booking Flow', value: '< 2 min' },
       { label: 'Cities Covered', value: '5' }
-    ]
+    ],
+    result: 'Increased completed bookings by 42% in 90 days'
   },
   {
     id: 3,
@@ -203,9 +244,50 @@ const featuredProjects = ref([
     image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80',
     category: 'Logistics',
     tags: ['Efficiency', 'Scale'],
-    technologies: ['Optimization', 'Reporting', 'Cloud']
+    technologies: ['Optimization', 'Reporting', 'Cloud'],
+    result: 'Cut order handling cycle time by 40%'
   }
 ])
+
+const proofMetrics = [
+  { value: '14+', label: 'Production Systems Delivered' },
+  { value: '98.9%', label: 'Average Uptime on Client Platforms' },
+  { value: '< 6 Weeks', label: 'MVP Delivery Time' },
+  { value: '4.9/5', label: 'Client Satisfaction Score' }
+]
+
+const partnerBrands = ['AtellasFleet', 'TeckMizanne', 'ProStock', 'MediCare CRM']
+
+const deliverySteps = [
+  {
+    phase: 'Phase 01',
+    title: 'Discover & Scope',
+    description: 'We map workflows, bottlenecks, and KPIs to define exactly what needs to be built.'
+  },
+  {
+    phase: 'Phase 02',
+    title: 'Build & Iterate',
+    description: 'Weekly delivery cycles with transparent demos keep your team in control of progress.'
+  },
+  {
+    phase: 'Phase 03',
+    title: 'Launch & Optimize',
+    description: 'After go-live we track adoption and optimize for performance, reliability, and growth.'
+  }
+]
+
+const testimonials = [
+  {
+    text: 'DevNApp translated our operations into a clear digital flow. Our teams adopted it in days, not months.',
+    author: 'A. El Mansouri',
+    role: 'Operations Director, AtellasFleet'
+  },
+  {
+    text: 'From stock synchronization to reporting, they delivered exactly what we needed and removed daily friction.',
+    author: 'S. Rahmani',
+    role: 'Retail Manager, TeckMizanne'
+  }
+]
 
 // --- Refs ---
 const projectsSection = ref<HTMLElement | null>(null)
@@ -216,6 +298,21 @@ const ctaRef = ref<HTMLElement | null>(null)
 
 // --- Animations ---
 onMounted(() => {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  if (prefersReducedMotion) {
+    if (projectsGrid.value) {
+      Array.from(projectsGrid.value.children).forEach((item) => {
+        ;(item as HTMLElement).style.opacity = '1'
+      })
+    }
+    if (bentoGrid.value) {
+      bentoGrid.value.querySelectorAll('.bento-item').forEach((item) => {
+        ;(item as HTMLElement).style.opacity = '1'
+      })
+    }
+    return
+  }
+
   // Intersection Observer for Scroll Animations
   const observerOptions = {
     threshold: 0.1,
@@ -269,6 +366,12 @@ onMounted(() => {
 <style scoped>
 .animate-marquee {
   animation: marquee 30s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
 }
 
 @keyframes marquee {

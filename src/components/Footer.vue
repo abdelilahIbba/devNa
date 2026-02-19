@@ -60,9 +60,13 @@
                  <p class="text-xs mt-1">Innovation Hub</p>
                </div>
              </div>
-             <a href="mailto:hello@devna.tech" class="flex items-center gap-3 hover:text-white transition-colors">
+             <a href="mailto:contact@devnapp.com" class="flex items-center gap-3 hover:text-white transition-colors">
                 <svg class="w-5 h-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                hello@devna.tech
+               contact@devnapp.com
+             </a>
+             <a href="tel:0702627922" class="flex items-center gap-3 hover:text-white transition-colors">
+               <svg class="w-5 h-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a2 2 0 011.95 1.55l.57 2.49a2 2 0 01-.58 1.93l-1.27 1.27a16 16 0 006.36 6.36l1.27-1.27a2 2 0 011.93-.58l2.49.57A2 2 0 0121 17.72V21a2 2 0 01-2 2h-1C9.16 23 1 14.84 1 5V4a1 1 0 011-1h1z" /></svg>
+               0702627922
              </a>
            </div>
         </div>

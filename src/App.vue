@@ -2,6 +2,7 @@
   <div class="min-h-screen">
     <Navbar />
     <RouterView />
+    <StickyCTA />
     <Footer />
   </div>
 </template>
@@ -10,6 +11,7 @@
 import { RouterView } from 'vue-router'
 import Navbar from './components/Navbar.vue'
 import Footer from './components/Footer.vue'
+import StickyCTA from './components/StickyCTA.vue'
 </script>
 
 <style>

@@ -84,6 +84,9 @@
         <p class="text-slate-400 leading-relaxed text-sm">
            {{ project.description }}
         </p>
+        <p v-if="project.result" class="mt-3 text-xs font-semibold text-emerald-300/90">
+          Result: {{ project.result }}
+        </p>
       </div>
 
       <!-- Business Impact / Features -->
@@ -129,6 +132,7 @@ interface Project {
   previewHeadline?: string
   previewSummary?: string
   previewStats?: Array<{ label: string; value: string }>
+  result?: string
 }
 
 const props = defineProps<{
