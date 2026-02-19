@@ -60,6 +60,11 @@ import tm1 from '@/assets/tickMizane/TeckMizanne1.png'
 import tm2 from '@/assets/tickMizane/TeckMizanne2.png'
 import tm3 from '@/assets/tickMizane/TeckMizanne3.png'
 import tm4 from '@/assets/tickMizane/TeckMizanne4.png'
+import af1 from '@/assets/AtellasFleet/Screenshot 2026-02-19 145154.png'
+import af2 from '@/assets/AtellasFleet/Screenshot 2026-02-19 145214.png'
+import af3 from '@/assets/AtellasFleet/Screenshot 2026-02-19 145330.png'
+import af4 from '@/assets/AtellasFleet/Screenshot 2026-02-19 145343.png'
+import af5 from '@/assets/AtellasFleet/Screenshot 2026-02-19 145352.png'
 
 const { t } = useI18n()
 
@@ -89,7 +94,8 @@ const projects = ref([
     id: 2,
     title: 'AutoFleet Manager',
     description: 'Digital transformation for a vehicle rental agency. Automated bookings, fleet maintenance tracking, and customer contracts.',
-    image: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800&q=80',
+    image: af1,
+    images: [af1, af2, af3, af4, af5],
     category: 'Transport',
     tags: ['Automation'],
     technologies: ['Booking', 'Fleet', 'Cloud'],

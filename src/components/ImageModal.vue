@@ -80,7 +80,7 @@
             <div class="relative">
               <img
                 :src="currentImage"
-                class="w-full h-[340px] md:h-[400px] object-cover"
+                class="w-full h-[340px] md:h-[400px] object-contain bg-slate-950"
                 alt="Project visualization"
               />
 
