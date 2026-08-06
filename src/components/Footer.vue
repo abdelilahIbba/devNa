@@ -5,15 +5,9 @@
         
         <!-- Brand -->
         <div class="space-y-6">
-          <div class="flex items-center gap-2 text-2xl font-bold tracking-tight" :class="isDark ? 'text-white' : 'text-slate-900'">
-            <div class="w-8 h-8 rounded-lg bg-linear-to-br from-blue-600 via-indigo-500 to-cyan-400 flex items-center justify-center">
-              <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 19V5H12.4C15.1 5 17.2 7.1 17.2 9.8C17.2 12.5 15.1 14.6 12.4 14.6H8.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M12.8 14.6L18.7 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </div>
-            DevNApp
-          </div>
+          <router-link to="/" class="inline-flex items-center" aria-label="DEVNAPP home">
+            <BrandLogo variant="nav" size="md" class="max-h-12 w-auto" />
+          </router-link>
           <p class="text-sm leading-relaxed max-w-xs">
             Forging digital excellence through futuristic engineering and immersive design.
           </p>
@@ -88,6 +82,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useTheme } from '@/composables/useTheme'
+import BrandLogo from '@/components/BrandLogo.vue'
 
 const { theme } = useTheme()
 const isDark = computed(() => theme.value === 'dark')

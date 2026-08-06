@@ -26,40 +26,8 @@
           <!-- Company Logo -->
           <div class="flex justify-center">
             <div class="relative group">
-              <div class="w-48 h-48 rounded-3xl overflow-hidden border border-slate-700 shadow-xl bg-slate-900 flex items-center justify-center p-6 transition-all duration-300 group-hover:shadow-2xl group-hover:border-blue-500/30">
-                <!-- Modern Geometric Logo -->
-                <svg viewBox="0 0 200 200" class="w-full h-full">
-                  <defs>
-                    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" style="stop-color:#2563eb;stop-opacity:1" />
-                      <stop offset="100%" style="stop-color:#38bdf8;stop-opacity:1" />
-                    </linearGradient>
-                    <linearGradient id="darkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
-                      <stop offset="100%" style="stop-color:#e2e8f0;stop-opacity:1" />
-                    </linearGradient>
-                  </defs>
-                  
-                  <!-- Background Circle -->
-                  <circle cx="100" cy="100" r="80" fill="url(#logoGradient)" opacity="0.1"/>
-                  
-                  <!-- Main Letter D Shape -->
-                  <path d="M 60 50 L 60 150 L 100 150 C 130 150 150 130 150 100 C 150 70 130 50 100 50 Z" 
-                        fill="url(#darkGradient)" class="transition-all duration-300"/>
-                  
-                  <!-- Inner Accent -->
-                  <circle cx="110" cy="100" r="25" fill="url(#logoGradient)" opacity="0.8"/>
-                  
-                  <!-- Modern Lines -->
-                  <rect x="75" y="75" width="40" height="3" fill="#38bdf8" rx="1.5"/>
-                  <rect x="75" y="95" width="30" height="3" fill="#2563eb" rx="1.5"/>
-                  <rect x="75" y="115" width="35" height="3" fill="#38bdf8" rx="1.5"/>
-                </svg>
-              </div>
-              
-              <!-- Floating Badge -->
-              <div class="absolute -bottom-3 -right-3 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full shadow-lg border border-white/10">
-                <span class="text-xs font-bold text-white tracking-wider">DevNApp</span>
+              <div class="w-52 h-52 rounded-3xl overflow-hidden border border-slate-700 shadow-xl bg-slate-950 flex items-center justify-center p-3 transition-all duration-300 group-hover:shadow-2xl group-hover:border-cyan-500/30">
+                <BrandLogo size="xl" />
               </div>
             </div>
           </div>
@@ -222,6 +190,7 @@
 
 <script setup lang="ts">
 import { useI18n } from '@/i18n'
+import BrandLogo from '@/components/BrandLogo.vue'
 
 const { t } = useI18n()
 </script>

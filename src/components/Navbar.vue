@@ -1,24 +1,22 @@
 <template>
   <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" :class="[isDark ? (scrolled ? 'bg-slate-950/80 backdrop-blur-md border-b border-white/10' : 'bg-transparent border-b border-transparent') : (scrolled ? 'bg-white/85 backdrop-blur-md border-b border-slate-200/80 shadow-sm' : 'bg-transparent border-b border-transparent')]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-20">
+      <div class="flex justify-between items-center gap-6 h-[4.5rem] sm:h-20">
         <!-- Logo -->
-        <router-link to="/" class="flex items-center gap-3 group">
-          <div class="relative w-10 h-10 flex items-center justify-center bg-linear-to-br from-blue-600 to-cyan-500 rounded-xl shadow-lg shadow-blue-500/20 group-hover:shadow-blue-500/40 transition-all duration-300">
-             <svg class="w-6 h-6 text-white transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 19V5H12.4C15.1 5 17.2 7.1 17.2 9.8C17.2 12.5 15.1 14.6 12.4 14.6H8.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M12.8 14.6L18.7 19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-             </svg>
-          </div>
-          <div class="flex flex-col">
-            <span class="text-xl font-bold leading-none text-white tracking-tight">
-              Dev<span class="text-cyan-400">NApp</span>
-            </span>
-          </div>
+        <router-link
+          to="/"
+          class="flex items-center shrink-0 max-w-[min(100%,15.5rem)] sm:max-w-[18.5rem] group"
+          aria-label="DEVNAPP home"
+        >
+          <BrandLogo
+            variant="nav"
+            size="lg"
+            class="h-12 sm:h-[3.35rem] w-auto transition-opacity duration-300 group-hover:opacity-90"
+          />
         </router-link>
 
         <!-- Desktop Navigation -->
-        <div class="hidden md:flex items-center gap-8">
+        <div class="hidden md:flex items-center gap-6 lg:gap-8 min-w-0">
           <router-link 
             v-for="link in navLinks" 
             :key="link.path"
@@ -121,6 +119,7 @@ import { useI18n } from '@/i18n'
 import type { Locale } from '@/i18n/translations'
 import { useRoute } from 'vue-router'
 import { useTheme } from '@/composables/useTheme'
+import BrandLogo from '@/components/BrandLogo.vue'
 
 const { t, locale, setLocale } = useI18n()
 const mobileMenuOpen = ref(false)
