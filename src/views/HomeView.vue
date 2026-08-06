@@ -1,67 +1,77 @@
 <template>
-  <div class="min-h-screen bg-slate-950 text-slate-200 selection:bg-blue-500 selection:text-white home-view page-view">
-    <!-- Hero Immersive Section -->
+  <div class="min-h-screen bg-[#010217] text-[#e8eef6] home-view page-view">
     <HeroImmersive />
 
-    <!-- Proof Metrics Strip -->
-    <div class="border-y border-slate-800 bg-black/20 backdrop-blur-sm py-8 proof-strip">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div
-          v-for="metric in proofMetrics"
-          :key="metric.label"
-          class="rounded-2xl border border-slate-800 bg-slate-900/60 px-5 py-5 md:px-6 md:py-6 proof-card"
-        >
-          <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 border border-blue-500/20 flex items-center justify-center mb-4">
-            <svg v-if="metric.key === 'systems'" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <rect x="3" y="4" width="18" height="6" rx="2" stroke-width="2" />
-              <rect x="3" y="14" width="18" height="6" rx="2" stroke-width="2" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h6M7 17h6M17 7h.01M17 17h.01" />
-            </svg>
-            <svg v-else-if="metric.key === 'uptime'" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3l7 3v6c0 4.5-2.9 7.8-7 9-4.1-1.2-7-4.5-7-9V6l7-3zm-3 9 2 2 4-4" />
-            </svg>
-            <svg v-else-if="metric.key === 'mvp'" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <rect x="3" y="4" width="18" height="17" rx="2" stroke-width="2" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 2v4M16 2v4M3 9h18M12 12v4l2.5 1.5" />
-            </svg>
-            <svg v-else class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+    <!-- Unified ops + proof band -->
+    <section class="border-y border-[#1a2740] bg-[#070b1c]">
+      <div class="page-container">
+        <div class="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-[#1a2740]">
+          <div class="px-4 py-4 flex items-center gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse-glow shrink-0"></span>
+            <div class="min-w-0">
+              <p class="font-mono-sys text-[10px] uppercase tracking-[0.14em] text-[#00c2ff]">{{ t.home.opsStatus }}</p>
+              <p class="text-sm text-white font-medium mt-0.5">{{ t.home.systemsOnline }}</p>
+            </div>
           </div>
-          <p class="text-white text-2xl md:text-3xl font-semibold tracking-tight proof-value">{{ metric.value }}</p>
-          <p class="text-slate-400 text-[11px] md:text-xs uppercase tracking-[0.14em] mt-2 proof-label">{{ metric.label }}</p>
+          <div class="px-4 py-4">
+            <p class="font-mono-sys text-[10px] uppercase tracking-[0.14em] text-[#00c2ff]">{{ t.home.focus }}</p>
+            <p class="text-sm text-white font-medium mt-0.5">{{ t.home.focusValue }}</p>
+          </div>
+          <div class="px-4 py-4">
+            <p class="font-mono-sys text-[10px] uppercase tracking-[0.14em] text-[#00c2ff]">{{ t.home.approach }}</p>
+            <p class="text-sm text-white font-medium mt-0.5">{{ t.home.approachValue }}</p>
+          </div>
+        </div>
+
+        <div class="border-t border-[#1a2740] grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-[#1a2740]">
+          <div
+            v-for="metric in proofMetrics"
+            :key="metric.key"
+            class="px-4 sm:px-5 py-5 proof-card"
+          >
+            <p class="font-display text-white text-2xl md:text-[1.75rem] font-bold tracking-tight leading-none">
+              {{ metric.value }}
+            </p>
+            <p class="text-[#9aa8bc] text-[10px] sm:text-[11px] uppercase tracking-[0.12em] mt-2 font-mono-sys leading-snug">
+              {{ metric.label }}
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Featured Projects Section (Dark Theme) -->
-    <section class="py-32 relative overflow-hidden" ref="projectsSection">
-      <div class="absolute top-0 right-0 w-1/3 h-full bg-linear-to-l from-blue-900/5 to-transparent pointer-events-none"></div>
-      
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <!-- Section Header -->
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+    <!-- Featured systems -->
+    <section class="py-16 sm:py-20 relative overflow-hidden" ref="projectsSection">
+      <div class="absolute inset-0 schematic-grid opacity-30 pointer-events-none"></div>
+      <div class="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(ellipse_at_top_right,rgba(0,194,255,0.06),transparent_55%)] pointer-events-none"></div>
+
+      <div class="page-container relative z-10">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
           <div class="max-w-2xl reveal-text">
-            <h2 class="text-sm font-mono text-blue-400 mb-2 tracking-wider uppercase">Our Work</h2>
-            <h3 class="text-4xl md:text-5xl font-bold text-white mb-4">Proven Results <span class="text-blue-500">For Real Businesses</span></h3>
-            <p class="text-slate-400 text-lg">We deliver systems that solve actual operational problems.</p>
+            <p class="eyebrow-sys mb-3">{{ t.home.work.eyebrow }}</p>
+            <h3 class="font-display text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+              {{ t.home.work.title }}
+              <span class="text-gradient"> {{ t.home.work.titleHighlight }}</span>
+            </h3>
+            <p class="text-[#9aa8bc] text-lg">
+              {{ t.home.work.subtitle }}
+            </p>
           </div>
-          
-          <router-link 
+
+          <router-link
             to="/projects"
-            class="group inline-flex items-center text-white font-semibold hover:text-blue-400 transition-colors"
+            class="group inline-flex items-center text-white font-semibold hover:text-[#00c2ff] transition-colors"
           >
-            All Case Studies
+            {{ t.common.allCaseStudies }}
             <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
             </svg>
           </router-link>
         </div>
 
-        <!-- Projects Grid - Dark Version -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" ref="projectsGrid">
-          <ProjectCard 
-            v-for="project in featuredProjects" 
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" ref="projectsGrid">
+          <ProjectCard
+            v-for="project in featuredProjects"
             :key="project.id"
             :project="project"
             class="project-card-entrance opacity-0"
@@ -70,150 +80,147 @@
       </div>
     </section>
 
-    <!-- Trust + Process -->
-    <section class="py-24 border-y border-slate-800/70 bg-slate-950/60">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-          <p class="text-sm font-mono text-cyan-400 uppercase tracking-wider mb-3">Trusted by operators</p>
-          <h3 class="text-3xl md:text-4xl font-bold text-white">Teams choose DevNApp for reliable delivery</h3>
+    <!-- Delivery method -->
+    <section class="py-24 border-y border-[#1a2740] bg-[#070b1c]/50">
+      <div class="page-container">
+        <div class="mb-12 max-w-2xl">
+          <p class="eyebrow-sys mb-3">{{ t.home.delivery.eyebrow }}</p>
+          <h3 class="font-display text-3xl md:text-4xl font-bold text-white tracking-tight">
+            {{ t.home.delivery.title }}
+          </h3>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
-          <div v-for="brand in partnerBrands" :key="brand" class="h-14 rounded-xl border border-slate-800 bg-slate-900/60 flex items-center justify-center text-slate-400 text-sm font-semibold tracking-wide">
-            {{ brand }}
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div v-for="step in deliverySteps" :key="step.title" class="rounded-2xl border border-slate-800 bg-slate-900/50 p-6">
-            <p class="text-xs text-blue-400 font-mono uppercase tracking-wider mb-3">{{ step.phase }}</p>
-            <h4 class="text-white text-xl font-bold mb-3">{{ step.title }}</h4>
-            <p class="text-slate-400 text-sm">{{ step.description }}</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#1a2740] border border-[#1a2740]">
+          <div
+            v-for="step in deliverySteps"
+            :key="step.title"
+            class="bg-[#0c1224] p-7"
+          >
+            <p class="font-mono-sys text-xs text-[#00c2ff] uppercase tracking-[0.16em] mb-4">{{ step.phase }}</p>
+            <h4 class="font-display text-white text-xl font-bold mb-3">{{ step.title }}</h4>
+            <p class="text-[#9aa8bc] text-sm leading-relaxed">{{ step.description }}</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Why Choose Us (Bento Grid) -->
-    <section class="py-32 bg-slate-900 relative" ref="featuresSection">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-20 max-w-3xl mx-auto reveal-text">
-          <h2 class="text-sm font-mono text-blue-500 mb-2 tracking-wider uppercase">Why DevNApp</h2>
-          <h3 class="text-4xl md:text-5xl font-bold text-white mb-6">Partners, Not Just Coders</h3>
-          <p class="text-slate-400 text-lg">We focus on your business goals. Our technology is just the tool we use to get you there.</p>
+    <!-- Why systems partners -->
+    <section class="py-28 relative" ref="featuresSection">
+      <div class="page-container">
+        <div class="mb-16 max-w-2xl reveal-text">
+          <p class="eyebrow-sys mb-3">{{ t.home.why.eyebrow }}</p>
+          <h3 class="font-display text-3xl md:text-5xl font-bold text-white mb-5 tracking-tight">
+            {{ t.home.why.title }}
+          </h3>
+          <p class="text-[#9aa8bc] text-lg">
+            {{ t.home.why.subtitle }}
+          </p>
         </div>
 
-        <!-- Bento Grid Layout -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[300px]" ref="bentoGrid">
-          
-          <!-- Large Item -->
-          <div class="md:col-span-2 row-span-1 bg-slate-800/50 rounded-2xl p-8 border border-white/5 hover:border-blue-500/30 transition-colors group relative overflow-hidden bento-item opacity-0">
-            <div class="absolute inset-0 bg-linear-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div class="relative z-10 h-full flex flex-col justify-between">
-              <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center text-blue-400 mb-4">
-                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 auto-rows-[minmax(240px,auto)]" ref="bentoGrid">
+          <div class="md:col-span-2 surface-inset rounded-lg p-8 group relative overflow-hidden bento-item opacity-0 hover-lift">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,194,255,0.08),transparent_50%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="relative z-10 h-full flex flex-col justify-between gap-8">
+              <div class="w-11 h-11 border border-[#1a2740] bg-[#010217] flex items-center justify-center text-[#00c2ff]">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
               </div>
               <div>
-                <h4 class="text-2xl font-bold text-white mb-2">Business Continuity</h4>
-                <p class="text-slate-400">Systems designed to keep your business running smoothly 24/7. We minimize downtime so you never miss a sale.</p>
+                <h4 class="font-display text-2xl font-bold text-white mb-2">{{ t.home.why.items[0].title }}</h4>
+                <p class="text-[#9aa8bc] max-w-lg">{{ t.home.why.items[0].body }}</p>
               </div>
             </div>
           </div>
 
-          <!-- Tall Item -->
-          <div class="md:col-span-1 md:row-span-2 bg-slate-800/50 rounded-2xl p-8 border border-white/5 hover:border-purple-500/30 transition-colors group relative overflow-hidden bento-item opacity-0">
-             <div class="absolute inset-0 bg-linear-to-b from-transparent to-black/40"></div>
-             <div class="relative z-10 h-full flex flex-col justify-end">
-                <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center text-purple-400 mb-6">
-                  <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+          <div class="md:col-span-1 md:row-span-2 surface-inset rounded-lg p-8 group relative overflow-hidden bento-item opacity-0 hover-lift">
+            <div class="relative z-10 h-full flex flex-col justify-between">
+              <div class="w-11 h-11 border border-[#1a2740] bg-[#010217] flex items-center justify-center text-[#00c2ff] mb-6">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+              </div>
+              <div>
+                <h4 class="font-display text-2xl font-bold text-white mb-2">{{ t.home.why.items[1].title }}</h4>
+                <p class="text-[#9aa8bc] mb-6">{{ t.home.why.items[1].body }}</p>
+                <div class="h-28 w-full border border-[#1a2740] bg-[#010217]/60 overflow-hidden relative">
+                  <div class="absolute bottom-0 left-0 w-full flex items-end justify-between px-3 pb-2 gap-1.5 h-full">
+                    <div class="w-full bg-[#00c2ff]/25 h-[28%]"></div>
+                    <div class="w-full bg-[#00c2ff]/35 h-[48%]"></div>
+                    <div class="w-full bg-[#00c2ff]/55 h-[72%]"></div>
+                    <div class="w-full bg-[#00c2ff]/75 h-[58%]"></div>
+                    <div class="w-full bg-[#00c2ff] h-[90%]"></div>
+                  </div>
                 </div>
-                <h4 class="text-2xl font-bold text-white mb-2">Secure Client Data</h4>
-                <p class="text-slate-400 mb-4">We implement banking-grade security practices to protect your customer lists, financial data, and trade secrets.</p>
-                <div class="h-24 w-full bg-slate-700/30 rounded-lg overflow-hidden relative">
-                   <!-- Decor bar graph -->
-                   <div class="absolute bottom-0 left-0 w-full flex items-end justify-between px-2 pb-2 gap-1 h-full">
-                      <div class="w-full bg-purple-500/30 rounded-t h-[30%]"></div>
-                      <div class="w-full bg-purple-500/40 rounded-t h-[50%]"></div>
-                      <div class="w-full bg-purple-500/60 rounded-t h-[80%]"></div>
-                      <div class="w-full bg-purple-500/80 rounded-t h-[60%]"></div>
-                      <div class="w-full bg-purple-500 rounded-t h-[95%]"></div>
-                   </div>
-                </div>
-             </div>
-          </div>
-
-          <!-- Standard Item -->
-          <div class="md:col-span-1 bg-slate-800/50 rounded-2xl p-8 border border-white/5 hover:border-cyan-400/30 transition-colors group bento-item opacity-0">
-            <div class="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center text-cyan-400 mb-4">
-              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+              </div>
             </div>
-            <h4 class="text-xl font-bold text-white mb-2">Scalable Growth</h4>
-            <p class="text-slate-400 text-sm">Start with what you need, expand as you grow. Our systems handle 10 to 10M transactions equally well.</p>
           </div>
 
-          <!-- Standard Item -->
-          <div class="md:col-span-1 bg-slate-800/50 rounded-2xl p-8 border border-white/5 hover:border-green-400/30 transition-colors group bento-item opacity-0">
-             <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center text-green-400 mb-4">
-               <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-             </div>
-             <h4 class="text-xl font-bold text-white mb-2">Tailored Efficiency</h4>
-             <p class="text-slate-400 text-sm">No bloatware. We build exactly what fits your specific operational workflow.</p>
+          <div class="surface-inset rounded-lg p-8 group bento-item opacity-0 hover-lift">
+            <div class="w-11 h-11 border border-[#1a2740] bg-[#010217] flex items-center justify-center text-[#00c2ff] mb-5">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+            </div>
+            <h4 class="font-display text-xl font-bold text-white mb-2">{{ t.home.why.items[2].title }}</h4>
+            <p class="text-[#9aa8bc] text-sm">{{ t.home.why.items[2].body }}</p>
           </div>
 
+          <div class="surface-inset rounded-lg p-8 group bento-item opacity-0 hover-lift">
+            <div class="w-11 h-11 border border-[#1a2740] bg-[#010217] flex items-center justify-center text-[#34d399] mb-5">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            </div>
+            <h4 class="font-display text-xl font-bold text-white mb-2">{{ t.home.why.items[3].title }}</h4>
+            <p class="text-[#9aa8bc] text-sm">{{ t.home.why.items[3].body }}</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="py-24 bg-slate-950">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-          <p class="text-sm font-mono text-purple-400 uppercase tracking-wider mb-2">Client Voices</p>
-          <h3 class="text-3xl md:text-4xl font-bold text-white">What partners say after launch</h3>
+    <!-- Voices -->
+    <section class="py-24 border-t border-[#1a2740]">
+      <div class="page-container">
+        <div class="mb-12">
+          <p class="eyebrow-sys mb-3">{{ t.home.voices.eyebrow }}</p>
+          <h3 class="font-display text-3xl md:text-4xl font-bold text-white tracking-tight">
+            {{ t.home.voices.title }}
+          </h3>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div v-for="quote in testimonials" :key="quote.author" class="rounded-2xl border border-slate-800 bg-slate-900/60 p-7">
-            <p class="text-slate-300 leading-relaxed mb-6">“{{ quote.text }}”</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div
+            v-for="quote in testimonials"
+            :key="quote.author"
+            class="surface-inset rounded-lg p-7 border-l-2 border-l-[#00c2ff]"
+          >
+            <p class="text-[#c8d0dc] leading-relaxed mb-6 text-lg">“{{ quote.text }}”</p>
             <div>
               <p class="text-white font-semibold">{{ quote.author }}</p>
-              <p class="text-slate-500 text-sm">{{ quote.role }}</p>
+              <p class="text-[#9aa8bc] text-sm font-mono-sys mt-1">{{ quote.role }}</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Refined CTA Section -->
-    <section class="py-32 relative overflow-hidden" ref="ctaRef">
-       <!-- Background mesh -->
-       <div class="absolute inset-0 bg-blue-900/10 overflow-hidden">
-          <div class="absolute inset-0 bg-slate-950 opacity-90 mx-auto"></div>
-          <div class="absolute -top-1/2 -left-1/2 w-[1000px] h-[1000px] bg-blue-600/20 rounded-full blur-[150px] animate-pulse"></div>
-          <div class="absolute bottom-0 right-0 w-[800px] h-[800px] bg-purple-600/10 rounded-full blur-[150px]"></div>
-       </div>
+    <!-- CTA -->
+    <section class="py-28 relative overflow-hidden" ref="ctaRef">
+      <div class="absolute inset-0 schematic-grid opacity-40"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,194,255,0.12),transparent_60%)]"></div>
 
-       <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h2 class="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tight" id="cta-title">
-             Ready to Scale?
-          </h2>
-          <p class="text-xl text-slate-300 mb-12 max-w-2xl mx-auto font-light">
-             Don't just build a website. Build a digital asset that grows your revenue.
-          </p>
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-             <router-link to="/contact" class="px-10 py-5 bg-white text-slate-900 rounded-full font-bold text-lg hover:bg-slate-100 transform hover:scale-105 transition-all shadow-2xl">
-                Start Your Transformation
-             </router-link>
-          </div>
-       </div>
+      <div class="relative z-10 max-w-3xl mx-auto px-4 text-center">
+        <p class="eyebrow-sys mb-4 justify-center inline-flex">{{ t.home.cta.eyebrow }}</p>
+        <h2 id="cta-title" class="font-display text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+          {{ t.home.cta.title }}
+        </h2>
+        <p class="text-lg text-[#9aa8bc] mb-10 max-w-xl mx-auto">
+          {{ t.home.cta.subtitle }}
+        </p>
+        <router-link to="/contact" class="btn-sys btn-sys-primary text-base px-8 py-4">
+          {{ t.home.cta.button }}
+        </router-link>
+      </div>
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { animate, stagger } from 'animejs'
-// Fixed import path - using custom i18n implementation, not the library
 import { useI18n } from '@/i18n'
 import HeroImmersive from '@/components/HeroImmersive.vue'
 import ProjectCard from '@/components/ProjectCard.vue'
@@ -228,9 +235,8 @@ import af3 from '@/assets/AtellasFleet/Screenshot 2026-02-19 145330.png'
 import af4 from '@/assets/AtellasFleet/Screenshot 2026-02-19 145343.png'
 import af5 from '@/assets/AtellasFleet/Screenshot 2026-02-19 145352.png'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 
-// --- Data ---
 const featuredProjects = ref([
   {
     id: 1,
@@ -240,7 +246,6 @@ const featuredProjects = ref([
     images: [tm1, tm2, tm3, tm4],
     category: 'Retail',
     tags: ['Best Seller', 'High Volume'],
-    // Using technologies array for benefits display in card
     technologies: ['Stock Sync', 'Analytics', 'Multi-Store'],
     result: 'Reduced checkout waiting time by 37% across 4 stores'
   },
@@ -276,54 +281,28 @@ const featuredProjects = ref([
   }
 ])
 
-const proofMetrics = [
-  { key: 'systems', value: '14+', label: 'Production Systems Delivered' },
-  { key: 'uptime', value: '98.9%', label: 'Average Uptime on Client Platforms' },
-  { key: 'mvp', value: '< 6 Weeks', label: 'MVP Delivery Time' },
-  { key: 'satisfaction', value: '4.9/5', label: 'Client Satisfaction Score' }
-]
+const proofMetrics = computed(() => {
+  const mvpValue =
+    locale.value === 'fr' ? '< 6 sem.' : locale.value === 'ar' ? '< 6 أسابيع' : '< 6 Weeks'
 
-const partnerBrands = ['AtellasFleet', 'TeckMizanne', 'ProStock', 'MediCare CRM']
+  return [
+    { key: 'systems', value: '14+', label: t.value.home.metrics.systems },
+    { key: 'uptime', value: '98.9%', label: t.value.home.metrics.uptime },
+    { key: 'mvp', value: mvpValue, label: t.value.home.metrics.mvp },
+    { key: 'satisfaction', value: '4.9/5', label: t.value.home.metrics.satisfaction },
+  ]
+})
 
-const deliverySteps = [
-  {
-    phase: 'Phase 01',
-    title: 'Discover & Scope',
-    description: 'We map workflows, bottlenecks, and KPIs to define exactly what needs to be built.'
-  },
-  {
-    phase: 'Phase 02',
-    title: 'Build & Iterate',
-    description: 'Weekly delivery cycles with transparent demos keep your team in control of progress.'
-  },
-  {
-    phase: 'Phase 03',
-    title: 'Launch & Optimize',
-    description: 'After go-live we track adoption and optimize for performance, reliability, and growth.'
-  }
-]
+const deliverySteps = computed(() => t.value.home.delivery.steps)
 
-const testimonials = [
-  {
-    text: 'DevNApp translated our operations into a clear digital flow. Our teams adopted it in days, not months.',
-    author: 'A. El Mansouri',
-    role: 'Operations Director, AtellasFleet'
-  },
-  {
-    text: 'From stock synchronization to reporting, they delivered exactly what we needed and removed daily friction.',
-    author: 'S. Rahmani',
-    role: 'Retail Manager, TeckMizanne'
-  }
-]
+const testimonials = computed(() => t.value.home.voices.quotes)
 
-// --- Refs ---
 const projectsSection = ref<HTMLElement | null>(null)
 const projectsGrid = ref<HTMLElement | null>(null)
 const featuresSection = ref<HTMLElement | null>(null)
 const bentoGrid = ref<HTMLElement | null>(null)
 const ctaRef = ref<HTMLElement | null>(null)
 
-// --- Animations ---
 onMounted(() => {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   if (prefersReducedMotion) {
@@ -340,81 +319,56 @@ onMounted(() => {
     return
   }
 
-  // Intersection Observer for Scroll Animations
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px'
-  }
-
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        if (entry.target === projectsSection.value && projectsGrid.value) {
-           animate(projectsGrid.value.children, {
-             opacity: [0, 1],
-             translateY: [50, 0],
-             delay: stagger(150),
-             easing: 'easeOutQuad',
-             duration: 800
-           })
-           observer.unobserve(entry.target)
-        }
-        
-        if (entry.target === featuresSection.value && bentoGrid.value) {
-            animate(bentoGrid.value.querySelectorAll('.bento-item'), {
-             opacity: [0, 1],
-             scale: [0.9, 1],
-             delay: stagger(100),
-             easing: 'easeOutExpo',
-             duration: 1000
-           })
-           observer.unobserve(entry.target)
-        }
+      if (!entry.isIntersecting) return
 
-        if (entry.target === ctaRef.value) {
-           animate('#cta-title', {
-              opacity: [0, 1],
-              scale: [0.5, 1],
-              easing: 'easeOutElastic(1, .8)',
-              duration: 1200
-           })
-           observer.unobserve(entry.target)
-        }
+      if (entry.target === projectsSection.value && projectsGrid.value) {
+        animate(projectsGrid.value.children, {
+          opacity: [0, 1],
+          translateY: [40, 0],
+          delay: stagger(120),
+          easing: 'easeOutQuad',
+          duration: 700
+        })
+        observer.unobserve(entry.target)
+      }
+
+      if (entry.target === featuresSection.value && bentoGrid.value) {
+        animate(bentoGrid.value.querySelectorAll('.bento-item'), {
+          opacity: [0, 1],
+          translateY: [28, 0],
+          delay: stagger(90),
+          easing: 'easeOutExpo',
+          duration: 800
+        })
+        observer.unobserve(entry.target)
+      }
+
+      if (entry.target === ctaRef.value) {
+        animate('#cta-title', {
+          opacity: [0, 1],
+          translateY: [20, 0],
+          easing: 'easeOutExpo',
+          duration: 800
+        })
+        observer.unobserve(entry.target)
       }
     })
-  }, observerOptions)
+  }, { threshold: 0.12 })
 
   if (projectsSection.value) observer.observe(projectsSection.value)
   if (featuresSection.value) observer.observe(featuresSection.value)
   if (ctaRef.value) observer.observe(ctaRef.value)
 })
 </script>
-
 <style scoped>
-.animate-marquee {
-  animation: marquee 30s linear infinite;
-}
-
 .proof-card {
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  transition: background-color 0.25s ease;
 }
 
 .proof-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(56, 189, 248, 0.45);
-  box-shadow: 0 14px 30px rgba(2, 6, 23, 0.22);
+  background-color: rgba(0, 194, 255, 0.04);
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-marquee {
-    animation: none;
-  }
-}
-
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-
 </style>
+

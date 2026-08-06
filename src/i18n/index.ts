@@ -1,7 +1,7 @@
 import { ref, computed } from 'vue'
 import { translations, type Locale } from './translations'
 
-const locale = ref<Locale>('en')
+const locale = ref<Locale>('fr')
 
 export function useI18n() {
   const t = computed(() => translations[locale.value])
@@ -28,6 +28,8 @@ export function useI18n() {
     const saved = localStorage.getItem('devna_locale') as Locale | null
     if (saved && ['en', 'fr', 'ar'].includes(saved)) {
       locale.value = saved
+    } else {
+      locale.value = 'fr'
     }
     applyLocale(locale.value)
   }
@@ -36,6 +38,6 @@ export function useI18n() {
     locale,
     t,
     setLocale,
-    initLocale
+    initLocale,
   }
 }

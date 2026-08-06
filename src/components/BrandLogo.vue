@@ -34,7 +34,7 @@ const sizeClass = computed(() => {
       sm: 'h-10',
       md: 'h-12',
       lg: 'h-12 sm:h-[3.35rem]',
-      xl: 'h-16',
+      xl: 'h-14 sm:h-16',
     } as const
     return map[props.size]
   }

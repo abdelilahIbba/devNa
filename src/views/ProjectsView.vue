@@ -1,13 +1,13 @@
 <template>
-  <div class="min-h-screen bg-slate-950 pt-24 pb-16 page-view">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="min-h-screen bg-[#010217] pt-16 pb-16 page-view">
+    <div class="page-container">
       <!-- Page Header -->
       <div class="text-center mb-12">
-        <h1 class="text-5xl sm:text-6xl font-bold text-white mb-4">
-          Client Success Stories
+        <h1 class="text-5xl sm:text-6xl font-bold text-white mb-4 font-display">
+          {{ t.projects.title }}
         </h1>
-        <p class="text-xl text-slate-400 max-w-2xl mx-auto">
-          See how we've helped businesses streamline operations and increase revenue.
+        <p class="text-xl text-[#9aa8bc] max-w-2xl mx-auto">
+          {{ t.projects.subtitle }}
         </p>
       </div>
 
@@ -18,10 +18,10 @@
           :key="category"
           @click="selectedCategory = category"
           :class="[
-            'px-6 py-2 rounded-full font-medium transition-all duration-300 border',
+            'px-6 py-2 rounded-lg font-medium transition-all duration-300 border',
             selectedCategory === category 
-              ? 'bg-blue-600 border-blue-500 text-white shadow-lg shadow-blue-500/25' 
-              : 'bg-slate-900/50 border-slate-800 text-slate-400 hover:bg-slate-800 hover:text-white hover:border-slate-700'
+              ? 'bg-[#00c2ff] border-[#00c2ff] text-[#010217]' 
+              : 'bg-slate-900/50 border-slate-800 text-[#9aa8bc] hover:bg-slate-800 hover:text-white hover:border-slate-700'
           ]"
         >
           {{ category }}
@@ -43,7 +43,7 @@
         <svg class="w-24 h-24 mx-auto text-slate-700 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/>
         </svg>
-        <h3 class="text-xl font-semibold text-slate-400 mb-2">No case studies found</h3>
+        <h3 class="text-xl font-semibold text-[#9aa8bc] mb-2">No case studies found</h3>
         <p class="text-slate-500">Try selecting a different industry</p>
       </div>
     </div>

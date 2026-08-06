@@ -1,6 +1,6 @@
 <template>
-  <div class="min-h-screen bg-slate-950 pt-24 pb-16 page-view">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="min-h-screen bg-[#010217] pt-16 pb-16 page-view">
+    <div class="page-container">
       <!-- Breadcrumb -->
       <nav class="flex items-center space-x-2 text-sm mb-8">
         <router-link to="/projects" class="text-slate-400 hover:text-blue-400 transition-colors">Projects</router-link>
@@ -14,7 +14,7 @@
         <!-- Main Content -->
         <div class="lg:col-span-2 space-y-8">
           <!-- Project Image -->
-          <div class="relative rounded-2xl overflow-hidden shadow-2xl group border border-slate-800">
+          <div class="relative rounded-lg overflow-hidden shadow-2xl group border border-[#1a2740]">
             <div class="absolute inset-0 bg-linear-to-t from-slate-900/80 to-transparent z-10"></div>
             <img 
               :src="project.image" 
@@ -39,7 +39,7 @@
           </div>
 
           <!-- Features -->
-          <div class="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-8 shadow-lg">
+          <div class="surface-inset rounded-lg p-8 shadow-lg">
             <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
               <svg class="w-6 h-6 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
@@ -52,7 +52,7 @@
                 :key="feature"
                 class="flex items-start space-x-3"
               >
-                <svg class="w-5 h-5 text-purple-500 mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <svg class="w-5 h-5 text-[#00c2ff] mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                 </svg>
                 <span class="text-slate-300">{{ feature }}</span>
@@ -61,7 +61,7 @@
           </div>
 
           <!-- Technologies -->
-          <div class="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-8 shadow-lg">
+          <div class="surface-inset rounded-lg p-8 shadow-lg">
             <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
               <svg class="w-6 h-6 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
@@ -80,7 +80,7 @@
           </div>
 
           <!-- Screenshots / Gallery -->
-          <div class="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-8 shadow-lg">
+          <div class="surface-inset rounded-lg p-8 shadow-lg">
             <h2 class="text-2xl font-bold text-white mb-6">Screenshots</h2>
             <div class="grid grid-cols-2 gap-4">
               <div 
@@ -101,7 +101,7 @@
         <!-- Sidebar -->
         <div class="space-y-6">
           <!-- Pricing Card -->
-          <div class="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-8 shadow-lg sticky top-24">
+          <div class="surface-inset rounded-lg p-8 shadow-lg sticky top-24">
             <div class="text-center mb-6">
               <div class="text-sm text-slate-500 mb-2">Starting at</div>
               <div class="text-5xl font-bold text-white mb-1">
@@ -138,7 +138,7 @@
             </div>
 
             <div class="space-y-3">
-              <button class="w-full px-6 py-4 bg-linear-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-full font-semibold shadow-lg shadow-blue-900/40 transition-all duration-300 transform hover:scale-105">
+              <button class="w-full px-6 py-4 bg-[#00c2ff] hover:brightness-105 text-[#010217] rounded-lg font-semibold transition-all duration-300">
                 Purchase Now
               </button>
               <button class="w-full px-6 py-4 bg-slate-800 hover:bg-slate-700 text-blue-400 border border-blue-500/30 rounded-full font-semibold transition-all duration-300">
@@ -161,7 +161,7 @@
           </div>
 
           <!-- Stats -->
-          <div class="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 shadow-lg">
+          <div class="surface-inset rounded-lg p-6 shadow-lg">
             <h3 class="font-bold text-white mb-4">Project Stats</h3>
             <div class="space-y-3">
               <div class="flex justify-between items-center">

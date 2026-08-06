@@ -1,6 +1,6 @@
 <template>
   <div 
-    class="group relative bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500/30 hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 cursor-pointer h-full flex flex-col"
+    class="group relative bg-[#0c1224] border border-[#1a2740] rounded-lg overflow-hidden hover:border-[#00c2ff]/35 hover:shadow-[0_20px_40px_rgba(1,2,23,0.5)] transition-all duration-500 cursor-pointer h-full flex flex-col"
     @click="handleClick"
     @mouseenter="playHoverAnim"
     @mouseleave="resetHoverAnim"
@@ -20,7 +20,7 @@
       
       <!-- Category Badge (Top Left) -->
       <div class="absolute top-4 left-4">
-        <span class="px-3 py-1 text-xs font-semibold tracking-wide uppercase text-white bg-blue-600/90 backdrop-blur-md rounded-md shadow-lg">
+        <span class="px-3 py-1 text-xs font-semibold tracking-wide uppercase text-[#010217] bg-[#00c2ff]/95 backdrop-blur-md rounded-md">
           {{ project.category }}
         </span>
       </div>
@@ -36,7 +36,7 @@
           :key="index"
           @click.prevent="setImage(index)"
           class="h-1.5 rounded-full transition-all duration-300 shadow-sm backdrop-blur-sm"
-          :class="activeImageIndex === index ? 'bg-blue-500 w-6' : 'bg-white/50 hover:bg-white w-1.5'"
+          :class="activeImageIndex === index ? 'bg-[#00c2ff] w-6' : 'bg-white/50 hover:bg-white w-1.5'"
         ></button>
       </div>
 

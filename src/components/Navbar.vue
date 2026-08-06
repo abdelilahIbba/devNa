@@ -1,116 +1,136 @@
 <template>
-  <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" :class="[isDark ? (scrolled ? 'bg-slate-950/80 backdrop-blur-md border-b border-white/10' : 'bg-transparent border-b border-transparent') : (scrolled ? 'bg-white/85 backdrop-blur-md border-b border-slate-200/80 shadow-sm' : 'bg-transparent border-b border-transparent')]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center gap-6 h-[4.5rem] sm:h-20">
-        <!-- Logo -->
+  <header
+    class="site-header fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300"
+    :class="scrolled
+      ? 'bg-[#010217]/95 backdrop-blur-md border-b border-[#1a2740]'
+      : 'bg-[#010217]/70 backdrop-blur-sm border-b border-transparent'"
+  >
+    <div class="page-container flex items-center justify-between gap-3 h-14 sm:h-16">
+      <router-link
+        to="/"
+        class="flex items-center shrink-0 h-full py-1.5 group"
+        aria-label="DEVNAPP home"
+      >
+        <BrandLogo
+          variant="nav"
+          size="lg"
+          class="h-full max-h-10 sm:max-h-11 w-auto object-contain object-left transition-opacity duration-300 group-hover:opacity-90"
+        />
+      </router-link>
+
+      <div class="hidden md:flex items-center gap-1 lg:gap-2 min-w-0">
         <router-link
-          to="/"
-          class="flex items-center shrink-0 max-w-[min(100%,15.5rem)] sm:max-w-[18.5rem] group"
-          aria-label="DEVNAPP home"
+          v-for="link in navLinks"
+          :key="link.path"
+          :to="link.path"
+          class="relative px-3 lg:px-3.5 py-2 text-sm font-medium transition-colors"
+          :class="isActive(link.path) ? 'text-white' : 'text-[#9aa8bc] hover:text-white'"
         >
-          <BrandLogo
-            variant="nav"
-            size="lg"
-            class="h-12 sm:h-[3.35rem] w-auto transition-opacity duration-300 group-hover:opacity-90"
-          />
+          {{ link.name }}
+          <span
+            class="absolute left-3 right-3 bottom-1 h-px bg-[#00c2ff] transition-opacity duration-300"
+            :class="isActive(link.path) ? 'opacity-100' : 'opacity-0'"
+          ></span>
         </router-link>
 
-        <!-- Desktop Navigation -->
-        <div class="hidden md:flex items-center gap-6 lg:gap-8 min-w-0">
-          <router-link 
-            v-for="link in navLinks" 
-            :key="link.path"
-            :to="link.path"
-            class="text-sm font-medium transition-colors relative group py-2"
-            :class="isActive(link.path) ? (isDark ? 'text-white' : 'text-slate-900') : (isDark ? 'text-slate-300 hover:text-white' : 'text-slate-600 hover:text-slate-900')"
+        <div class="relative ml-1" ref="langDropdownRef">
+          <button
+            type="button"
+            @click="openLang = !openLang"
+            class="flex items-center gap-1.5 px-2.5 py-2 text-xs font-medium text-[#9aa8bc] hover:text-white font-mono-sys transition-colors"
+            aria-label="Language"
           >
-            {{ link.name }}
-            <span
-              class="absolute bottom-0 left-0 h-0.5 bg-cyan-400 transition-all duration-300"
-              :class="isActive(link.path) ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'"
-            ></span>
-          </router-link>
-          
-          <!-- Language Switcher -->
-          <div class="relative" ref="langDropdownRef">
-            <button @click="openLang = !openLang" class="flex items-center gap-2 transition-colors text-sm font-medium" :class="isDark ? 'text-slate-300 hover:text-white' : 'text-slate-600 hover:text-slate-900'">
-              <span>{{ locale.toUpperCase() }}</span>
-              <svg class="w-3 h-3 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-            </button>
-            
-            <!-- Dropdown -->
-            <div class="absolute right-0 top-full pt-2 transition-all duration-200 transform" :class="openLang ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-2'">
-               <div class="border rounded-xl shadow-xl overflow-hidden min-w-[140px] p-1" :class="isDark ? 'bg-slate-900 border-slate-700/50' : 'bg-white border-slate-200'">
-                  <button @click="changeLocale('en')" class="w-full text-left px-4 py-2 text-sm rounded-lg transition-colors flex justify-between" :class="isDark ? 'text-slate-300 hover:bg-slate-800 hover:text-white' : 'text-slate-700 hover:bg-slate-100 hover:text-slate-900'">
-                    <span>English</span>
-                    <span v-if="locale==='en'" class="text-cyan-400">●</span>
-                  </button>
-                  <button @click="changeLocale('fr')" class="w-full text-left px-4 py-2 text-sm rounded-lg transition-colors flex justify-between" :class="isDark ? 'text-slate-300 hover:bg-slate-800 hover:text-white' : 'text-slate-700 hover:bg-slate-100 hover:text-slate-900'">
-                    <span>Français</span>
-                    <span v-if="locale==='fr'" class="text-cyan-400">●</span>
-                  </button>
-                  <button @click="changeLocale('ar')" class="w-full text-left px-4 py-2 text-sm rounded-lg transition-colors flex justify-between" :class="isDark ? 'text-slate-300 hover:bg-slate-800 hover:text-white' : 'text-slate-700 hover:bg-slate-100 hover:text-slate-900'">
-                    <span>العربية</span>
-                    <span v-if="locale==='ar'" class="text-cyan-400">●</span>
-                  </button>
-               </div>
+            <span>{{ locale.toUpperCase() }}</span>
+            <svg class="w-3 h-3 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+
+          <div
+            class="absolute right-0 top-full pt-2 transition-all duration-200"
+            :class="openLang ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-1'"
+          >
+            <div class="border border-[#1a2740] rounded-md overflow-hidden min-w-[132px] p-1 bg-[#0c1224] shadow-xl">
+              <button
+                v-for="opt in langOptions"
+                :key="opt.code"
+                type="button"
+                @click="changeLocale(opt.code)"
+                class="w-full text-left px-3 py-2 text-sm rounded transition-colors flex justify-between text-[#9aa8bc] hover:bg-white/5 hover:text-white"
+              >
+                <span>{{ opt.label }}</span>
+                <span v-if="locale === opt.code" class="text-[#00c2ff]">●</span>
+              </button>
             </div>
           </div>
-
-          <router-link to="/contact" class="px-6 py-2.5 rounded-lg font-semibold text-sm transition-colors shadow-lg" :class="isDark ? 'bg-white text-slate-900 hover:bg-cyan-50 shadow-white/5' : 'bg-slate-900 text-white hover:bg-slate-800 shadow-slate-900/15'">
-            Book Discovery Call
-          </router-link>
         </div>
 
-        <!-- Mobile Menu Button -->
-        <button 
-          @click="mobileMenuOpen = !mobileMenuOpen"
-          class="md:hidden p-2 transition-colors"
-          :class="isDark ? 'text-slate-300 hover:text-white' : 'text-slate-700 hover:text-slate-900'"
+        <router-link
+          to="/contact"
+          class="ml-2 shrink-0 px-4 py-2 rounded-md font-semibold text-sm bg-white text-[#010217] hover:bg-[#e8eef6] transition-colors"
         >
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path v-if="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-            <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-          </svg>
-        </button>
+          {{ t.nav.bookCall }}
+        </router-link>
       </div>
+
+      <button
+        type="button"
+        @click="mobileMenuOpen = !mobileMenuOpen"
+        class="md:hidden p-2 -mr-1 text-[#9aa8bc] hover:text-white transition-colors"
+        aria-label="Toggle menu"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path v-if="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
     </div>
 
-    <!-- Mobile Menu -->
     <transition
       enter-active-class="transition duration-200 ease-out"
-      enter-from-class="opacity-0 -translate-y-4"
+      enter-from-class="opacity-0 -translate-y-2"
       enter-to-class="opacity-100 translate-y-0"
       leave-active-class="transition duration-150 ease-in"
       leave-from-class="opacity-100 translate-y-0"
-      leave-to-class="opacity-0 -translate-y-4"
+      leave-to-class="opacity-0 -translate-y-2"
     >
-      <div v-if="mobileMenuOpen" class="md:hidden border-t backdrop-blur-xl absolute w-full left-0" :class="isDark ? 'border-slate-800 bg-slate-950/95' : 'border-slate-200 bg-white/95'">
-        <div class="px-4 py-6 space-y-4">
-          <router-link 
-            v-for="link in navLinks" 
+      <div
+        v-if="mobileMenuOpen"
+        class="md:hidden border-t border-[#1a2740] bg-[#010217]/98 backdrop-blur-xl"
+      >
+        <div class="px-3 py-4 space-y-1">
+          <router-link
+            v-for="link in navLinks"
             :key="link.path"
             :to="link.path"
             @click="mobileMenuOpen = false"
-            class="block px-4 py-3 rounded-lg transition-colors text-lg"
-            :class="isDark ? 'text-slate-400 hover:text-white hover:bg-white/5' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'"
+            class="block px-3 py-3 rounded-md text-base text-[#9aa8bc] hover:text-white hover:bg-white/5 transition-colors"
           >
             {{ link.name }}
           </router-link>
-          <div class="pt-4 border-t flex flex-col gap-4" :class="isDark ? 'border-slate-800' : 'border-slate-200'">
-              <div class="flex gap-2">
-                 <button @click="changeLocale('en')" class="px-3 py-1 rounded text-sm" :class="[isDark ? 'bg-slate-800 text-slate-300' : 'bg-slate-100 text-slate-700', {'ring-1 ring-cyan-400': locale === 'en'}]">EN</button>
-                 <button @click="changeLocale('fr')" class="px-3 py-1 rounded text-sm" :class="[isDark ? 'bg-slate-800 text-slate-300' : 'bg-slate-100 text-slate-700', {'ring-1 ring-cyan-400': locale === 'fr'}]">FR</button>
-                  <button @click="changeLocale('ar')" class="px-3 py-1 rounded text-sm" :class="[isDark ? 'bg-slate-800 text-slate-300' : 'bg-slate-100 text-slate-700', {'ring-1 ring-cyan-400': locale === 'ar'}]">AR</button>
-              </div>
-              <router-link to="/contact" @click="mobileMenuOpen = false" class="w-full py-3 rounded-lg font-semibold text-center transition-colors" :class="isDark ? 'bg-cyan-500 text-white' : 'bg-slate-900 text-white hover:bg-slate-800'">
-                Book Discovery Call
-              </router-link>
+          <div class="pt-3 border-t border-[#1a2740] flex flex-col gap-3">
+            <div class="flex gap-2 px-1">
+              <button
+                v-for="opt in langOptions"
+                :key="opt.code"
+                type="button"
+                @click="changeLocale(opt.code)"
+                class="px-3 py-1.5 rounded text-sm bg-[#0c1224] text-[#9aa8bc]"
+                :class="{ 'ring-1 ring-[#00c2ff] text-white': locale === opt.code }"
+              >
+                {{ opt.short }}
+              </button>
+            </div>
+            <router-link
+              to="/contact"
+              @click="mobileMenuOpen = false"
+              class="w-full py-3 rounded-md font-semibold text-center bg-[#00c2ff] text-[#010217]"
+            >
+              {{ t.nav.bookCall }}
+            </router-link>
           </div>
         </div>
       </div>
     </transition>
-  </nav>
+  </header>
 </template>
 
 <script setup lang="ts">
@@ -118,7 +138,6 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useI18n } from '@/i18n'
 import type { Locale } from '@/i18n/translations'
 import { useRoute } from 'vue-router'
-import { useTheme } from '@/composables/useTheme'
 import BrandLogo from '@/components/BrandLogo.vue'
 
 const { t, locale, setLocale } = useI18n()
@@ -127,14 +146,18 @@ const openLang = ref(false)
 const scrolled = ref(false)
 const route = useRoute()
 const langDropdownRef = ref<HTMLElement | null>(null)
-const { theme } = useTheme()
-const isDark = computed(() => theme.value === 'dark')
+
+const langOptions = [
+  { code: 'fr' as Locale, label: 'Français', short: 'FR' },
+  { code: 'en' as Locale, label: 'English', short: 'EN' },
+  { code: 'ar' as Locale, label: 'العربية', short: 'AR' },
+]
 
 const navLinks = computed(() => [
   { name: t.value.nav?.home || 'Home', path: '/' },
   { name: t.value.nav?.projects || 'Projects', path: '/projects' },
   { name: t.value.nav?.about || 'About', path: '/about' },
-  { name: t.value.nav?.contact || 'Contact', path: '/contact' }
+  { name: t.value.nav?.contact || 'Contact', path: '/contact' },
 ])
 
 const changeLocale = (newLocale: Locale) => {
@@ -142,29 +165,27 @@ const changeLocale = (newLocale: Locale) => {
   openLang.value = false
 }
 
-const isActive = (path: string) => {
-  return route.path === path
-}
+const isActive = (path: string) => route.path === path
 
 const handleScroll = () => {
-   scrolled.value = window.scrollY > 20
+  scrolled.value = window.scrollY > 12
 }
 
 const handleOutsideClick = (event: MouseEvent) => {
   if (!openLang.value) return
   const target = event.target as Node
   if (langDropdownRef.value && !langDropdownRef.value.contains(target)) {
-   openLang.value = false
+    openLang.value = false
   }
 }
 
 onMounted(() => {
-   window.addEventListener('scroll', handleScroll)
+  window.addEventListener('scroll', handleScroll, { passive: true })
   document.addEventListener('click', handleOutsideClick)
 })
 
 onUnmounted(() => {
-   window.removeEventListener('scroll', handleScroll)
+  window.removeEventListener('scroll', handleScroll)
   document.removeEventListener('click', handleOutsideClick)
 })
 </script>
