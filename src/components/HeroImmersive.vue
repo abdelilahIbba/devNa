@@ -39,50 +39,55 @@
           </div>
         </div>
 
-        <!-- Auto-scrolling product gallery -->
-        <div ref="panelRef" class="lg:col-span-6 xl:col-span-7 opacity-0 translate-y-4">
-          <div class="hero-gallery relative h-[300px] sm:h-[360px] lg:h-[420px] border border-[#1a2740] bg-[#070b1c] overflow-hidden">
-            <!-- Glow frame -->
-            <div class="pointer-events-none absolute inset-0 z-20 shadow-[inset_0_0_0_1px_rgba(0,194,255,0.12)]"></div>
-            <div class="pointer-events-none absolute -inset-px z-0 bg-[radial-gradient(ellipse_at_center,rgba(0,194,255,0.15),transparent_65%)] opacity-70"></div>
+        <!-- Auto-scrolling product gallery with 3D Glowing DNA Border Frame -->
+        <div ref="panelRef" class="lg:col-span-6 xl:col-span-7 opacity-0 translate-y-4 relative">
+          <!-- DNA Frame Wrapper -->
+          <div class="relative group/dna">
+            <DnaBorderCanvas />
 
-            <!-- Fade masks -->
-            <div class="pointer-events-none absolute inset-x-0 top-0 h-14 z-30 bg-linear-to-b from-[#070b1c] to-transparent"></div>
-            <div class="pointer-events-none absolute inset-x-0 bottom-0 h-14 z-30 bg-linear-to-t from-[#070b1c] to-transparent"></div>
+            <div class="hero-gallery relative h-[300px] sm:h-[360px] lg:h-[420px] border border-[#1a2740] rounded-xl bg-[#070b1c] overflow-hidden shadow-[0_0_40px_rgba(0,194,255,0.06)]">
+              <!-- Glow frame -->
+              <div class="pointer-events-none absolute inset-0 z-20 shadow-[inset_0_0_0_1px_rgba(0,194,255,0.14)]"></div>
+              <div class="pointer-events-none absolute -inset-px z-0 bg-[radial-gradient(ellipse_at_center,rgba(0,194,255,0.18),transparent_65%)] opacity-70"></div>
 
-            <div class="absolute inset-0 z-10 flex gap-3 p-3 sm:p-4">
-              <!-- Column A — scroll up -->
-              <div class="flex-1 overflow-hidden">
-                <div class="hero-marquee-up flex flex-col gap-3 will-change-transform">
-                  <div
-                    v-for="(img, i) in scrollImagesA"
-                    :key="`a-${i}`"
-                    class="hero-shot relative shrink-0 overflow-hidden border border-[#1a2740]/80"
-                  >
-                    <img :src="img" alt="" class="w-full h-40 sm:h-48 object-cover object-top" loading="lazy" />
-                    <div class="absolute inset-0 bg-linear-to-t from-[#010217]/50 via-transparent to-transparent"></div>
+              <!-- Fade masks -->
+              <div class="pointer-events-none absolute inset-x-0 top-0 h-14 z-30 bg-linear-to-b from-[#070b1c] to-transparent"></div>
+              <div class="pointer-events-none absolute inset-x-0 bottom-0 h-14 z-30 bg-linear-to-t from-[#070b1c] to-transparent"></div>
+
+              <div class="absolute inset-0 z-10 flex gap-3 p-3 sm:p-4">
+                <!-- Column A — scroll up -->
+                <div class="flex-1 overflow-hidden">
+                  <div class="hero-marquee-up flex flex-col gap-3 will-change-transform">
+                    <div
+                      v-for="(img, i) in scrollImagesA"
+                      :key="`a-${i}`"
+                      class="hero-shot relative shrink-0 overflow-hidden border border-[#1a2740]/80 rounded"
+                    >
+                      <img :src="img" alt="" class="w-full h-40 sm:h-48 object-cover object-top" loading="lazy" />
+                      <div class="absolute inset-0 bg-linear-to-t from-[#010217]/50 via-transparent to-transparent"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Column B — scroll down -->
+                <div class="hidden sm:block flex-1 overflow-hidden">
+                  <div class="hero-marquee-down flex flex-col gap-3 will-change-transform">
+                    <div
+                      v-for="(img, i) in scrollImagesB"
+                      :key="`b-${i}`"
+                      class="hero-shot relative shrink-0 overflow-hidden border border-[#1a2740]/80 rounded"
+                    >
+                      <img :src="img" alt="" class="w-full h-40 sm:h-48 object-cover object-top" loading="lazy" />
+                      <div class="absolute inset-0 bg-linear-to-t from-[#010217]/50 via-transparent to-transparent"></div>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <!-- Column B — scroll down -->
-              <div class="hidden sm:block flex-1 overflow-hidden">
-                <div class="hero-marquee-down flex flex-col gap-3 will-change-transform">
-                  <div
-                    v-for="(img, i) in scrollImagesB"
-                    :key="`b-${i}`"
-                    class="hero-shot relative shrink-0 overflow-hidden border border-[#1a2740]/80"
-                  >
-                    <img :src="img" alt="" class="w-full h-40 sm:h-48 object-cover object-top" loading="lazy" />
-                    <div class="absolute inset-0 bg-linear-to-t from-[#010217]/50 via-transparent to-transparent"></div>
-                  </div>
-                </div>
+              <div class="absolute bottom-3 left-3 z-40 flex items-center gap-2 px-2.5 py-1.5 bg-[#010217]/85 border border-[#1a2740] backdrop-blur-md rounded">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#00c2ff] animate-pulse-glow"></span>
+                <span class="font-mono-sys text-[10px] uppercase tracking-[0.14em] text-[#c8d0dc]">{{ t.common.livePreview }}</span>
               </div>
-            </div>
-
-            <div class="absolute bottom-3 left-3 z-40 flex items-center gap-2 px-2.5 py-1.5 bg-[#010217]/80 border border-[#1a2740] backdrop-blur-sm">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#00c2ff] animate-pulse-glow"></span>
-              <span class="font-mono-sys text-[10px] uppercase tracking-[0.14em] text-[#c8d0dc]">{{ t.common.livePreview }}</span>
             </div>
           </div>
         </div>
@@ -95,6 +100,7 @@
 import { ref, onMounted } from 'vue'
 import { animate, stagger } from 'animejs'
 import { useI18n } from '@/i18n'
+import DnaBorderCanvas from '@/components/DnaBorderCanvas.vue'
 
 import tm1 from '@/assets/tickMizane/TeckMizanne1.png'
 import tm2 from '@/assets/tickMizane/TeckMizanne2.png'
