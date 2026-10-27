@@ -1,120 +1,138 @@
 <template>
-  <header
-    class="site-header fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300"
-    :class="scrolled
-      ? 'bg-[#010217]/95 backdrop-blur-md border-b border-[#1a2740]'
-      : 'bg-[#010217]/70 backdrop-blur-sm border-b border-transparent'"
-  >
-    <div class="page-container flex items-center justify-between gap-3 h-14 sm:h-16">
-      <router-link
-        to="/"
-        class="flex items-center shrink-0 h-full py-1.5 group"
-        aria-label="DEVNAPP home"
-      >
-        <BrandLogo
-          variant="nav"
-          size="lg"
-          class="h-full max-h-10 sm:max-h-11 w-auto object-contain object-left transition-opacity duration-300 group-hover:opacity-90"
-        />
-      </router-link>
-
-      <div class="hidden md:flex items-center gap-1 lg:gap-2 min-w-0">
+  <div class="fixed top-0 inset-x-0 z-50 flex flex-col items-center px-3 sm:px-6 pt-3 sm:pt-4 pointer-events-none">
+    <header
+      class="site-header ios-glass-pill pointer-events-auto w-full max-w-[960px] mx-auto rounded-full transition-all duration-300"
+      :class="scrolled
+        ? 'shadow-[0_20px_50px_rgba(0,0,0,0.6)] border-t border-white/35'
+        : 'shadow-[0_16px_36px_rgba(0,0,0,0.45)] border-t border-white/25'"
+    >
+      <div class="flex items-center justify-between gap-3 h-14 sm:h-16 px-4 sm:px-6">
+        <!-- Logo -->
         <router-link
-          v-for="link in navLinks"
-          :key="link.path"
-          :to="link.path"
-          class="relative px-3 lg:px-3.5 py-2 text-sm font-medium transition-colors"
-          :class="isActive(link.path) ? 'text-white' : 'text-[#9aa8bc] hover:text-white'"
+          to="/"
+          class="flex items-center shrink-0 h-full py-1.5 group"
+          aria-label="DEVNAPP home"
         >
-          {{ link.name }}
-          <span
-            class="absolute left-3 right-3 bottom-1 h-px bg-[#00c2ff] transition-opacity duration-300"
-            :class="isActive(link.path) ? 'opacity-100' : 'opacity-0'"
-          ></span>
+          <BrandLogo
+            variant="nav"
+            size="md"
+            class="h-full max-h-9 sm:max-h-10 w-auto object-contain object-left transition-transform duration-300 group-hover:scale-105"
+          />
         </router-link>
 
-        <div class="relative ml-1" ref="langDropdownRef">
-          <button
-            type="button"
-            @click="openLang = !openLang"
-            class="flex items-center gap-1.5 px-2.5 py-2 text-xs font-medium text-[#9aa8bc] hover:text-white font-mono-sys transition-colors"
-            aria-label="Language"
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-1 lg:gap-1.5 min-w-0" aria-label="Main Navigation">
+          <router-link
+            v-for="link in navLinks"
+            :key="link.path"
+            :to="link.path"
+            class="relative px-3.5 py-1.5 text-xs sm:text-sm font-medium rounded-full transition-all duration-200"
+            :class="isActive(link.path)
+              ? 'bg-white/12 text-white shadow-xs border border-white/15'
+              : 'text-[#9aa8bc] hover:text-white hover:bg-white/5'"
           >
-            <span>{{ locale.toUpperCase() }}</span>
-            <svg class="w-3 h-3 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-          </button>
+            {{ link.name }}
+            <span
+              v-if="isActive(link.path)"
+              class="absolute bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-0.5 rounded-full bg-[#00c2ff]"
+            ></span>
+          </router-link>
 
-          <div
-            class="absolute right-0 top-full pt-2 transition-all duration-200"
-            :class="openLang ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-1'"
-          >
-            <div class="border border-[#1a2740] rounded-md overflow-hidden min-w-[132px] p-1 bg-[#0c1224] shadow-xl">
-              <button
-                v-for="opt in langOptions"
-                :key="opt.code"
-                type="button"
-                @click="changeLocale(opt.code)"
-                class="w-full text-left px-3 py-2 text-sm rounded transition-colors flex justify-between text-[#9aa8bc] hover:bg-white/5 hover:text-white"
-              >
-                <span>{{ opt.label }}</span>
-                <span v-if="locale === opt.code" class="text-[#00c2ff]">●</span>
-              </button>
+          <!-- Language Selector -->
+          <div class="relative ml-1" ref="langDropdownRef">
+            <button
+              type="button"
+              @click="openLang = !openLang"
+              class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium text-[#9aa8bc] hover:text-white hover:bg-white/5 font-mono-sys transition-colors border border-transparent hover:border-white/10"
+              aria-label="Language"
+            >
+              <span>{{ locale.toUpperCase() }}</span>
+              <svg class="w-3 h-3 opacity-60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            <div
+              class="absolute right-0 top-full pt-2 transition-all duration-200"
+              :class="openLang ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-1'"
+            >
+              <div class="border border-white/10 rounded-xl overflow-hidden min-w-[136px] p-1.5 bg-[#0c1224]/95 backdrop-blur-xl shadow-2xl">
+                <button
+                  v-for="opt in langOptions"
+                  :key="opt.code"
+                  type="button"
+                  @click="changeLocale(opt.code)"
+                  class="w-full text-left px-3 py-2 text-xs font-medium rounded-lg transition-colors flex justify-between items-center text-[#9aa8bc] hover:bg-white/10 hover:text-white"
+                >
+                  <span>{{ opt.label }}</span>
+                  <span v-if="locale === opt.code" class="text-[#00c2ff] text-xs">●</span>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
 
-        <router-link
-          to="/contact"
-          class="ml-2 shrink-0 px-4 py-2 rounded-md font-semibold text-sm bg-white text-[#010217] hover:bg-[#e8eef6] transition-colors"
+          <!-- Book Discovery Call Pill CTA -->
+          <router-link
+            to="/contact"
+            class="ml-2 shrink-0 px-4 py-2 rounded-full font-semibold text-xs sm:text-sm bg-gradient-to-r from-[#0096e0] to-[#00c2ff] text-[#010217] hover:brightness-110 shadow-[0_0_20px_rgba(0,194,255,0.25)] transition-all transform hover:scale-[1.02]"
+          >
+            {{ t.nav.bookCall }}
+          </router-link>
+        </nav>
+
+        <!-- Mobile Menu Toggle -->
+        <button
+          type="button"
+          @click="mobileMenuOpen = !mobileMenuOpen"
+          class="md:hidden p-2 text-[#9aa8bc] hover:text-white hover:bg-white/5 rounded-full transition-colors"
+          aria-label="Toggle menu"
         >
-          {{ t.nav.bookCall }}
-        </router-link>
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path v-if="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
       </div>
+    </header>
 
-      <button
-        type="button"
-        @click="mobileMenuOpen = !mobileMenuOpen"
-        class="md:hidden p-2 -mr-1 text-[#9aa8bc] hover:text-white transition-colors"
-        aria-label="Toggle menu"
-      >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path v-if="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-          <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-        </svg>
-      </button>
-    </div>
-
+    <!-- Mobile Dropdown Island -->
     <transition
       enter-active-class="transition duration-200 ease-out"
-      enter-from-class="opacity-0 -translate-y-2"
-      enter-to-class="opacity-100 translate-y-0"
+      enter-from-class="opacity-0 -translate-y-2 scale-95"
+      enter-to-class="opacity-100 translate-y-0 scale-100"
       leave-active-class="transition duration-150 ease-in"
-      leave-from-class="opacity-100 translate-y-0"
-      leave-to-class="opacity-0 -translate-y-2"
+      leave-from-class="opacity-100 translate-y-0 scale-100"
+      leave-to-class="opacity-0 -translate-y-2 scale-95"
     >
       <div
         v-if="mobileMenuOpen"
-        class="md:hidden border-t border-[#1a2740] bg-[#010217]/98 backdrop-blur-xl"
+        class="pointer-events-auto w-full max-w-[960px] mx-auto mt-2 rounded-2xl border border-white/12 bg-[#070b1c]/95 backdrop-blur-2xl shadow-2xl p-4"
       >
-        <div class="px-3 py-4 space-y-1">
+        <div class="space-y-1">
           <router-link
             v-for="link in navLinks"
             :key="link.path"
             :to="link.path"
             @click="mobileMenuOpen = false"
-            class="block px-3 py-3 rounded-md text-base text-[#9aa8bc] hover:text-white hover:bg-white/5 transition-colors"
+            class="block px-4 py-2.5 rounded-xl text-sm font-medium transition-colors"
+            :class="isActive(link.path)
+              ? 'bg-white/10 text-white font-semibold'
+              : 'text-[#9aa8bc] hover:text-white hover:bg-white/5'"
           >
             {{ link.name }}
           </router-link>
-          <div class="pt-3 border-t border-[#1a2740] flex flex-col gap-3">
+
+          <div class="pt-3 mt-2 border-t border-white/10 flex flex-col gap-3">
             <div class="flex gap-2 px-1">
               <button
                 v-for="opt in langOptions"
                 :key="opt.code"
                 type="button"
                 @click="changeLocale(opt.code)"
-                class="px-3 py-1.5 rounded text-sm bg-[#0c1224] text-[#9aa8bc]"
-                :class="{ 'ring-1 ring-[#00c2ff] text-white': locale === opt.code }"
+                class="flex-1 py-1.5 rounded-lg text-xs font-mono-sys font-medium transition-colors"
+                :class="locale === opt.code
+                  ? 'bg-[#00c2ff]/20 text-[#00c2ff] border border-[#00c2ff]/30'
+                  : 'bg-[#0c1224] text-[#9aa8bc] hover:text-white'"
               >
                 {{ opt.short }}
               </button>
@@ -122,7 +140,7 @@
             <router-link
               to="/contact"
               @click="mobileMenuOpen = false"
-              class="w-full py-3 rounded-md font-semibold text-center bg-[#00c2ff] text-[#010217]"
+              class="w-full py-2.5 rounded-xl font-semibold text-center text-sm bg-gradient-to-r from-[#0096e0] to-[#00c2ff] text-[#010217]"
             >
               {{ t.nav.bookCall }}
             </router-link>
@@ -130,7 +148,7 @@
         </div>
       </div>
     </transition>
-  </header>
+  </div>
 </template>
 
 <script setup lang="ts">

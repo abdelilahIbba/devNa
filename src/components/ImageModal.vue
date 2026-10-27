@@ -14,20 +14,20 @@
 
     <div
       v-if="hasRichPreview"
-      class="relative w-full max-w-6xl max-h-[92vh] overflow-y-auto rounded-3xl border border-slate-700/70 bg-slate-900/90 backdrop-blur-xl p-5 md:p-8 modal-enter"
+      class="ios-glass-static relative w-full max-w-6xl max-h-[92vh] overflow-y-auto rounded-3xl p-5 md:p-8 modal-enter shadow-[0_25px_60px_rgba(0,0,0,0.7)]"
     >
       <div class="mb-6 flex items-center justify-between gap-4">
         <div>
-          <p class="text-xs uppercase tracking-[0.24em] text-blue-300/80">Project Preview</p>
+          <p class="text-xs uppercase tracking-[0.24em] text-[#00c2ff]/90 font-mono-sys">Project Preview</p>
           <h2 class="text-2xl md:text-3xl font-bold text-white">{{ projectPreviewBrand || projectTitle }}</h2>
         </div>
-        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-blue-600/20 text-blue-200 border border-blue-500/30">
+        <span class="px-3.5 py-1 rounded-full text-xs font-semibold bg-[#00c2ff]/20 text-[#7ddcf8] border border-[#00c2ff]/30">
           {{ projectCategory || 'Transport' }}
         </span>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-        <div class="lg:col-span-5 bg-slate-800/45 rounded-2xl border border-slate-700/70 p-6 flex flex-col">
+        <div class="lg:col-span-5 bg-white/5 rounded-2xl border border-white/10 p-6 flex flex-col">
           <h3 class="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
             {{ projectPreviewHeadline || 'Modern Car Rental Experience' }}
           </h3>

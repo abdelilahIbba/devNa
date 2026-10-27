@@ -1,6 +1,6 @@
 <template>
   <div class="image-card-wrapper" @mouseenter="onHover" @mouseleave="onLeave">
-    <div class="image-card relative overflow-hidden rounded-2xl">
+    <div class="image-card ios-glass relative overflow-hidden rounded-2xl">
       <!-- Image container with parallax -->
       <div 
         class="image-container relative w-full h-80 sm:h-96 md:h-[500px] overflow-hidden"
