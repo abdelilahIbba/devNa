@@ -130,6 +130,17 @@ const shared = {
     projects: {
       title: 'Systems in production',
       subtitle: 'Case studies of management platforms that reshaped daily operations.',
+      sectors: {
+        all: 'All Sectors',
+        retail: 'Retail',
+        transport: 'Transport',
+        logistics: 'Logistics',
+        corporate: 'Corporate',
+      },
+      keyImpact: 'Key Impact',
+      result: 'Result',
+      emptyTitle: 'No case studies found',
+      emptyDesc: 'Try selecting a different sector',
       filter: {
         all: 'All',
         ecommerce: 'E-Commerce',
@@ -153,10 +164,62 @@ const shared = {
       services: 'Our Services',
       expertise: 'Technical Expertise',
       eyebrow: 'DNA Digital Solutions',
+      servicesList: [
+        {
+          title: 'Custom Web Development',
+          description:
+            'Tailored web applications built from scratch to meet your specific business needs. We develop scalable, high-performance solutions using modern frameworks and best practices.',
+          items: [
+            'Full-stack development with modern tech stacks',
+            'Responsive design for all devices',
+            'Performance optimization & SEO',
+          ],
+        },
+        {
+          title: 'Ready-Made Applications',
+          description:
+            'Production-ready web applications that can be deployed immediately. Browse our collection of pre-built solutions designed for common business needs.',
+          items: [
+            'Instant deployment with documentation',
+            'Customization options available',
+            'Ongoing support and updates',
+          ],
+        },
+        {
+          title: 'API Development & Integration',
+          description:
+            'Robust RESTful APIs and third-party integrations to connect your systems and enable seamless data flow across platforms.',
+          items: [
+            'RESTful API design and implementation',
+            'Third-party service integration',
+            'Secure authentication & authorization',
+          ],
+        },
+        {
+          title: 'Maintenance & Support',
+          description:
+            'Comprehensive ongoing support to keep your applications running smoothly with regular updates, security patches, and performance improvements.',
+          items: [
+            'Performance monitoring & optimization',
+            'Security audits & patches',
+            'Feature enhancements',
+          ],
+        },
+      ],
     },
     contact: {
       title: 'Get In Touch',
       subtitle: 'Have a project in mind? Let’s discuss how we can help your operations scale.',
+      formTitle: 'Tell us about your project',
+      scoperTitle: 'Interactive Project Scoper',
+      scoperSubtitle: 'Select your required system to auto-fill the inquiry',
+      scoperOptions: {
+        erp: 'ERP / Retail POS',
+        fleet: 'CRM & Fleet Tracking',
+        ai: 'AI & Automations',
+        custom: 'Custom SaaS Platform',
+        audit: 'Tech Audit & Redesign',
+      },
       form: {
         name: 'Your Name',
         email: 'Email Address',
@@ -165,6 +228,17 @@ const shared = {
         send: 'Send Message',
         sending: 'Sending...',
       },
+      whatsappTitle: 'Quick Response',
+      whatsappSubtitle: 'Get instant answers via WhatsApp',
+      chatNow: 'Chat Now',
+      infoTitle: 'Contact Information',
+      emailLabel: 'Email',
+      phoneLabel: 'Phone',
+      locationLabel: 'Location',
+      locationValue: 'Morocco (Casablanca)',
+      followUs: 'Follow Us',
+      availabilityTitle: 'Available for Projects',
+      availabilitySubtitle: 'Currently accepting new projects. Response time: within 24 hours.',
       info: {
         email: 'Email Us',
         phone: 'Call Us',
@@ -323,6 +397,17 @@ const shared = {
     projects: {
       title: 'Systèmes en production',
       subtitle: 'Études de cas de plateformes de gestion qui ont transformé les opérations quotidiennes.',
+      sectors: {
+        all: 'Tous les secteurs',
+        retail: 'Commerce & Retail',
+        transport: 'Transport & Flotte',
+        logistics: 'Logistique',
+        corporate: 'Entreprise',
+      },
+      keyImpact: 'Impact clé',
+      result: 'Résultat',
+      emptyTitle: 'Aucune étude de cas trouvée',
+      emptyDesc: 'Essayez de sélectionner un autre secteur',
       filter: {
         all: 'Tous',
         ecommerce: 'E-Commerce',
@@ -346,10 +431,62 @@ const shared = {
       services: 'Nos services',
       expertise: 'Expertise technique',
       eyebrow: 'DNA Digital Solutions',
+      servicesList: [
+        {
+          title: 'Développement Web Sur Mesure',
+          description:
+            'Applications web taillées sur mesure pour répondre aux besoins opérationnels précis de votre entreprise. Solutions évolutives et performantes.',
+          items: [
+            'Développement full-stack avec technologies modernes',
+            'Design adaptatif et ergonomie responsive',
+            'Optimisation des performances et SEO technique',
+          ],
+        },
+        {
+          title: 'Applications Métier Clé en Main',
+          description:
+            'Solutions logicielles prêtes pour la production et déployables immédiatement. Modules pré-conçus et adaptés aux problématiques courantes.',
+          items: [
+            'Déploiement rapide avec documentation complète',
+            'Options de personnalisation selon vos processus',
+            'Support technique et évolutions continues',
+          ],
+        },
+        {
+          title: 'Développement d’API & Intégrations',
+          description:
+            'Architectures d’API REST sécurisées et interconnexion avec vos services tiers (ERP, paiements, CRM) pour fluidifier vos flux de données.',
+          items: [
+            'Conception et implémentation d’API RESTful fiables',
+            'Intégration d’outils tiers et passerelles de paiement',
+            'Authentification sécurisée et conformité des accès',
+          ],
+        },
+        {
+          title: 'Maintenance, Sécurité & Support',
+          description:
+            'Accompagnement continu garantissant la disponibilité et la fluidité de vos systèmes avec mises à jour préventives et monitoring régulier.',
+          items: [
+            'Surveillance des performances et haute disponibilité',
+            'Audits de sécurité réguliers et correctifs proactifs',
+            'Développement de nouvelles fonctionnalités',
+          ],
+        },
+      ],
     },
     contact: {
       title: 'Contactez-nous',
       subtitle: 'Un projet en tête ? Discutons de la façon dont nous pouvons faire évoluer vos opérations.',
+      formTitle: 'Parlez-nous de votre projet',
+      scoperTitle: 'Cadrage interactif du projet',
+      scoperSubtitle: 'Sélectionnez votre type de système pour pré-remplir votre demande',
+      scoperOptions: {
+        erp: 'ERP & Caisse Tactile (POS)',
+        fleet: 'CRM & Gestion de Flotte',
+        ai: 'Intégration IA & Automatisation',
+        custom: 'Plateforme Sur-Mesure / SaaS',
+        audit: 'Audit & Refonte Tech',
+      },
       form: {
         name: 'Votre nom',
         email: 'Adresse e-mail',
@@ -358,6 +495,17 @@ const shared = {
         send: 'Envoyer le message',
         sending: 'Envoi…',
       },
+      whatsappTitle: 'Réponse rapide',
+      whatsappSubtitle: 'Échangez directement avec notre équipe via WhatsApp',
+      chatNow: 'Discuter maintenant',
+      infoTitle: 'Coordonnées directes',
+      emailLabel: 'E-mail',
+      phoneLabel: 'Téléphone',
+      locationLabel: 'Localisation',
+      locationValue: 'Maroc (Casablanca)',
+      followUs: 'Suivez-nous',
+      availabilityTitle: 'Disponible pour nouveaux projets',
+      availabilitySubtitle: 'Nous acceptons actuellement de nouveaux projets. Réponse garantie sous 24h.',
       info: {
         email: 'Nous écrire',
         phone: 'Nous appeler',
@@ -516,6 +664,17 @@ const shared = {
     projects: {
       title: 'أنظمة في الإنتاج',
       subtitle: 'دراسات حالة لمنصات إدارة أعادت تشكيل العمليات اليومية.',
+      sectors: {
+        all: 'جميع القطاعات',
+        retail: 'التجزئة والمتاجر',
+        transport: 'النقل والأسطول',
+        logistics: 'اللوجستيات والمخازن',
+        corporate: 'الشركات والمؤسسات',
+      },
+      keyImpact: 'الأثر التشغيلي',
+      result: 'النتيجة',
+      emptyTitle: 'لم يتم العثور على دراسات حالة',
+      emptyDesc: 'يرجى اختيار قطاع آخر',
       filter: {
         all: 'الكل',
         ecommerce: 'التجارة الإلكترونية',
@@ -539,10 +698,62 @@ const shared = {
       services: 'خدماتنا',
       expertise: 'الخبرة التقنية',
       eyebrow: 'DNA Digital Solutions',
+      servicesList: [
+        {
+          title: 'تطوير ويب مخصص',
+          description:
+            'تطبيقات وأنظمة ويب مصممة خصيصاً لتلبية متطلبات أعمالكم بدقة، مع أداء فائق وقابلية للتوسع.',
+          items: [
+            'تطوير متكامل بأحدث التقنيات البرمجية',
+            'تصميم متجاوب وسلس لكافة الأجهزة',
+            'تحسين مستمر للأداء والسرعة ومحركات البحث',
+          ],
+        },
+        {
+          title: 'أنظمة وتطبيقات جاهزة',
+          description:
+            'حلول برمجية جاهزة للتشغيل الفوري مع إمكانية التخصيص الكامل وفق آليات عمل منشأتكم.',
+          items: [
+            'نشر سريع مع توثيق شامل للعمليات',
+            'مرونة عالية في التخصيص والإضافة',
+            'دعم فني وتحديثات مستمرة ومباشرة',
+          ],
+        },
+        {
+          title: 'تطوير وتكامل واجهات API',
+          description:
+            'بناء واجهات برمجية RESTful قوية وربط سلس مع الأنظمة الخارجية وبوابات الدفع وقواعد البيانات.',
+          items: [
+            'تصميم وتنفيذ واجهات برمجية آمنة وموثوقة',
+            'ربط وتكامل مع منصات وخدمات الطرف الثالث',
+            'تحكم أمني دقيق بصلاحيات الوصول والتشفير',
+          ],
+        },
+        {
+          title: 'الصيانة والدعم الفني المستمر',
+          description:
+            'دعم تقني ومتابعة دورية لضمان استمرارية تشغيل أنظمتكم وتحديثها وتأمينها ضد أي توقف.',
+          items: [
+            'مراقبة مستمرة للأداء وتفادي الأعطال',
+            'تحديثات أمنية وتدقيق وقائي مستمر',
+            'تطوير ميزات إضافية مع نمو الأعمال',
+          ],
+        },
+      ],
     },
     contact: {
       title: 'تواصل معنا',
       subtitle: 'هل لديك مشروع؟ دعنا نناقش كيف نساعد عملياتك على التوسع.',
+      formTitle: 'حدّثنا عن مشروعك',
+      scoperTitle: 'محدد نطاق المشروع الذكي',
+      scoperSubtitle: 'اختر نوع النظام المطلوب لتجهيز نموذج الطلب بنقرة واحدة',
+      scoperOptions: {
+        erp: 'ERP وإدارة المبيعات (POS)',
+        fleet: 'CRM وتتبع الأسطول',
+        ai: 'حلول الذكاء الاصطناعي والأتمتة',
+        custom: 'منصة برمجية مخصصة / SaaS',
+        audit: 'تدقيق وتحديث الأنظمة',
+      },
       form: {
         name: 'اسمك',
         email: 'البريد الإلكتروني',
@@ -551,6 +762,17 @@ const shared = {
         send: 'إرسال الرسالة',
         sending: 'جارٍ الإرسال…',
       },
+      whatsappTitle: 'استجابة سريعة',
+      whatsappSubtitle: 'تواصل مباشرة مع فريقنا عبر واتساب',
+      chatNow: 'دردش الآن',
+      infoTitle: 'معلومات الاتصال',
+      emailLabel: 'البريد الإلكتروني',
+      phoneLabel: 'الهاتف',
+      locationLabel: 'المقر',
+      locationValue: 'المغرب (الدار البيضاء)',
+      followUs: 'تابعنا',
+      availabilityTitle: 'متاح لمشاريع جديدة',
+      availabilitySubtitle: 'نستقبل حالياً مشاريع جديدة. الرد مؤكد خلال 24 ساعة.',
       info: {
         email: 'راسلنا',
         phone: 'اتصل بنا',
