@@ -134,9 +134,9 @@ let currentSpeed = 0.024
 
 // Particle & Wave Pools
 const particles: Particle[] = []
-const MAX_PARTICLES = 130
+const MAX_PARTICLES = 50
 const radiationWaves: RadiationWave[] = []
-const MAX_WAVES = 16
+const MAX_WAVES = 8
 let waveEmitTimer = 0
 let sparkTimer = 0
 
@@ -947,14 +947,24 @@ function render() {
   // 3. Draw Constellation Stardust Cloud
   drawConstellationCloud(ctx)
 
-  // 4. Draw Subtle Baseline Track Rail with Glowing Border
+  // 4. Draw Subtle Baseline Track Rail with Soft Ambient Border
   ctx.save()
-  ctx.strokeStyle = 'rgba(0, 194, 255, 0.16)'
-  ctx.lineWidth = 1.2
-  ctx.shadowColor = 'rgba(0, 240, 255, 0.3)'
+  ctx.strokeStyle = 'rgba(0, 168, 255, 0.12)'
+  ctx.lineWidth = 1.0
+  ctx.shadowColor = 'rgba(0, 168, 255, 0.2)'
   ctx.shadowBlur = 4
   ctx.beginPath()
-  ctx.roundRect(padX, padY, rectW, rectH, cornerRadius)
+  if (typeof (ctx as any).roundRect === 'function') {
+    (ctx as any).roundRect(padX, padY, rectW, rectH, cornerRadius)
+  } else {
+    const r = cornerRadius
+    ctx.moveTo(padX + r, padY)
+    ctx.arcTo(padX + rectW, padY, padX + rectW, padY + rectH, r)
+    ctx.arcTo(padX + rectW, padY + rectH, padX, padY + rectH, r)
+    ctx.arcTo(padX, padY + rectH, padX, padY, r)
+    ctx.arcTo(padX, padY, padX + rectW, padY, r)
+    ctx.closePath()
+  }
   ctx.stroke()
   ctx.restore()
 
@@ -1057,16 +1067,16 @@ function render() {
       const pulseFactor = Math.max(0, 1 - distToPulse / pulseSpread)
 
       if (colorType === 'cyan') {
-        ctx.shadowColor = '#00f5ff'
-        ctx.shadowBlur = isForeground ? 14 + pulseFactor * 10 : 5
-        ctx.strokeStyle = `rgba(0, 245, 255, ${Math.min(1, alpha + pulseFactor * 0.3)})`
+        ctx.shadowColor = '#00A8FF'
+        ctx.shadowBlur = isForeground ? 6 + pulseFactor * 4 : 3
+        ctx.strokeStyle = `rgba(0, 168, 255, ${Math.min(0.85, alpha * 0.75 + pulseFactor * 0.2)})`
       } else {
-        ctx.shadowColor = 'rgba(255, 255, 255, 0.95)'
-        ctx.shadowBlur = isForeground ? 11 + pulseFactor * 8 : 4
-        ctx.strokeStyle = `rgba(240, 248, 255, ${Math.min(1, alpha + pulseFactor * 0.3)})`
+        ctx.shadowColor = 'rgba(255, 255, 255, 0.6)'
+        ctx.shadowBlur = isForeground ? 5 + pulseFactor * 3 : 2
+        ctx.strokeStyle = `rgba(220, 235, 255, ${Math.min(0.8, alpha * 0.7 + pulseFactor * 0.2)})`
       }
 
-      ctx.lineWidth = lineWidth + pulseFactor * 0.7
+      ctx.lineWidth = (lineWidth * 0.7) + pulseFactor * 0.4
       ctx.lineCap = 'round'
       ctx.beginPath()
       ctx.moveTo(pA.x, pA.y)
@@ -1130,12 +1140,12 @@ function render() {
     const cEnd = { x: midX - uX * gap, y: midY - uY * gap }
     const wEnd = { x: midX + uX * gap, y: midY + uY * gap }
 
-    // Cyan half of rung
+    // Cyan half of rung (soft ambient)
     ctx.save()
-    ctx.shadowColor = '#00f5ff'
-    ctx.shadowBlur = 8 + pulseFactor * 6
-    ctx.strokeStyle = `rgba(0, 245, 255, ${Math.min(1, rungAlpha + pulseFactor * 0.35)})`
-    ctx.lineWidth = 1.5 + pulseFactor * 0.7
+    ctx.shadowColor = '#00A8FF'
+    ctx.shadowBlur = 4 + pulseFactor * 3
+    ctx.strokeStyle = `rgba(0, 168, 255, ${Math.min(0.7, rungAlpha * 0.65 + pulseFactor * 0.2)})`
+    ctx.lineWidth = 1.0 + pulseFactor * 0.4
     ctx.lineCap = 'round'
     ctx.beginPath()
     ctx.moveTo(pC.x, pC.y)
@@ -1143,12 +1153,12 @@ function render() {
     ctx.stroke()
     ctx.restore()
 
-    // White half of rung
+    // White half of rung (soft ambient)
     ctx.save()
     ctx.shadowColor = '#ffffff'
-    ctx.shadowBlur = 7 + pulseFactor * 6
-    ctx.strokeStyle = `rgba(255, 255, 255, ${Math.min(1, rungAlpha + pulseFactor * 0.35)})`
-    ctx.lineWidth = 1.5 + pulseFactor * 0.7
+    ctx.shadowBlur = 3 + pulseFactor * 3
+    ctx.strokeStyle = `rgba(235, 245, 255, ${Math.min(0.65, rungAlpha * 0.6 + pulseFactor * 0.2)})`
+    ctx.lineWidth = 1.0 + pulseFactor * 0.4
     ctx.lineCap = 'round'
     ctx.beginPath()
     ctx.moveTo(wEnd.x, wEnd.y)
@@ -1156,23 +1166,23 @@ function render() {
     ctx.stroke()
     ctx.restore()
 
-    // Illuminated junction node at Cyan strand
-    const cNodeSize = 1.7 + (pC.z + 1) * 1.1 + pulseFactor * 0.9
+    // Subtle junction node at Cyan strand
+    const cNodeSize = 1.2 + (pC.z + 1) * 0.6 + pulseFactor * 0.5
     ctx.save()
-    ctx.shadowColor = '#00f5ff'
-    ctx.shadowBlur = 9
-    ctx.fillStyle = pC.z > 0 ? '#38bdf8' : 'rgba(0, 245, 255, 0.7)'
+    ctx.shadowColor = '#00A8FF'
+    ctx.shadowBlur = 4
+    ctx.fillStyle = pC.z > 0 ? '#38bdf8' : 'rgba(0, 168, 255, 0.5)'
     ctx.beginPath()
     ctx.arc(pC.x, pC.y, cNodeSize, 0, Math.PI * 2)
     ctx.fill()
     ctx.restore()
 
-    // Illuminated junction node at White strand
-    const wNodeSize = 1.7 + (pW.z + 1) * 1.1 + pulseFactor * 0.9
+    // Subtle junction node at White strand
+    const wNodeSize = 1.2 + (pW.z + 1) * 0.6 + pulseFactor * 0.5
     ctx.save()
     ctx.shadowColor = '#ffffff'
-    ctx.shadowBlur = 8
-    ctx.fillStyle = pW.z > 0 ? '#ffffff' : 'rgba(235, 245, 255, 0.7)'
+    ctx.shadowBlur = 3
+    ctx.fillStyle = pW.z > 0 ? '#ffffff' : 'rgba(235, 245, 255, 0.5)'
     ctx.beginPath()
     ctx.arc(pW.x, pW.y, wNodeSize, 0, Math.PI * 2)
     ctx.fill()
@@ -1189,42 +1199,41 @@ function render() {
 
   if (leadPt) {
     ctx.save()
-    // Intense quantum energy core
-    ctx.shadowColor = '#00f5ff'
-    ctx.shadowBlur = 20
+    // Soft ambient quantum energy core
+    ctx.shadowColor = '#00A8FF'
+    ctx.shadowBlur = 8
     ctx.fillStyle = '#ffffff'
     ctx.beginPath()
-    ctx.arc(leadPt.x, leadPt.y, 4.6, 0, Math.PI * 2)
+    ctx.arc(leadPt.x, leadPt.y, 3.2, 0, Math.PI * 2)
     ctx.fill()
 
-    ctx.fillStyle = '#00f5ff'
+    ctx.fillStyle = '#00A8FF'
     ctx.beginPath()
-    ctx.arc(leadPt.x, leadPt.y, 2.6, 0, Math.PI * 2)
+    ctx.arc(leadPt.x, leadPt.y, 1.8, 0, Math.PI * 2)
     ctx.fill()
 
-    // Micro-lightning electric arc flicker branching outward
-    if (Math.random() > 0.42) {
-      ctx.shadowColor = '#00f5ff'
-      ctx.shadowBlur = 8
-      ctx.strokeStyle = Math.random() > 0.5 ? '#00f5ff' : '#ffffff'
-      ctx.lineWidth = 1.1
+    // Delicate micro-arc flicker
+    if (Math.random() > 0.6) {
+      ctx.shadowColor = '#00A8FF'
+      ctx.shadowBlur = 4
+      ctx.strokeStyle = Math.random() > 0.5 ? 'rgba(0, 168, 255, 0.6)' : 'rgba(255, 255, 255, 0.6)'
+      ctx.lineWidth = 0.8
       ctx.beginPath()
       let arcX = leadPt.x
       let arcY = leadPt.y
       ctx.moveTo(arcX, arcY)
-      const segments = 3
-      const arcLen = Math.random() * 20 + 10
+      const segments = 2
+      const arcLen = Math.random() * 12 + 6
       for (let s = 1; s <= segments; s++) {
         const segRatio = s / segments
-        const jagX = (Math.random() - 0.5) * 8
-        const jagY = (Math.random() - 0.5) * 8
+        const jagX = (Math.random() - 0.5) * 4
+        const jagY = (Math.random() - 0.5) * 4
         arcX = leadPt.x + leadPt.nx * (arcLen * segRatio) + jagX
         arcY = leadPt.y + leadPt.ny * (arcLen * segRatio) + jagY
         ctx.lineTo(arcX, arcY)
       }
       ctx.stroke()
     }
-    ctx.restore()
     ctx.restore()
 
     waveEmitTimer++
