@@ -77,6 +77,107 @@
     border: 1px solid var(--app-line);
   }
 
+  /* iOS 18 / visionOS Tactile Tinted Glass Formula */
+  .ios-glass, .ios-glass-static {
+    position: relative;
+    /* زجاج شفاف يحتفظ بلونه الكحلي/السماوي الفخم دون أن يكون معتماً */
+    background: linear-gradient(
+      135deg,
+      rgba(18, 30, 62, 0.38) 0%,
+      rgba(10, 18, 40, 0.22) 50%,
+      rgba(0, 168, 255, 0.08) 100%
+    ) !important;
+    
+    /* تمويه زجاجي حقيقي يظهر الخلفية والألوان من ورائه */
+    backdrop-filter: blur(28px) saturate(200%) brightness(1.12) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(200%) brightness(1.12) !important;
+    
+    border-radius: 24px;
+    
+    /* حدود زجاجية ثلاثية الأبعاد (حافة علوية ويسرى لامعة كالآيفون) */
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.35) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.22) !important;
+    
+    /* ملمس الزجاج الداخلي (Inner Specular Glow) + ظل خارجي عميق */
+    box-shadow: 
+      0 24px 48px -12px rgba(0, 0, 0, 0.6),
+      inset 0 1px 1px 0 rgba(255, 255, 255, 0.3),
+      inset 0 0 24px 0 rgba(0, 168, 255, 0.06) !important;
+      
+    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* لمعة زجاجية قطرية على سطح البطاقة (Glass Sheen) */
+  .ios-glass::before, .ios-glass-static::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+      125deg,
+      rgba(255, 255, 255, 0.14) 0%,
+      rgba(255, 255, 255, 0.03) 30%,
+      transparent 60%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Linear-style Cursor Spotlight inner ambient glow on mousemove */
+  .ios-glass::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      550px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+      rgba(0, 194, 255, 0.09),
+      rgba(59, 130, 246, 0.04) 45%,
+      transparent 70%
+    );
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1;
+  }
+
+  .ios-glass:hover::after {
+    opacity: 1;
+  }
+
+  .ios-glass:hover {
+    background: linear-gradient(
+      135deg,
+      rgba(24, 42, 85, 0.45) 0%,
+      rgba(12, 24, 52, 0.28) 50%,
+      rgba(0, 168, 255, 0.15) 100%
+    ) !important;
+    border-top-color: rgba(0, 210, 255, 0.6) !important;
+    box-shadow: 
+      0 30px 60px -12px rgba(0, 0, 0, 0.7),
+      0 0 25px -5px rgba(0, 168, 255, 0.25),
+      inset 0 1px 2px 0 rgba(255, 255, 255, 0.45),
+      inset 0 0 30px 0 rgba(0, 168, 255, 0.12) !important;
+    transform: translateY(-5px) scale(1.005);
+  }
+
+  .ios-glass-pill {
+    background: linear-gradient(135deg, rgba(18, 30, 62, 0.4) 0%, rgba(10, 18, 40, 0.25) 100%) !important;
+    backdrop-filter: blur(28px) saturate(200%) brightness(1.12) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(200%) brightness(1.12) !important;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), inset 0 1px 0 0 rgba(255, 255, 255, 0.2) !important;
+  }
+
+  /* Force all page sections to maintain transparent backgrounds */
+  section {
+    background-color: transparent !important;
+  }
+
+
   .text-signal {
     color: var(--app-signal);
   }
