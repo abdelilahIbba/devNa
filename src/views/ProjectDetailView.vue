@@ -39,7 +39,7 @@
           </div>
 
           <!-- Features -->
-          <div class="surface-inset rounded-lg p-8 shadow-lg">
+          <div class="ios-glass p-8 shadow-lg">
             <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
               <svg class="w-6 h-6 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
@@ -61,7 +61,7 @@
           </div>
 
           <!-- Technologies -->
-          <div class="surface-inset rounded-lg p-8 shadow-lg">
+          <div class="ios-glass p-8 shadow-lg">
             <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
               <svg class="w-6 h-6 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
@@ -80,7 +80,7 @@
           </div>
 
           <!-- Screenshots / Gallery -->
-          <div class="surface-inset rounded-lg p-8 shadow-lg">
+          <div class="ios-glass p-8 shadow-lg">
             <h2 class="text-2xl font-bold text-white mb-6">Screenshots</h2>
             <div class="grid grid-cols-2 gap-4">
               <div 
@@ -101,7 +101,7 @@
         <!-- Sidebar -->
         <div class="space-y-6">
           <!-- Pricing Card -->
-          <div class="surface-inset rounded-lg p-8 shadow-lg sticky top-24">
+          <div class="ios-glass p-8 shadow-2xl sticky top-24">
             <div class="text-center mb-6">
               <div class="text-sm text-slate-500 mb-2">Starting at</div>
               <div class="text-5xl font-bold text-white mb-1">

@@ -1,49 +1,59 @@
 <template>
-  <div class="min-h-screen bg-[#010217] text-[#e8eef6] home-view page-view">
+  <div class="min-h-screen bg-transparent text-[#e8eef6] home-view page-view relative">
     <HeroImmersive />
 
-    <!-- Unified ops + proof band -->
-    <section class="border-y border-[#1a2740] bg-[#070b1c]">
-      <div class="page-container">
-        <div class="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-[#1a2740]">
-          <div class="px-4 py-4 flex items-center gap-3">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse-glow shrink-0"></span>
-            <div class="min-w-0">
-              <p class="font-mono-sys text-[10px] uppercase tracking-[0.14em] text-[#00c2ff]">{{ t.home.opsStatus }}</p>
-              <p class="text-sm text-white font-medium mt-0.5">{{ t.home.systemsOnline }}</p>
+    <!-- Unified ops + proof band (Floating iOS Glass Strip) -->
+    <section class="py-8 relative z-20 bg-transparent">
+      <!-- Section Backlight Orb (Pierces through glass) -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] max-w-4xl h-[200px] bg-gradient-to-r from-[#00A8FF]/40 via-[#3B82F6]/35 to-[#1E1B4B]/40 blur-[100px] opacity-35 pointer-events-none rounded-full -z-10"></div>
+
+      <div class="page-container max-w-6xl mx-auto">
+        <div class="ios-glass-static p-5 sm:p-7 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+          <!-- Top Row: Operational Status -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pb-6 border-b border-white/10">
+            <div class="flex items-center gap-3 px-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shrink-0 shadow-[0_0_10px_rgba(52,211,153,0.6)]"></span>
+              <div class="min-w-0">
+                <p class="font-mono-sys text-[10px] uppercase tracking-[0.14em] text-[#00c2ff]">{{ t.home.opsStatus }}</p>
+                <p class="text-sm text-white font-medium mt-0.5">{{ t.home.systemsOnline }}</p>
+              </div>
+            </div>
+            <div class="px-2">
+              <p class="font-mono-sys text-[10px] uppercase tracking-[0.14em] text-[#00c2ff]">{{ t.home.focus }}</p>
+              <p class="text-sm text-white font-medium mt-0.5">{{ t.home.focusValue }}</p>
+            </div>
+            <div class="px-2">
+              <p class="font-mono-sys text-[10px] uppercase tracking-[0.14em] text-[#00c2ff]">{{ t.home.approach }}</p>
+              <p class="text-sm text-white font-medium mt-0.5">{{ t.home.approachValue }}</p>
             </div>
           </div>
-          <div class="px-4 py-4">
-            <p class="font-mono-sys text-[10px] uppercase tracking-[0.14em] text-[#00c2ff]">{{ t.home.focus }}</p>
-            <p class="text-sm text-white font-medium mt-0.5">{{ t.home.focusValue }}</p>
-          </div>
-          <div class="px-4 py-4">
-            <p class="font-mono-sys text-[10px] uppercase tracking-[0.14em] text-[#00c2ff]">{{ t.home.approach }}</p>
-            <p class="text-sm text-white font-medium mt-0.5">{{ t.home.approachValue }}</p>
-          </div>
-        </div>
 
-        <div class="border-t border-[#1a2740] grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-[#1a2740]">
-          <div
-            v-for="metric in proofMetrics"
-            :key="metric.key"
-            class="px-4 sm:px-5 py-5 proof-card"
-          >
-            <p class="font-display text-white text-2xl md:text-[1.75rem] font-bold tracking-tight leading-none">
-              {{ metric.value }}
-            </p>
-            <p class="text-[#9aa8bc] text-[10px] sm:text-[11px] uppercase tracking-[0.12em] mt-2 font-mono-sys leading-snug">
-              {{ metric.label }}
-            </p>
+          <!-- Bottom Row: 4 Proof Metrics (14+, 98.9%, < 6 sem., 4.9/5) -->
+          <div class="pt-6 grid grid-cols-2 lg:grid-cols-4 gap-6 divide-y sm:divide-y-0 sm:divide-x divide-white/10">
+            <div
+              v-for="metric in proofMetrics"
+              :key="metric.key"
+              class="pt-3 sm:pt-0 px-2 sm:px-5 proof-card"
+            >
+              <p class="font-display text-3xl sm:text-4xl lg:text-[2.25rem] font-extrabold tracking-tight leading-none text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-[#00c2ff]">
+                {{ metric.value }}
+              </p>
+              <p class="text-[#9aa8bc] text-[10px] sm:text-xs uppercase tracking-[0.14em] mt-2.5 font-mono-sys leading-snug">
+                {{ metric.label }}
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Featured systems -->
-    <section class="py-16 sm:py-20 relative overflow-hidden" ref="projectsSection">
+    <section class="py-16 sm:py-20 relative overflow-hidden bg-transparent" ref="projectsSection">
       <div class="absolute inset-0 schematic-grid opacity-30 pointer-events-none"></div>
       <div class="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(ellipse_at_top_right,rgba(0,194,255,0.06),transparent_55%)] pointer-events-none"></div>
+
+      <!-- Section Backlight Orb (Pierces through project cards) -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[75%] max-w-5xl h-[280px] bg-gradient-to-r from-[#00A8FF]/40 via-[#3B82F6]/35 to-[#1E1B4B]/45 blur-[100px] opacity-35 pointer-events-none rounded-full -z-10"></div>
 
       <div class="page-container relative z-10">
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
@@ -74,15 +84,18 @@
             v-for="project in featuredProjects"
             :key="project.id"
             :project="project"
-            class="project-card-entrance opacity-0"
+            class="project-card-entrance"
           />
         </div>
       </div>
     </section>
 
     <!-- Delivery method -->
-    <section class="py-24 border-y border-[#1a2740] bg-[#070b1c]/50">
-      <div class="page-container">
+    <section class="py-24 border-y border-white/10 bg-transparent relative">
+      <!-- Section Backlight Orb (Pierces through delivery steps) -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] max-w-4xl h-[250px] bg-gradient-to-r from-[#3B82F6]/40 via-[#00A8FF]/35 to-[#1E1B4B]/40 blur-[100px] opacity-35 pointer-events-none rounded-full -z-10"></div>
+
+      <div class="page-container relative z-10">
         <div class="mb-12 max-w-2xl">
           <p class="eyebrow-sys mb-3">{{ t.home.delivery.eyebrow }}</p>
           <h3 class="font-display text-3xl md:text-4xl font-bold text-white tracking-tight">
@@ -90,11 +103,11 @@
           </h3>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#1a2740] border border-[#1a2740]">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div
             v-for="step in deliverySteps"
             :key="step.title"
-            class="bg-[#0c1224] p-7"
+            class="ios-glass p-8"
           >
             <p class="font-mono-sys text-xs text-[#00c2ff] uppercase tracking-[0.16em] mb-4">{{ step.phase }}</p>
             <h4 class="font-display text-white text-xl font-bold mb-3">{{ step.title }}</h4>
@@ -104,9 +117,12 @@
       </div>
     </section>
 
-    <!-- Why systems partners -->
-    <section class="py-28 relative" ref="featuresSection">
-      <div class="page-container">
+    <!-- Why systems partners (Conçu comme pensent les opérateurs) -->
+    <section class="py-28 relative bg-transparent" ref="featuresSection">
+      <!-- Section Backlight Orb (Pierces through bento cards) -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] max-w-5xl h-[340px] bg-gradient-to-r from-[#00A8FF]/40 via-[#3B82F6]/35 to-[#1E1B4B]/45 blur-[110px] opacity-35 pointer-events-none rounded-full -z-10"></div>
+
+      <div class="page-container relative z-10">
         <div class="mb-16 max-w-2xl reveal-text">
           <p class="eyebrow-sys mb-3">{{ t.home.why.eyebrow }}</p>
           <h3 class="font-display text-3xl md:text-5xl font-bold text-white mb-5 tracking-tight">
@@ -117,63 +133,66 @@
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 auto-rows-[minmax(240px,auto)]" ref="bentoGrid">
-          <div class="md:col-span-2 surface-inset rounded-lg p-8 group relative overflow-hidden bento-item opacity-0 hover-lift">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,194,255,0.08),transparent_50%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(240px,auto)]" ref="bentoGrid">
+          <div class="md:col-span-2 ios-glass p-8 group relative overflow-hidden bento-item">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,168,255,0.1),transparent_50%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div class="relative z-10 h-full flex flex-col justify-between gap-8">
-              <div class="w-11 h-11 border border-[#1a2740] bg-[#010217] flex items-center justify-center text-[#00c2ff]">
-                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+              <div class="w-12 h-12 rounded-xl border border-white/10 bg-[#00c2ff]/10 flex items-center justify-center text-[#00c2ff] shadow-[0_0_16px_rgba(0,194,255,0.2)]">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
               </div>
               <div>
                 <h4 class="font-display text-2xl font-bold text-white mb-2">{{ t.home.why.items[0].title }}</h4>
-                <p class="text-[#9aa8bc] max-w-lg">{{ t.home.why.items[0].body }}</p>
+                <p class="text-[#9aa8bc] max-w-lg leading-relaxed">{{ t.home.why.items[0].body }}</p>
               </div>
             </div>
           </div>
 
-          <div class="md:col-span-1 md:row-span-2 surface-inset rounded-lg p-8 group relative overflow-hidden bento-item opacity-0 hover-lift">
+          <div class="md:col-span-1 md:row-span-2 ios-glass p-8 group relative overflow-hidden bento-item">
             <div class="relative z-10 h-full flex flex-col justify-between">
-              <div class="w-11 h-11 border border-[#1a2740] bg-[#010217] flex items-center justify-center text-[#00c2ff] mb-6">
-                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+              <div class="w-12 h-12 rounded-xl border border-white/10 bg-[#00c2ff]/10 flex items-center justify-center text-[#00c2ff] mb-6 shadow-[0_0_16px_rgba(0,194,255,0.2)]">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
               </div>
               <div>
                 <h4 class="font-display text-2xl font-bold text-white mb-2">{{ t.home.why.items[1].title }}</h4>
-                <p class="text-[#9aa8bc] mb-6">{{ t.home.why.items[1].body }}</p>
-                <div class="h-28 w-full border border-[#1a2740] bg-[#010217]/60 overflow-hidden relative">
+                <p class="text-[#9aa8bc] mb-6 leading-relaxed">{{ t.home.why.items[1].body }}</p>
+                <div class="h-28 w-full border border-white/10 bg-[#010217]/60 rounded-xl overflow-hidden relative">
                   <div class="absolute bottom-0 left-0 w-full flex items-end justify-between px-3 pb-2 gap-1.5 h-full">
-                    <div class="w-full bg-[#00c2ff]/25 h-[28%]"></div>
-                    <div class="w-full bg-[#00c2ff]/35 h-[48%]"></div>
-                    <div class="w-full bg-[#00c2ff]/55 h-[72%]"></div>
-                    <div class="w-full bg-[#00c2ff]/75 h-[58%]"></div>
-                    <div class="w-full bg-[#00c2ff] h-[90%]"></div>
+                    <div class="w-full bg-[#00c2ff]/25 rounded-t-sm h-[28%]"></div>
+                    <div class="w-full bg-[#00c2ff]/35 rounded-t-sm h-[48%]"></div>
+                    <div class="w-full bg-[#00c2ff]/55 rounded-t-sm h-[72%]"></div>
+                    <div class="w-full bg-[#00c2ff]/75 rounded-t-sm h-[58%]"></div>
+                    <div class="w-full bg-[#00c2ff] rounded-t-sm h-[90%] shadow-[0_0_12px_rgba(0,194,255,0.6)]"></div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="surface-inset rounded-lg p-8 group bento-item opacity-0 hover-lift">
-            <div class="w-11 h-11 border border-[#1a2740] bg-[#010217] flex items-center justify-center text-[#00c2ff] mb-5">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+          <div class="ios-glass p-8 group bento-item">
+            <div class="w-12 h-12 rounded-xl border border-white/10 bg-[#00c2ff]/10 flex items-center justify-center text-[#00c2ff] mb-5 shadow-[0_0_16px_rgba(0,194,255,0.2)]">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
             </div>
             <h4 class="font-display text-xl font-bold text-white mb-2">{{ t.home.why.items[2].title }}</h4>
-            <p class="text-[#9aa8bc] text-sm">{{ t.home.why.items[2].body }}</p>
+            <p class="text-[#9aa8bc] text-sm leading-relaxed">{{ t.home.why.items[2].body }}</p>
           </div>
 
-          <div class="surface-inset rounded-lg p-8 group bento-item opacity-0 hover-lift">
-            <div class="w-11 h-11 border border-[#1a2740] bg-[#010217] flex items-center justify-center text-[#34d399] mb-5">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <div class="ios-glass p-8 group bento-item">
+            <div class="w-12 h-12 rounded-xl border border-white/10 bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-5 shadow-[0_0_16px_rgba(52,211,153,0.2)]">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
             </div>
             <h4 class="font-display text-xl font-bold text-white mb-2">{{ t.home.why.items[3].title }}</h4>
-            <p class="text-[#9aa8bc] text-sm">{{ t.home.why.items[3].body }}</p>
+            <p class="text-[#9aa8bc] text-sm leading-relaxed">{{ t.home.why.items[3].body }}</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Voices -->
-    <section class="py-24 border-t border-[#1a2740]">
-      <div class="page-container">
+    <section class="py-24 border-t border-white/10 relative bg-transparent">
+      <!-- Section Backlight Orb (Pierces through client quotes) -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] max-w-4xl h-[240px] bg-gradient-to-r from-[#00A8FF]/40 via-[#3B82F6]/30 to-[#1E1B4B]/40 blur-[100px] opacity-35 pointer-events-none rounded-full -z-10"></div>
+
+      <div class="page-container relative z-10">
         <div class="mb-12">
           <p class="eyebrow-sys mb-3">{{ t.home.voices.eyebrow }}</p>
           <h3 class="font-display text-3xl md:text-4xl font-bold text-white tracking-tight">
@@ -181,11 +200,11 @@
           </h3>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div
             v-for="quote in testimonials"
             :key="quote.author"
-            class="surface-inset rounded-lg p-7 border-l-2 border-l-[#00c2ff]"
+            class="ios-glass p-8 border-l-4 border-l-[#00c2ff]"
           >
             <p class="text-[#c8d0dc] leading-relaxed mb-6 text-lg">“{{ quote.text }}”</p>
             <div>
