@@ -1,6 +1,6 @@
 <template>
   <div class="image-card-wrapper" @mouseenter="onHover" @mouseleave="onLeave">
-    <div class="image-card ios-glass relative overflow-hidden rounded-2xl">
+    <div class="image-card vision-glass-card relative overflow-hidden rounded-2xl">
       <!-- Image container with parallax -->
       <div 
         class="image-container relative w-full h-80 sm:h-96 md:h-[500px] overflow-hidden"
@@ -46,7 +46,7 @@
           <span 
             v-for="(tag, index) in tags" 
             :key="index"
-            class="px-3 py-1 rounded-full bg-blue-500/30 text-blue-200 text-xs font-medium backdrop-blur-sm border border-blue-400/30 transition-all duration-500"
+            class="px-3 py-1 rounded-full vision-glass-inner text-[#00c2ff] text-xs font-medium border border-white/20 transition-all duration-500"
             :style="{ 
               opacity: isHovering ? 1 : 0.5,
               transform: isHovering ? 'translateY(0)' : 'translateY(5px)',

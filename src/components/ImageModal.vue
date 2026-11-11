@@ -14,7 +14,7 @@
 
     <div
       v-if="hasRichPreview"
-      class="ios-glass-static relative w-full max-w-6xl max-h-[92vh] overflow-y-auto rounded-3xl p-5 md:p-8 modal-enter shadow-[0_25px_60px_rgba(0,0,0,0.7)]"
+      class="vision-glass-card relative w-full max-w-6xl max-h-[92vh] overflow-y-auto rounded-3xl p-5 md:p-8 modal-enter shadow-[0_25px_60px_rgba(0,0,0,0.7)]"
     >
       <div class="mb-6 flex items-center justify-between gap-4">
         <div>
@@ -27,7 +27,7 @@
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-        <div class="lg:col-span-5 bg-white/5 rounded-2xl border border-white/10 p-6 flex flex-col">
+        <div class="lg:col-span-5 vision-glass-inner rounded-2xl border border-white/10 p-6 flex flex-col">
           <h3 class="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
             {{ projectPreviewHeadline || 'Modern Car Rental Experience' }}
           </h3>
@@ -68,9 +68,9 @@
           </div>
         </div>
 
-        <div class="lg:col-span-7 rounded-2xl border border-slate-700/70 bg-slate-900/70 p-4 md:p-5">
-          <div class="rounded-xl overflow-hidden border border-slate-700/60 bg-slate-950/80">
-            <div class="h-10 flex items-center gap-2 px-4 border-b border-slate-700/60 bg-slate-900/80">
+        <div class="lg:col-span-7 vision-glass-inner rounded-2xl border border-white/20 p-4 md:p-5">
+          <div class="rounded-xl overflow-hidden border border-white/20">
+            <div class="h-10 flex items-center gap-2 px-4 border-b border-white/20 vision-glass-inner">
               <span class="w-2.5 h-2.5 rounded-full bg-red-400/80"></span>
               <span class="w-2.5 h-2.5 rounded-full bg-amber-300/80"></span>
               <span class="w-2.5 h-2.5 rounded-full bg-emerald-400/80"></span>
@@ -80,7 +80,7 @@
             <div class="relative">
               <img
                 :src="currentImage"
-                class="w-full h-[340px] md:h-[400px] object-contain bg-slate-950"
+                class="w-full h-[340px] md:h-[400px] object-contain bg-transparent"
                 alt="Project visualization"
               />
 
@@ -117,7 +117,7 @@
         <div
           v-for="item in previewStats"
           :key="item.label"
-          class="rounded-xl border border-slate-700/70 bg-slate-800/45 p-4"
+          class="vision-glass-inner rounded-xl border border-white/20 p-4"
         >
           <p class="text-slate-400 text-xs uppercase tracking-wider mb-1">{{ item.label }}</p>
           <p class="text-white text-2xl font-bold">{{ item.value }}</p>

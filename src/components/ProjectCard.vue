@@ -10,9 +10,9 @@
       class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-[#00A8FF]/20 via-[#0044FF]/15 to-[#00A8FF]/20 blur-xl opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none"
     ></div>
 
-    <div class="ios-glass relative overflow-hidden rounded-2xl cursor-pointer h-full flex flex-col">
+    <div class="vision-glass-card relative overflow-hidden rounded-2xl cursor-pointer h-full flex flex-col">
       <!-- Software Window Mockup Frame Header (macOS / SaaS Style) -->
-      <div class="px-4 py-2.5 bg-[#070b1c]/90 border-b border-white/10 flex items-center justify-between z-20 relative backdrop-blur-md">
+      <div class="vision-glass-inner px-4 py-2.5 border-b border-white/10 flex items-center justify-between z-20 relative backdrop-blur-md">
         <!-- Window Traffic Light Dots -->
         <div class="flex items-center gap-1.5">
           <span class="w-2.5 h-2.5 rounded-full bg-[#ff5f56] shadow-[0_0_6px_rgba(255,95,86,0.6)]"></span>
@@ -21,7 +21,7 @@
         </div>
 
         <!-- System Address Bar / URI -->
-        <div class="flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-white/5 border border-white/10 text-[10px] sm:text-[11px] text-[#9aa8bc] font-mono-sys max-w-[210px] truncate">
+        <div class="flex items-center gap-1.5 px-3 py-0.5 rounded-full vision-glass-inner border border-white/10 text-[10px] sm:text-[11px] text-[#9aa8bc] font-mono-sys max-w-[210px] truncate">
           <svg class="w-3 h-3 text-[#00c2ff] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
           </svg>
@@ -36,7 +36,7 @@
       </div>
 
       <!-- Viewport / Software Display Area -->
-      <div class="relative h-64 overflow-hidden bg-[#040614]" @click.stop="openModal">
+      <div class="relative h-64 overflow-hidden bg-transparent" @click.stop="openModal">
         <!-- Underlying Preview Image -->
         <img 
           :src="displayImage" 
@@ -47,10 +47,10 @@
         />
         
         <!-- Gradient Overlay -->
-        <div class="absolute inset-0 bg-gradient-to-t from-[#010217]/95 via-[#010217]/30 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-white/10 via-transparent to-transparent pointer-events-none"></div>
 
         <!-- Specialized Software UI Mockup Overlays for Custom Systems (IDs 3, 4, 5, 6) -->
-        <div v-if="project.id === 3" class="absolute inset-3 z-10 flex flex-col justify-between p-3.5 rounded-xl bg-[#070b1c]/80 border border-[#00c2ff]/20 backdrop-blur-md">
+        <div v-if="project.id === 3" class="absolute inset-3 z-10 flex flex-col justify-between p-3.5 rounded-xl vision-glass-inner border border-white/20 backdrop-blur-md">
           <div class="flex items-center justify-between">
             <span class="text-[10px] font-mono-sys text-[#00c2ff] uppercase tracking-wider">WMS Intelligence • Quai 04</span>
             <span class="text-[10px] font-semibold text-emerald-300 bg-emerald-500/15 px-2 py-0.5 rounded-full">+24% Flux</span>
@@ -62,13 +62,13 @@
               <div class="bg-gradient-to-r from-[#0096e0] to-[#00c2ff] h-full w-[88%]"></div>
             </div>
           </div>
-          <div class="flex items-center justify-between text-[10px] text-[#9aa8bc] font-mono-sys pt-1 border-t border-white/5">
+          <div class="flex items-center justify-between text-[10px] text-[#9aa8bc] font-mono-sys pt-1 border-t border-white/10">
             <span>Scan RFID / Code-Barres</span>
             <span class="text-[#00c2ff]">Synchronisé</span>
           </div>
         </div>
 
-        <div v-else-if="project.id === 4" class="absolute inset-3 z-10 flex flex-col justify-between p-3.5 rounded-xl bg-[#070b1c]/80 border border-[#00c2ff]/20 backdrop-blur-md">
+        <div v-else-if="project.id === 4" class="absolute inset-3 z-10 flex flex-col justify-between p-3.5 rounded-xl vision-glass-inner border border-white/20 backdrop-blur-md">
           <div class="flex items-center justify-between">
             <span class="text-[10px] font-mono-sys text-[#00c2ff] uppercase tracking-wider">SantéConnect CRM • Clinique</span>
             <span class="text-[10px] font-semibold text-emerald-300 bg-emerald-500/15 px-2 py-0.5 rounded-full">RGPD & HDS</span>
@@ -78,13 +78,13 @@
             <div class="text-xl font-bold font-mono text-white tracking-tight">42 <span class="text-xs text-emerald-300">Patients planifiés</span></div>
             <div class="text-[11px] text-[#9aa8bc] mt-1">Délai d'attente moyen : <strong class="text-white">6 min</strong></div>
           </div>
-          <div class="flex items-center justify-between text-[10px] text-[#9aa8bc] font-mono-sys pt-1 border-t border-white/5">
+          <div class="flex items-center justify-between text-[10px] text-[#9aa8bc] font-mono-sys pt-1 border-t border-white/10">
             <span>Dossier médical chiffré</span>
             <span class="text-emerald-400">AES-256 Actif</span>
           </div>
         </div>
 
-        <div v-else-if="project.id === 5" class="absolute inset-3 z-10 flex flex-col justify-between p-3.5 rounded-xl bg-[#070b1c]/80 border border-[#00c2ff]/20 backdrop-blur-md">
+        <div v-else-if="project.id === 5" class="absolute inset-3 z-10 flex flex-col justify-between p-3.5 rounded-xl vision-glass-inner border border-white/20 backdrop-blur-md">
           <div class="flex items-center justify-between">
             <span class="text-[10px] font-mono-sys text-[#00c2ff] uppercase tracking-wider">CityReal Engine • B2B</span>
             <span class="text-[10px] font-semibold text-emerald-300 bg-emerald-500/15 px-2 py-0.5 rounded-full">96.8% Rempli</span>
@@ -94,13 +94,13 @@
             <div class="text-xl font-bold font-mono text-white tracking-tight">184 <span class="text-xs text-[#00c2ff]">Dossiers validés</span></div>
             <div class="text-[11px] text-[#9aa8bc] mt-1">Visite 3D interactive : <strong class="text-white">Disponible</strong></div>
           </div>
-          <div class="flex items-center justify-between text-[10px] text-[#9aa8bc] font-mono-sys pt-1 border-t border-white/5">
+          <div class="flex items-center justify-between text-[10px] text-[#9aa8bc] font-mono-sys pt-1 border-t border-white/10">
             <span>Signature électronique</span>
             <span class="text-emerald-400">Certifiée</span>
           </div>
         </div>
 
-        <div v-else-if="project.id === 6" class="absolute inset-3 z-10 flex flex-col justify-between p-3.5 rounded-xl bg-[#070b1c]/80 border border-[#00c2ff]/20 backdrop-blur-md">
+        <div v-else-if="project.id === 6" class="absolute inset-3 z-10 flex flex-col justify-between p-3.5 rounded-xl vision-glass-inner border border-white/20 backdrop-blur-md">
           <div class="flex items-center justify-between">
             <span class="text-[10px] font-mono-sys text-[#00c2ff] uppercase tracking-wider">TraceFlow IoT • Chaîne du Froid</span>
             <span class="text-[10px] font-semibold text-emerald-300 bg-emerald-500/15 px-2 py-0.5 rounded-full">Conforme +3.2°C</span>
@@ -110,7 +110,7 @@
             <div class="text-xl font-bold font-mono text-white tracking-tight">100% <span class="text-xs text-[#00c2ff]">Lots certifiés</span></div>
             <div class="text-[11px] text-[#9aa8bc] mt-1">Capteurs connectés : <strong class="text-emerald-300">LoRaWAN Online</strong></div>
           </div>
-          <div class="flex items-center justify-between text-[10px] text-[#9aa8bc] font-mono-sys pt-1 border-t border-white/5">
+          <div class="flex items-center justify-between text-[10px] text-[#9aa8bc] font-mono-sys pt-1 border-t border-white/10">
             <span>Contrôle qualité</span>
             <span class="text-emerald-400">100% Validé</span>
           </div>
@@ -197,7 +197,7 @@
             <span 
               v-for="benefit in project.technologies?.slice(0, 3)" 
               :key="benefit"
-              class="px-2.5 py-1 text-xs font-medium text-[#7ddcf8] bg-[#00c2ff]/10 border border-[#00c2ff]/20 rounded-lg group-hover/card:border-[#00c2ff]/40 transition-colors"
+              class="px-2.5 py-1 text-xs font-medium text-[#7ddcf8] vision-glass-inner border border-white/20 rounded-lg group-hover/card:border-[#00c2ff]/40 transition-colors"
             >
               {{ benefit }}
             </span>

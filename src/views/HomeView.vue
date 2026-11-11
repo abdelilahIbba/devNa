@@ -8,7 +8,7 @@
       <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] max-w-4xl h-[200px] bg-gradient-to-r from-[#00A8FF]/40 via-[#3B82F6]/35 to-[#1E1B4B]/40 blur-[100px] opacity-35 pointer-events-none rounded-full -z-10"></div>
 
       <div class="page-container max-w-6xl mx-auto">
-        <div class="ios-glass-static p-5 sm:p-7 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+        <div class="vision-glass-card p-5 sm:p-7">
           <!-- Top Row: Operational Status -->
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pb-6 border-b border-white/10">
             <div class="flex items-center gap-3 px-2">
@@ -33,7 +33,7 @@
             <div
               v-for="metric in proofMetrics"
               :key="metric.key"
-              class="pt-3 sm:pt-0 px-2 sm:px-5 proof-card"
+              class="pt-3 sm:pt-0 px-2 sm:px-5 proof-card vision-glass-inner"
             >
               <p class="font-display text-3xl sm:text-4xl lg:text-[2.25rem] font-extrabold tracking-tight leading-none text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-[#00c2ff]">
                 {{ metric.value }}
@@ -91,9 +91,11 @@
     </section>
 
     <!-- Delivery method -->
-    <section class="py-24 border-y border-white/10 bg-transparent relative">
-      <!-- Section Backlight Orb (Pierces through delivery steps) -->
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] max-w-4xl h-[250px] bg-gradient-to-r from-[#3B82F6]/40 via-[#00A8FF]/35 to-[#1E1B4B]/40 blur-[100px] opacity-35 pointer-events-none rounded-full -z-10"></div>
+    <section class="py-24 border-y border-white/10 bg-transparent relative overflow-hidden">
+      <!-- High-Impact Ambient Backlight Array (Directly pierces through frosted glass cards) -->
+      <div class="absolute top-1/2 left-[12%] -translate-y-1/2 w-[340px] h-[340px] bg-[#00c2ff]/30 blur-[110px] pointer-events-none rounded-full -z-10"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[440px] h-[340px] bg-[#3b82f6]/35 blur-[120px] pointer-events-none rounded-full -z-10"></div>
+      <div class="absolute top-1/2 right-[12%] -translate-y-1/2 w-[340px] h-[340px] bg-[#8b5cf6]/28 blur-[110px] pointer-events-none rounded-full -z-10"></div>
 
       <div class="page-container relative z-10">
         <div class="mb-12 max-w-2xl">
@@ -107,20 +109,33 @@
           <div
             v-for="step in deliverySteps"
             :key="step.title"
-            class="ios-glass p-8"
+            class="relative group/card"
           >
-            <p class="font-mono-sys text-xs text-[#00c2ff] uppercase tracking-[0.16em] mb-4">{{ step.phase }}</p>
-            <h4 class="font-display text-white text-xl font-bold mb-3">{{ step.title }}</h4>
-            <p class="text-[#9aa8bc] text-sm leading-relaxed">{{ step.description }}</p>
+            <!-- Card Local Ambient Glow on Hover -->
+            <div class="absolute -inset-1 bg-gradient-to-r from-[#00c2ff]/25 via-[#3b82f6]/20 to-[#00c2ff]/25 rounded-[28px] blur-xl opacity-40 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none -z-10"></div>
+
+            <div class="vision-glass-card p-8 h-full flex flex-col justify-between relative">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="vision-glass-inner inline-flex items-center px-3 py-1 rounded-full text-[11px] font-mono-sys font-semibold tracking-[0.16em] uppercase text-[#00c2ff] border border-[#00c2ff]/25 backdrop-blur-md">
+                    {{ step.phase }}
+                  </span>
+                  <span class="w-2 h-2 rounded-full bg-[#00c2ff] opacity-60 group-hover/card:opacity-100 group-hover/card:scale-125 transition-all"></span>
+                </div>
+                <h4 class="font-display text-white text-xl font-bold mb-3">{{ step.title }}</h4>
+                <p class="text-[#c8d0dc] text-sm leading-relaxed">{{ step.description }}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Why systems partners (Conçu comme pensent les opérateurs) -->
-    <section class="py-28 relative bg-transparent" ref="featuresSection">
-      <!-- Section Backlight Orb (Pierces through bento cards) -->
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] max-w-5xl h-[340px] bg-gradient-to-r from-[#00A8FF]/40 via-[#3B82F6]/35 to-[#1E1B4B]/45 blur-[110px] opacity-35 pointer-events-none rounded-full -z-10"></div>
+    <section class="py-28 relative bg-transparent overflow-hidden" ref="featuresSection">
+      <!-- Section Backlight Orbs (Pierces through bento cards) -->
+      <div class="absolute top-1/4 left-[15%] w-[460px] h-[360px] bg-[#00A8FF]/35 blur-[120px] pointer-events-none rounded-full -z-10"></div>
+      <div class="absolute bottom-1/4 right-[15%] w-[480px] h-[380px] bg-[#3B82F6]/32 blur-[120px] pointer-events-none rounded-full -z-10"></div>
 
       <div class="page-container relative z-10">
         <div class="mb-16 max-w-2xl reveal-text">
@@ -134,63 +149,63 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(240px,auto)]" ref="bentoGrid">
-          <div class="md:col-span-2 ios-glass p-8 group relative overflow-hidden bento-item">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,168,255,0.1),transparent_50%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="md:col-span-2 vision-glass-card p-8 group relative overflow-hidden bento-item">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,168,255,0.14),transparent_55%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
             <div class="relative z-10 h-full flex flex-col justify-between gap-8">
-              <div class="w-12 h-12 rounded-xl border border-white/10 bg-[#00c2ff]/10 flex items-center justify-center text-[#00c2ff] shadow-[0_0_16px_rgba(0,194,255,0.2)]">
+              <div class="vision-glass-inner w-12 h-12 rounded-xl border border-white/20 bg-white/10 backdrop-blur-md flex items-center justify-center text-[#00c2ff] shadow-[0_0_16px_rgba(0,194,255,0.25)]">
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
               </div>
               <div>
                 <h4 class="font-display text-2xl font-bold text-white mb-2">{{ t.home.why.items[0].title }}</h4>
-                <p class="text-[#9aa8bc] max-w-lg leading-relaxed">{{ t.home.why.items[0].body }}</p>
+                <p class="text-[#c8d0dc] max-w-lg leading-relaxed">{{ t.home.why.items[0].body }}</p>
               </div>
             </div>
           </div>
 
-          <div class="md:col-span-1 md:row-span-2 ios-glass p-8 group relative overflow-hidden bento-item">
+          <div class="md:col-span-1 md:row-span-2 vision-glass-card p-8 group relative overflow-hidden bento-item">
             <div class="relative z-10 h-full flex flex-col justify-between">
-              <div class="w-12 h-12 rounded-xl border border-white/10 bg-[#00c2ff]/10 flex items-center justify-center text-[#00c2ff] mb-6 shadow-[0_0_16px_rgba(0,194,255,0.2)]">
+              <div class="vision-glass-inner w-12 h-12 rounded-xl border border-white/20 bg-white/10 backdrop-blur-md flex items-center justify-center text-[#00c2ff] mb-6 shadow-[0_0_16px_rgba(0,194,255,0.25)]">
                 <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
               </div>
               <div>
                 <h4 class="font-display text-2xl font-bold text-white mb-2">{{ t.home.why.items[1].title }}</h4>
-                <p class="text-[#9aa8bc] mb-6 leading-relaxed">{{ t.home.why.items[1].body }}</p>
-                <div class="h-28 w-full border border-white/10 bg-[#010217]/60 rounded-xl overflow-hidden relative">
+                <p class="text-[#c8d0dc] mb-6 leading-relaxed">{{ t.home.why.items[1].body }}</p>
+                <div class="vision-glass-inner h-28 w-full border border-white/20 rounded-xl overflow-hidden relative p-2 shadow-inner">
                   <div class="absolute bottom-0 left-0 w-full flex items-end justify-between px-3 pb-2 gap-1.5 h-full">
-                    <div class="w-full bg-[#00c2ff]/25 rounded-t-sm h-[28%]"></div>
-                    <div class="w-full bg-[#00c2ff]/35 rounded-t-sm h-[48%]"></div>
-                    <div class="w-full bg-[#00c2ff]/55 rounded-t-sm h-[72%]"></div>
-                    <div class="w-full bg-[#00c2ff]/75 rounded-t-sm h-[58%]"></div>
-                    <div class="w-full bg-[#00c2ff] rounded-t-sm h-[90%] shadow-[0_0_12px_rgba(0,194,255,0.6)]"></div>
+                    <div class="w-full bg-[#00c2ff]/30 rounded-t-sm h-[28%]"></div>
+                    <div class="w-full bg-[#00c2ff]/45 rounded-t-sm h-[48%]"></div>
+                    <div class="w-full bg-[#00c2ff]/65 rounded-t-sm h-[72%]"></div>
+                    <div class="w-full bg-[#00c2ff]/80 rounded-t-sm h-[58%]"></div>
+                    <div class="w-full bg-[#00c2ff] rounded-t-sm h-[90%] shadow-[0_0_14px_rgba(0,194,255,0.7)]"></div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="ios-glass p-8 group bento-item">
-            <div class="w-12 h-12 rounded-xl border border-white/10 bg-[#00c2ff]/10 flex items-center justify-center text-[#00c2ff] mb-5 shadow-[0_0_16px_rgba(0,194,255,0.2)]">
+          <div class="vision-glass-card p-8 group bento-item">
+            <div class="vision-glass-inner w-12 h-12 rounded-xl border border-white/20 bg-white/10 backdrop-blur-md flex items-center justify-center text-[#00c2ff] mb-5 shadow-[0_0_16px_rgba(0,194,255,0.25)]">
               <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
             </div>
             <h4 class="font-display text-xl font-bold text-white mb-2">{{ t.home.why.items[2].title }}</h4>
-            <p class="text-[#9aa8bc] text-sm leading-relaxed">{{ t.home.why.items[2].body }}</p>
+            <p class="text-[#c8d0dc] text-sm leading-relaxed">{{ t.home.why.items[2].body }}</p>
           </div>
 
-          <div class="ios-glass p-8 group bento-item">
-            <div class="w-12 h-12 rounded-xl border border-white/10 bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-5 shadow-[0_0_16px_rgba(52,211,153,0.2)]">
+          <div class="vision-glass-card p-8 group bento-item">
+            <div class="vision-glass-inner w-12 h-12 rounded-xl border border-white/20 bg-emerald-500/15 backdrop-blur-md flex items-center justify-center text-emerald-400 mb-5 shadow-[0_0_16px_rgba(52,211,153,0.25)]">
               <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
             </div>
             <h4 class="font-display text-xl font-bold text-white mb-2">{{ t.home.why.items[3].title }}</h4>
-            <p class="text-[#9aa8bc] text-sm leading-relaxed">{{ t.home.why.items[3].body }}</p>
+            <p class="text-[#c8d0dc] text-sm leading-relaxed">{{ t.home.why.items[3].body }}</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Voices -->
-    <section class="py-24 border-t border-white/10 relative bg-transparent">
+    <section class="py-24 border-t border-white/10 relative bg-transparent overflow-hidden">
       <!-- Section Backlight Orb (Pierces through client quotes) -->
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] max-w-4xl h-[240px] bg-gradient-to-r from-[#00A8FF]/40 via-[#3B82F6]/30 to-[#1E1B4B]/40 blur-[100px] opacity-35 pointer-events-none rounded-full -z-10"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[75%] max-w-4xl h-[260px] bg-gradient-to-r from-[#00A8FF]/35 via-[#3B82F6]/30 to-[#8b5cf6]/25 blur-[110px] pointer-events-none rounded-full -z-10"></div>
 
       <div class="page-container relative z-10">
         <div class="mb-12">
@@ -204,7 +219,7 @@
           <div
             v-for="quote in testimonials"
             :key="quote.author"
-            class="ios-glass p-8 border-l-4 border-l-[#00c2ff]"
+            class="vision-glass-card p-8 border-l-4 border-l-[#00c2ff]"
           >
             <p class="text-[#c8d0dc] leading-relaxed mb-6 text-lg">“{{ quote.text }}”</p>
             <div>

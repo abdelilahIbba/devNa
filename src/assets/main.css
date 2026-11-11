@@ -22,7 +22,7 @@
 
 @layer base {
   :root {
-    --app-bg: #010217;
+    --app-bg: #030B1E;
     --app-text: #e8eef6;
     --app-muted: #9aa8bc;
     --app-panel: #0c1224;
@@ -30,13 +30,17 @@
     --app-signal: #00c2ff;
   }
 
+  html,
   body {
-    background-color: var(--app-bg);
+    background-color: #030B1E !important;
     color: var(--app-text);
     font-family: var(--font-family-sans);
     transition: background-color 0.35s ease, color 0.35s ease;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
   }
 
   ::selection {
@@ -54,9 +58,16 @@
 }
 
 @layer utilities {
-  .app-shell {
-    background-color: var(--app-bg);
-    color: var(--app-text);
+  /* Force all page wrappers, main, section, footer to remain transparent so CyberDnaBackground is never blocked */
+  .app-shell,
+  main,
+  section,
+  footer,
+  .page-view,
+  .page-container {
+    background-color: transparent !important;
+    position: relative;
+    z-index: 1;
   }
 
   .font-display {
@@ -77,63 +88,69 @@
     border: 1px solid var(--app-line);
   }
 
-  /* iOS 18 / visionOS Tactile Tinted Glass Formula */
-  .ios-glass, .ios-glass-static {
+  /* =========================================================================
+     VisionOS Milky-White Frosted Glass System — DEVNAPP 2.0
+     Formula: White-frost base (18%) + subtle ice-blue hint (8-10%) + Specular Rim
+     ========================================================================= */
+
+  /* Primary Card / Frame Glass — aliases kept for backward compat */
+  .vision-glass-card,
+  .ios-glass,
+  .ios-glass-static,
+  .ios-glass-card {
     position: relative;
-    /* زجاج شفاف يحتفظ بلونه الكحلي/السماوي الفخم دون أن يكون معتماً */
     background: linear-gradient(
       135deg,
-      rgba(18, 30, 62, 0.38) 0%,
-      rgba(10, 18, 40, 0.22) 50%,
-      rgba(0, 168, 255, 0.08) 100%
+      rgba(255, 255, 255, 0.17) 0%,
+      rgba(255, 255, 255, 0.07) 50%,
+      rgba(56, 189, 248, 0.10) 100%
     ) !important;
-    
-    /* تمويه زجاجي حقيقي يظهر الخلفية والألوان من ورائه */
-    backdrop-filter: blur(28px) saturate(200%) brightness(1.12) !important;
-    -webkit-backdrop-filter: blur(28px) saturate(200%) brightness(1.12) !important;
-    
+    backdrop-filter: blur(22px) saturate(185%) !important;
+    -webkit-backdrop-filter: blur(22px) saturate(185%) !important;
     border-radius: 24px;
-    
-    /* حدود زجاجية ثلاثية الأبعاد (حافة علوية ويسرى لامعة كالآيفون) */
-    border: 1px solid rgba(255, 255, 255, 0.12) !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.35) !important;
-    border-left: 1px solid rgba(255, 255, 255, 0.22) !important;
-    
-    /* ملمس الزجاج الداخلي (Inner Specular Glow) + ظل خارجي عميق */
-    box-shadow: 
-      0 24px 48px -12px rgba(0, 0, 0, 0.6),
-      inset 0 1px 1px 0 rgba(255, 255, 255, 0.3),
-      inset 0 0 24px 0 rgba(0, 168, 255, 0.06) !important;
-      
-    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    border-top: 1.5px solid rgba(255, 255, 255, 0.52) !important;
+    border-left: 1.5px solid rgba(255, 255, 255, 0.38) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-bottom: 1px solid rgba(56, 189, 248, 0.24) !important;
+    box-shadow:
+      0 20px 45px -10px rgba(2, 8, 23, 0.55),
+      inset 0 1px 2px rgba(255, 255, 255, 0.44),
+      inset 0 0 24px rgba(255, 255, 255, 0.05) !important;
+    transform: translateZ(0);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
   }
 
-  /* لمعة زجاجية قطرية على سطح البطاقة (Glass Sheen) */
-  .ios-glass::before, .ios-glass-static::before {
+  /* Surface Specular Sheen */
+  .vision-glass-card::before,
+  .ios-glass::before,
+  .ios-glass-static::before,
+  .ios-glass-card::before {
     content: "";
     position: absolute;
     inset: 0;
     border-radius: inherit;
     background: linear-gradient(
       125deg,
-      rgba(255, 255, 255, 0.14) 0%,
-      rgba(255, 255, 255, 0.03) 30%,
-      transparent 60%
+      rgba(255, 255, 255, 0.18) 0%,
+      rgba(255, 255, 255, 0.04) 32%,
+      transparent 65%
     );
     pointer-events: none;
     z-index: 0;
   }
 
-  /* Linear-style Cursor Spotlight inner ambient glow on mousemove */
-  .ios-glass::after {
+  /* Cursor Spotlight Glow */
+  .vision-glass-card::after,
+  .ios-glass::after,
+  .ios-glass-card::after {
     content: '';
     position: absolute;
     inset: 0;
     border-radius: inherit;
     background: radial-gradient(
-      550px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
-      rgba(0, 194, 255, 0.09),
-      rgba(59, 130, 246, 0.04) 45%,
+      520px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+      rgba(125, 211, 252, 0.14),
+      rgba(59, 130, 246, 0.06) 45%,
       transparent 70%
     );
     pointer-events: none;
@@ -142,39 +159,114 @@
     z-index: 1;
   }
 
-  .ios-glass:hover::after {
+  .vision-glass-card:hover::after,
+  .ios-glass:hover::after,
+  .ios-glass-card:hover::after {
     opacity: 1;
   }
 
-  .ios-glass:hover {
+  .vision-glass-card:hover,
+  .ios-glass:hover,
+  .ios-glass-card:hover {
     background: linear-gradient(
       135deg,
-      rgba(24, 42, 85, 0.45) 0%,
-      rgba(12, 24, 52, 0.28) 50%,
-      rgba(0, 168, 255, 0.15) 100%
+      rgba(255, 255, 255, 0.22) 0%,
+      rgba(255, 255, 255, 0.10) 50%,
+      rgba(56, 189, 248, 0.14) 100%
     ) !important;
-    border-top-color: rgba(0, 210, 255, 0.6) !important;
-    box-shadow: 
-      0 30px 60px -12px rgba(0, 0, 0, 0.7),
-      0 0 25px -5px rgba(0, 168, 255, 0.25),
-      inset 0 1px 2px 0 rgba(255, 255, 255, 0.45),
-      inset 0 0 30px 0 rgba(0, 168, 255, 0.12) !important;
-    transform: translateY(-5px) scale(1.005);
+    border-top-color: rgba(255, 255, 255, 0.75) !important;
+    border-left-color: rgba(255, 255, 255, 0.55) !important;
+    box-shadow:
+      0 26px 55px -10px rgba(2, 8, 23, 0.65),
+      0 0 28px -5px rgba(56, 189, 248, 0.22),
+      inset 0 1px 3px rgba(255, 255, 255, 0.55),
+      inset 0 -10px 24px rgba(56, 189, 248, 0.10) !important;
+    transform: translateY(-2px) translateZ(0);
   }
 
+  /* Floating Pill Capsule (Navbar) */
   .ios-glass-pill {
-    background: linear-gradient(135deg, rgba(18, 30, 62, 0.4) 0%, rgba(10, 18, 40, 0.25) 100%) !important;
-    backdrop-filter: blur(28px) saturate(200%) brightness(1.12) !important;
-    -webkit-backdrop-filter: blur(28px) saturate(200%) brightness(1.12) !important;
+    position: relative;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.18) 0%,
+      rgba(255, 255, 255, 0.08) 50%,
+      rgba(56, 189, 248, 0.10) 100%
+    ) !important;
+    backdrop-filter: blur(24px) saturate(190%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
     border-radius: 9999px;
-    border: 1px solid rgba(255, 255, 255, 0.12) !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), inset 0 1px 0 0 rgba(255, 255, 255, 0.2) !important;
+    border-top: 1.5px solid rgba(255, 255, 255, 0.55) !important;
+    border-left: 1.5px solid rgba(255, 255, 255, 0.40) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.16) !important;
+    border-bottom: 1px solid rgba(56, 189, 248, 0.25) !important;
+    box-shadow:
+      0 16px 40px rgba(2, 8, 23, 0.45),
+      inset 0 1px 2px rgba(255, 255, 255, 0.50),
+      inset 0 0 20px rgba(255, 255, 255, 0.05) !important;
+    transform: translateZ(0);
   }
 
-  /* Force all page sections to maintain transparent backgrounds */
-  section {
-    background-color: transparent !important;
+  /* Nested Inner Elements (icon boxes, tabs, badges, inner wrappers) */
+  .vision-glass-inner,
+  .ios-glass-subcard,
+  .ios-glass-nested {
+    position: relative;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.22) 0%,
+      rgba(125, 211, 252, 0.10) 100%
+    ) !important;
+    border: 1px solid rgba(255, 255, 255, 0.34) !important;
+    border-top: 1.5px solid rgba(255, 255, 255, 0.50) !important;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.40) !important;
+    border-radius: 16px;
+    transition: all 0.25s ease;
+  }
+
+  .vision-glass-inner:hover,
+  .ios-glass-subcard:hover {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.28) 0%,
+      rgba(125, 211, 252, 0.15) 100%
+    ) !important;
+    border-top-color: rgba(255, 255, 255, 0.65) !important;
+  }
+
+  /* High-contrast semi-opaque deep navy footer glass for 100% text legibility */
+  .vision-glass-footer {
+    background: linear-gradient(
+      145deg,
+      rgba(6, 18, 44, 0.86) 0%,
+      rgba(4, 12, 30, 0.90) 60%,
+      rgba(12, 34, 72, 0.84) 100%
+    ) !important;
+    backdrop-filter: blur(28px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(160%) !important;
+    border-radius: 28px;
+    padding: 3rem 3rem 2rem;
+    border-top: 1.5px solid rgba(255, 255, 255, 0.38) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.25) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-bottom: 1px solid rgba(56, 189, 248, 0.22) !important;
+    box-shadow:
+      0 24px 60px rgba(0, 0, 0, 0.65),
+      inset 0 1px 2px rgba(255, 255, 255, 0.28) !important;
+  }
+
+  @media (max-width: 768px) {
+    .vision-glass-card,
+    .ios-glass,
+    .ios-glass-static,
+    .ios-glass-card {
+      backdrop-filter: blur(14px) saturate(160%) !important;
+      -webkit-backdrop-filter: blur(14px) saturate(160%) !important;
+    }
+    .vision-glass-footer {
+      border-radius: 20px;
+      padding: 2rem 1.25rem 1.5rem;
+    }
   }
 
 

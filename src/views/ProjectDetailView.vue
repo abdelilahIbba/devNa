@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-[#010217] pt-16 pb-16 page-view">
+  <div class="min-h-screen bg-transparent pt-16 pb-16 page-view relative">
     <div class="page-container">
       <!-- Breadcrumb -->
       <nav class="flex items-center space-x-2 text-sm mb-8">
@@ -25,7 +25,7 @@
               <span 
                 v-for="tag in project.tags" 
                 :key="tag"
-                class="px-4 py-2 bg-slate-900/90 backdrop-blur-sm text-sm font-semibold text-blue-400 rounded-full shadow-lg border border-slate-700"
+                class="vision-glass-inner px-4 py-2 backdrop-blur-sm text-sm font-semibold text-blue-400 rounded-full shadow-lg border border-slate-700"
               >
                 {{ tag }}
               </span>
@@ -39,7 +39,7 @@
           </div>
 
           <!-- Features -->
-          <div class="ios-glass p-8 shadow-lg">
+          <div class="vision-glass-card p-8 shadow-lg">
             <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
               <svg class="w-6 h-6 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
@@ -61,7 +61,7 @@
           </div>
 
           <!-- Technologies -->
-          <div class="ios-glass p-8 shadow-lg">
+          <div class="vision-glass-card p-8 shadow-lg">
             <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
               <svg class="w-6 h-6 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
@@ -72,7 +72,7 @@
               <span 
                 v-for="tech in project.technologies" 
                 :key="tech"
-                class="px-4 py-2 bg-slate-800/50 text-blue-400 font-medium rounded-lg border border-blue-500/20 hover:border-blue-500/50 transition-colors"
+                class="vision-glass-inner px-4 py-2 text-[#00c2ff] font-medium rounded-lg border border-white/20 transition-colors"
               >
                 {{ tech }}
               </span>
@@ -80,13 +80,13 @@
           </div>
 
           <!-- Screenshots / Gallery -->
-          <div class="ios-glass p-8 shadow-lg">
+          <div class="vision-glass-card p-8 shadow-lg">
             <h2 class="text-2xl font-bold text-white mb-6">Screenshots</h2>
             <div class="grid grid-cols-2 gap-4">
               <div 
                 v-for="(screenshot, index) in project.screenshots" 
                 :key="index"
-                class="aspect-video bg-slate-800 rounded-lg overflow-hidden group cursor-pointer border border-slate-700 hover:border-blue-500/50 transition-colors"
+                class="aspect-video vision-glass-inner rounded-lg overflow-hidden group cursor-pointer border border-white/20 hover:border-[#00c2ff]/50 transition-colors"
               >
                 <img 
                   :src="screenshot"
@@ -101,7 +101,7 @@
         <!-- Sidebar -->
         <div class="space-y-6">
           <!-- Pricing Card -->
-          <div class="ios-glass p-8 shadow-2xl sticky top-24">
+          <div class="vision-glass-card p-8 shadow-2xl sticky top-24">
             <div class="text-center mb-6">
               <div class="text-sm text-slate-500 mb-2">Starting at</div>
               <div class="text-5xl font-bold text-white mb-1">
@@ -141,7 +141,7 @@
               <button class="w-full px-6 py-4 bg-[#00c2ff] hover:brightness-105 text-[#010217] rounded-lg font-semibold transition-all duration-300">
                 Purchase Now
               </button>
-              <button class="w-full px-6 py-4 bg-slate-800 hover:bg-slate-700 text-blue-400 border border-blue-500/30 rounded-full font-semibold transition-all duration-300">
+              <button class="w-full px-6 py-4 vision-glass-inner hover:bg-white/10 text-blue-400 border border-blue-500/30 rounded-full font-semibold transition-all duration-300">
                 Live Demo
               </button>
             </div>
@@ -161,7 +161,7 @@
           </div>
 
           <!-- Stats -->
-          <div class="surface-inset rounded-lg p-6 shadow-lg">
+          <div class="vision-glass-inner rounded-lg p-6 shadow-lg">
             <h3 class="font-bold text-white mb-4">Project Stats</h3>
             <div class="space-y-3">
               <div class="flex justify-between items-center">

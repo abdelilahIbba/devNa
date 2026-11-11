@@ -25,8 +25,8 @@
     </section>
 
     <div class="page-container -mt-4 relative z-10">
-      <!-- Profile Card (ios-glass) -->
-      <div class="ios-glass p-8 md:p-12 mb-16 relative z-20 shadow-2xl">
+      <!-- Profile Card (vision-glass-card) -->
+      <div class="vision-glass-card p-8 md:p-12 mb-16 relative z-20 shadow-2xl">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
           <!-- Company Logo -->
           <div class="flex justify-center">
@@ -57,10 +57,10 @@
           <div
             v-for="(service, idx) in t.about.servicesList"
             :key="service.title"
-            class="ios-glass p-8 relative overflow-hidden group"
+            class="vision-glass-card p-8 relative overflow-hidden group"
           >
             <!-- Service Icon -->
-            <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 bg-[#00c2ff]/10 border border-[#00c2ff]/25 text-[#00c2ff] shadow-[0_0_20px_rgba(0,194,255,0.15)]">
+            <div class="vision-glass-inner w-14 h-14 rounded-2xl flex items-center justify-center mb-5 border border-white/20 text-[#00c2ff] shadow-[0_0_20px_rgba(0,194,255,0.15)]">
               <!-- Icon 1: Web Dev -->
               <svg v-if="idx === 0" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>

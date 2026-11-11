@@ -17,7 +17,7 @@
 
       <!-- iOS Segmented Control Capsule Filter -->
       <div class="flex justify-center mb-12 sm:mb-14 px-2">
-        <div class="inline-flex p-1.5 rounded-full bg-[#070b1c]/80 border border-white/12 backdrop-blur-2xl shadow-[0_12px_32px_rgba(0,0,0,0.4)] max-w-full overflow-x-auto">
+        <div class="inline-flex p-1.5 rounded-full vision-glass-card border border-white/20 backdrop-blur-2xl shadow-[0_12px_32px_rgba(0,0,0,0.4)] max-w-full overflow-x-auto">
           <button 
             v-for="cat in sectorCategories" 
             :key="cat.key"
@@ -44,7 +44,7 @@
       </div>
 
       <!-- Empty State -->
-      <div v-if="filteredProjects.length === 0" class="text-center py-20 ios-glass max-w-md mx-auto p-8">
+      <div v-if="filteredProjects.length === 0" class="text-center py-20 vision-glass-card max-w-md mx-auto p-8">
         <svg class="w-16 h-16 mx-auto text-[#00c2ff]/60 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/>
         </svg>

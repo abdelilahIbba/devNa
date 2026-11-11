@@ -2,9 +2,6 @@
   <div class="fixed top-0 inset-x-0 z-50 flex flex-col items-center px-3 sm:px-6 pt-3 sm:pt-4 pointer-events-none">
     <header
       class="site-header ios-glass-pill pointer-events-auto w-full max-w-[960px] mx-auto rounded-full transition-all duration-300"
-      :class="scrolled
-        ? 'shadow-[0_20px_50px_rgba(0,0,0,0.6)] border-t border-white/35'
-        : 'shadow-[0_16px_36px_rgba(0,0,0,0.45)] border-t border-white/25'"
     >
       <div class="flex items-center justify-between gap-3 h-14 sm:h-16 px-4 sm:px-6">
         <!-- Logo -->
@@ -28,7 +25,7 @@
             :to="link.path"
             class="relative px-3.5 py-1.5 text-xs sm:text-sm font-medium rounded-full transition-all duration-200"
             :class="isActive(link.path)
-              ? 'bg-white/12 text-white shadow-xs border border-white/15'
+              ? 'vision-glass-inner bg-white/12 text-white shadow-xs border border-white/15'
               : 'text-[#9aa8bc] hover:text-white hover:bg-white/5'"
           >
             {{ link.name }}
@@ -56,7 +53,7 @@
               class="absolute right-0 top-full pt-2 transition-all duration-200"
               :class="openLang ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-1'"
             >
-              <div class="border border-white/10 rounded-xl overflow-hidden min-w-[136px] p-1.5 bg-[#0c1224]/95 backdrop-blur-xl shadow-2xl">
+              <div class="vision-glass-card border border-white/20 rounded-xl overflow-hidden min-w-[136px] p-1.5 backdrop-blur-xl shadow-2xl">
                 <button
                   v-for="opt in langOptions"
                   :key="opt.code"
@@ -106,7 +103,7 @@
     >
       <div
         v-if="mobileMenuOpen"
-        class="pointer-events-auto w-full max-w-[960px] mx-auto mt-2 rounded-2xl border border-white/12 bg-[#070b1c]/95 backdrop-blur-2xl shadow-2xl p-4"
+        class="pointer-events-auto w-full max-w-[960px] mx-auto mt-2 vision-glass-card rounded-2xl shadow-2xl p-4"
       >
         <div class="space-y-1">
           <router-link
@@ -132,7 +129,7 @@
                 class="flex-1 py-1.5 rounded-lg text-xs font-mono-sys font-medium transition-colors"
                 :class="locale === opt.code
                   ? 'bg-[#00c2ff]/20 text-[#00c2ff] border border-[#00c2ff]/30'
-                  : 'bg-[#0c1224] text-[#9aa8bc] hover:text-white'"
+                  : 'bg-white/5 text-[#9aa8bc] hover:text-white'"
               >
                 {{ opt.short }}
               </button>

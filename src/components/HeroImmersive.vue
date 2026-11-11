@@ -1,10 +1,9 @@
 <template>
-  <section class="hero-immersive relative overflow-hidden bg-[#010217] pt-20 sm:pt-24 pb-10">
+  <section class="hero-immersive relative overflow-hidden bg-transparent pt-20 sm:pt-24 pb-10">
     <div class="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
       <div class="absolute inset-0 schematic-grid opacity-50"></div>
       <div class="absolute inset-0 schematic-noise opacity-30"></div>
       <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_78%_30%,rgba(0,168,255,0.12),transparent_50%)]"></div>
-      <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,2,23,0.2)_0%,transparent_50%)]"></div>
     </div>
 
     <div class="relative z-10 page-container">
@@ -43,7 +42,7 @@
         <div ref="panelRef" class="lg:col-span-6 xl:col-span-7 opacity-0 translate-y-4 relative">
           <!-- Interactive System Switcher Tabs -->
           <div class="flex items-center justify-between gap-2 mb-3 px-1 z-30 relative flex-wrap">
-            <div class="inline-flex p-1 rounded-full bg-[#070b1c]/80 border border-white/10 backdrop-blur-xl shadow-lg">
+            <div class="inline-flex p-1 rounded-full vision-glass-inner border border-white/20 backdrop-blur-xl shadow-lg">
               <button
                 v-for="tab in systemTabs"
                 :key="tab.id"
@@ -59,25 +58,22 @@
             </div>
 
             <!-- Active system status pill -->
-            <div class="hidden sm:inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-[11px] font-mono-sys text-[#c8d0dc]">
+            <div class="hidden sm:inline-flex items-center gap-2 px-3 py-1 rounded-full vision-glass-inner border border-white/20 backdrop-blur-md text-[11px] font-mono-sys text-[#c8d0dc]">
               <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
               <span>{{ activeSystemTag }}</span>
             </div>
           </div>
 
           <!-- DNA Frame & Glass Preview Container -->
-          <div class="relative group/dna">
-            <DnaBorderCanvas />
-
-            <div class="hero-gallery ios-glass-static relative h-[320px] sm:h-[380px] lg:h-[440px] overflow-hidden">
-              <!-- Subtle inner ambient glow -->
-              <div class="pointer-events-none absolute -inset-px z-0 bg-[radial-gradient(ellipse_at_center,rgba(0,168,255,0.12),transparent_65%)]"></div>
+          <div class="hero-gallery vision-glass-card relative h-[320px] sm:h-[380px] lg:h-[440px] overflow-hidden">
+              <!-- VisionOS Ambient Backlight Glow behind systems showcase -->
+              <div class="pointer-events-none absolute -inset-px z-0 bg-[radial-gradient(ellipse_at_center,rgba(0,194,255,0.22),rgba(59,130,246,0.12),transparent_70%)]"></div>
 
               <!-- VIEW 1: Dual Auto-Scrolling Stream -->
               <div v-if="activeTab === 'all'" class="absolute inset-0 z-10 flex gap-3 p-3 sm:p-4">
-                <!-- Fade masks -->
-                <div class="pointer-events-none absolute inset-x-0 top-0 h-14 z-30 bg-gradient-to-b from-[#070b1c]/90 to-transparent"></div>
-                <div class="pointer-events-none absolute inset-x-0 bottom-0 h-14 z-30 bg-gradient-to-t from-[#070b1c]/90 to-transparent"></div>
+                <!-- Frosted glass fade masks (softened to allow DNA & ambient light through) -->
+                <div class="pointer-events-none absolute inset-x-0 top-0 h-10 z-30 bg-gradient-to-b from-white/10 via-transparent to-transparent"></div>
+                <div class="pointer-events-none absolute inset-x-0 bottom-0 h-10 z-30 bg-gradient-to-t from-white/10 via-transparent to-transparent"></div>
 
                 <!-- Column A — scroll up -->
                 <div class="flex-1 overflow-hidden">
@@ -85,10 +81,9 @@
                     <div
                       v-for="(img, i) in scrollImagesA"
                       :key="`a-${i}`"
-                      class="hero-shot relative shrink-0 overflow-hidden border border-white/10 rounded-xl"
+                      class="hero-shot vision-glass-inner relative shrink-0 overflow-hidden rounded-xl border border-white/20"
                     >
                       <img :src="img" alt="DEVNAPP system screen" class="w-full h-40 sm:h-48 object-cover object-top" loading="lazy" />
-                      <div class="absolute inset-0 bg-gradient-to-t from-[#010217]/60 via-transparent to-transparent"></div>
                     </div>
                   </div>
                 </div>
@@ -99,10 +94,9 @@
                     <div
                       v-for="(img, i) in scrollImagesB"
                       :key="`b-${i}`"
-                      class="hero-shot relative shrink-0 overflow-hidden border border-white/10 rounded-xl"
+                      class="hero-shot vision-glass-inner relative shrink-0 overflow-hidden rounded-xl border border-white/20"
                     >
                       <img :src="img" alt="DEVNAPP system screen" class="w-full h-40 sm:h-48 object-cover object-top" loading="lazy" />
-                      <div class="absolute inset-0 bg-gradient-to-t from-[#010217]/60 via-transparent to-transparent"></div>
                     </div>
                   </div>
                 </div>
@@ -113,7 +107,7 @@
                 <div class="flex items-center justify-between mb-3">
                   <div>
                     <h3 class="text-white font-bold text-base sm:text-lg">TeckMizanne POS</h3>
-                    <p class="text-xs text-[#00c2ff] font-mono-sys">{{ posScreens[posIndex].label }}</p>
+                    <p class="text-xs text-[#00c2ff] font-mono-sys">{{ posScreens[posIndex]?.label }}</p>
                   </div>
                   <div class="flex items-center gap-1.5">
                     <button
@@ -135,13 +129,12 @@
                   </div>
                 </div>
 
-                <div class="grow relative rounded-xl overflow-hidden border border-white/10 bg-[#010217]/60">
+                <div class="grow relative rounded-xl overflow-hidden border border-white/20 vision-glass-inner shadow-inner">
                   <img
-                    :src="posScreens[posIndex].src"
-                    :alt="posScreens[posIndex].label"
+                    :src="posScreens[posIndex]?.src"
+                    :alt="posScreens[posIndex]?.label"
                     class="w-full h-full object-cover object-top transition-opacity duration-300"
                   />
-                  <div class="absolute inset-0 bg-gradient-to-t from-[#010217]/70 via-transparent to-transparent"></div>
                 </div>
 
                 <!-- Pagination dots -->
@@ -162,7 +155,7 @@
                 <div class="flex items-center justify-between mb-3">
                   <div>
                     <h3 class="text-white font-bold text-base sm:text-lg">AutoFleet Manager</h3>
-                    <p class="text-xs text-[#00c2ff] font-mono-sys">{{ fleetScreens[fleetIndex].label }}</p>
+                    <p class="text-xs text-[#00c2ff] font-mono-sys">{{ fleetScreens[fleetIndex]?.label }}</p>
                   </div>
                   <div class="flex items-center gap-1.5">
                     <button
@@ -184,13 +177,12 @@
                   </div>
                 </div>
 
-                <div class="grow relative rounded-xl overflow-hidden border border-white/10 bg-[#010217]/60">
+                <div class="grow relative rounded-xl overflow-hidden border border-white/20 vision-glass-inner shadow-inner">
                   <img
-                    :src="fleetScreens[fleetIndex].src"
-                    :alt="fleetScreens[fleetIndex].label"
+                    :src="fleetScreens[fleetIndex]?.src"
+                    :alt="fleetScreens[fleetIndex]?.label"
                     class="w-full h-full object-cover object-top transition-opacity duration-300"
                   />
-                  <div class="absolute inset-0 bg-gradient-to-t from-[#010217]/70 via-transparent to-transparent"></div>
                 </div>
 
                 <!-- Pagination dots -->
@@ -207,12 +199,11 @@
               </div>
 
               <!-- Bottom badge -->
-              <div class="absolute bottom-3 left-3 z-40 flex items-center gap-2 px-3 py-1.5 bg-[#010217]/85 border border-white/10 backdrop-blur-md rounded-full shadow-lg">
+              <div class="absolute bottom-3 left-3 z-40 flex items-center gap-2 px-3 py-1.5 ios-glass-pill shadow-lg">
                 <span class="w-2 h-2 rounded-full bg-[#00c2ff] animate-pulse"></span>
                 <span class="font-mono-sys text-[10px] uppercase tracking-[0.14em] text-[#c8d0dc]">{{ t.common.livePreview }}</span>
               </div>
             </div>
-          </div>
         </div>
       </div>
     </div>
@@ -223,7 +214,6 @@
 import { ref, computed, onMounted } from 'vue'
 import { animate, stagger } from 'animejs'
 import { useI18n } from '@/i18n'
-import DnaBorderCanvas from '@/components/DnaBorderCanvas.vue'
 
 import tm1 from '@/assets/tickMizane/TeckMizanne1.png'
 import tm2 from '@/assets/tickMizane/TeckMizanne2.png'
